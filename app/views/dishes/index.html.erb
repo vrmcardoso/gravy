@@ -1,3 +1,4 @@
+
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
   <div class="container">
     <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
@@ -5,3 +6,27 @@
     <a class="btn btn-flat" href="#">Apply now</a>
   </div>
 </div>
+
+
+
+
+
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <div id="movies">
+        <% @dishes.each do |dishe| %>
+          <h4><%= dish.name %></h4>
+          <p><%= dish.recipe %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <h1> Hello world </h1>
+</div>
+
