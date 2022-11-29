@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
 
-  def method_name
+  def index
     @restaurant = Restaurant.find(params[:id])
   end
 
