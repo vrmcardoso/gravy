@@ -13,20 +13,35 @@
 
 
 
+
+
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-8">
-      <div id="movies">
-        <% @dishes.each do |dish| %>
-          <h4><%= dish.name %></h4>
-          <p><%= dish.recipe %></p>
-        <% end %>
-      </div>
+      <%= form_with url: dishes_path, method: :get, class: "d-flex my-3" do  |f| %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find a dish"
+        %>
+        <%= f.select :type, collection: ["Dish", "Restaurant"] %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
+      <% if params[:type] == "Dish" %>
+        <div id="movies">
+          <% @dishes.each do |dish| %>
+            <h4><%= dish.name %></h4>
+            <p><%= dish.recipe %></p>
+          <% end %>
+        </div>
+      <% else %>
+        <div id="movies">
+          <% @restaurants.each do |restaurant| %>
+            <h4><%= restaurant.name %></h4>
+            <p><%= restaurant.description %></p>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
-
-<div>
-  <h1> Hello world </h1>
-</div>
-
