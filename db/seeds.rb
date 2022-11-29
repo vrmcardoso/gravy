@@ -55,7 +55,7 @@ category5 = Category.create(
   Restaurant.create(
     name: Faker::Restaurant.name,
     description: Faker::Restaurant.description,
-    address: Faker::Address.street_address
+    address: "16 Villa Gaudelet, Paris"
   )
     10.times do
       Dish.create(

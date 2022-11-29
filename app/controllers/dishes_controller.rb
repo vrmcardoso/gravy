@@ -12,6 +12,12 @@ class DishesController < ApplicationController
 
   def show
     @dish = Dish.find(params[:id])
+
+    @markers = 
+      [{
+        lat: @dish.restaurant.latitude,
+        lng: @dish.restaurant.longitude
+      }]
   end
 
 end

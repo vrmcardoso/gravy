@@ -7,6 +7,7 @@ class Restaurant < ApplicationRecord
   validates :description, presence: true
   validates :address, presence: true
 
+
   include PgSearch::Model
   pg_search_scope :global_search,
                   against: [:name],
@@ -17,4 +18,9 @@ class Restaurant < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
+
 end
