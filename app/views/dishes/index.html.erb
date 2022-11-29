@@ -1,19 +1,21 @@
-
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
-  <div class="container">
-    <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
-    <p>Change your life and learn to code at one of our campuses around the world.</p>
-    <a class="btn btn-flat" href="#">Apply now</a>
+<div class="banner-container">
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dmndhddgf/image/upload/v1669735258/development/pablo-merchan-montes-Orz90t6o0e4-unsplash_fclsur.jpg);">
+    <div class="container">
+      <h1>Find the best dishes in your town</h1>
+      <p>Pick a dish or a cuisine</p>
+      <center>
+        <div class="search-bar">
+          <%= simple_form_for :dishes, url: root_path, method: :get do |f| %>
+          <div class="search-form-control form-group">
+            <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+            <button name="button" type="submit" class="search-button"><i class="fas fa-search"></i></button>
+          </div>
+          <% end %>
+        </div>
+      </center>
+    </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
 
 <div class="container">
   <div class="row justify-content-center">
@@ -45,3 +47,30 @@
     </div>
   </div>
 </div>
+
+<center>
+  <div class="card-container mt-5">
+    <% @dishes.each do |dish| %>
+      <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        <h4 class="card-cuisine"><%= dish.category.cuisine %></h4><br>
+        <h2 class="card-name"><%= dish.name %></h2>
+        <h2 class="card-rank">Rank</h2>
+        <p class="card-restaurant"><%= dish.restaurant.name %></p>
+        <% if dish.category.food_type %>
+          <p class="card-type"><%= dish.category.food_type %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</center>
+
+
+
+
+
+
+
+
+
+
+
