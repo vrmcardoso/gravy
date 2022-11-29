@@ -79,3 +79,5 @@ end
 
 gem "faker"
 gem "cloudinary"
+gem 'bootstrap', '~> 5.2.2'
+gem "pg_search"
