@@ -1,0 +1,39 @@
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center mb-3">
+        <div class="col-6">
+            <div class="card rounded">
+                <%= image_tag "2.jpg" %>
+            </div>
+        </div>
+        <div class="col-6 col-sm-3">
+            <div class="card mb-3 rounded">
+                <%= image_tag "2.jpg" %>
+            </div>
+            <div class="card rounded">
+                <%= image_tag "2.jpg" %>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <div class="card p-4 rounded">
+                <h1><%= @dish.name %></h1>
+                <p><%= @dish.recipe %></p>
+                <%= @dish.milk %>
+                <%= @dish.eggs %>
+                <%= @dish.shellfish %>
+                <%= @dish.wheat %>
+                <%= @dish.soy %>
+            </div>
+        </div>
+        <div class="col-6 col-sm-3">
+            <div class="card p-4 mb-3 rounded">
+                <h3><%= @dish.restaurant.name %></h3>
+            </div>
+            <div class="card rounded">
+                <p>location</p>
+                <%= image_tag "2.jpg" %>
+            </div>
+        </div>
+    </div>
+</div>
