@@ -1,6 +1,10 @@
 class DishesController < ApplicationController
 
   def index
+
+    @dishes = Dish.all
+    @restaurants = Restaurant.all
+    
     if params[:query].present?
       result = params[:query].capitalize
       dishes = Dish.all
@@ -75,7 +79,8 @@ class DishesController < ApplicationController
     @markers =
       [{
         lat: @dish.restaurant.latitude,
-        lng: @dish.restaurant.longitude
+        lng: @dish.restaurant.longitude,
+        image_url: helpers.asset_url("IconGrande.png")
       }]
   end
 

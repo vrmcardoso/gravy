@@ -1,0 +1,39 @@
+.categories-container {
+  width: 80%;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.index-title {
+  text-align: start;
+  font-weight: 300;
+}
+
+.category-cards-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+  justify-items: center;
+}
+
+.category-card {
+  width: 110px;
+  height: 90px;
+  border: 1px solid;
+  border-radius: 15px;
+  border-color: rgb(187, 187, 187);
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.category-card img {
+  width: 40px;
+  margin-top: 15px;
+}
+
+.category-card p {
+  color: #FFBB2E;
+  margin-top: 5px;
+  font-size: 12px;
+}
