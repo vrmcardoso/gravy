@@ -59,7 +59,7 @@ category5 = Category.create(
     description: Faker::Restaurant.description,
     address: "16 Villa Gaudelet, Paris"
   )
-    10.times do
+    5.times do
       dish = Dish.create(
         name: Faker::Food.dish,
         recipe: Faker::Food.description,
