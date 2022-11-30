@@ -81,6 +81,7 @@
 
 .both-boxes {
   display: flex;
+}
 
 .card-cuisine-show {
   position: absolute;
@@ -88,7 +89,8 @@
   font-weight: 200;
   top: 36px;
   right: 30px;
-  
+}
+
 ::-webkit-scrollbar {
   -webkit-appearance: none;
   width: 0px;
