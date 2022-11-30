@@ -2,10 +2,11 @@
 <div class="navbar2">
 <button type="button"> Sushi</button>
 <button type="button"> Pizza</button>
-<button type="button"> Burger</button>
-<button type="button"> Steak</button>
+<button type="button"> Pasta</button>
+<button type="button"> Christmas</button>
 <button type="button"> Chinese</button>
-<button type="button"> Thai</button>
+<button type="button"> Portuguese</button>
+<button type="button"> <i class="fa-solid fa-bars"></i></button>
 
 </div>
 
@@ -13,17 +14,18 @@
 
       <%@dishes.first(10).each_with_index do |dish, rank|%>
 
-
   <div class="card-product">
     <img src="https://images.pexels.com/photos/1438672/pexels-photo-1438672.jpeg?auto=compress&cs=tinysrgb&w=600" />
     <div class="card-product-infos">
 
+      <div class="card-info">
 
-      <h2><%= dish.name %></h2>
-      <p><%= dish.recipe%></p>
-      <p><%= @restaurants.find_by(id: dish.restaurant_id).name%></p>
-      <p><%= @restaurants.find_by(id: dish.restaurant_id).address%></p>
-      <p>#<%= rank + 1 %></p>
+        <div class=left-box>
+          <h2><%= dish.name %></h2>
+          <p><%= dish.recipe%></p>
+          <p><i class="fa-solid fa-utensils"></i> <%= @restaurants.find_by(id: dish.restaurant_id).name%></p>
+          <p><i class="fa-solid fa-thumbtack"></i><%= @restaurants.find_by(id: dish.restaurant_id).address%></p>
+        </div>
       <%#@dishes.where(category_id: dish.category_id).order("sum_points DESC").first(5)%>
 
       <div class="symbols">
@@ -46,9 +48,36 @@
         <% if dish.soy? %>
           <i class="fa-solid fa-bowl-rice"></i>
         <% end %>
+
+        <% if dish.wheat? %>
+          <i class="fa-solid fa-wheat-awn"></i>
+        <% end %>
+      </div>
+        <div class="right-box">
+          <p>#<%= rank + 1 %> overall</p>
+        </div>
       </div>
 
     </div>
   </div>
       <%end%>
 </div>
+
+<!--
+   <div class="card-container-2 mt-5">
+    <% @dishes.each do |dish| %>
+    <div class="both-boxes">
+    <div class="card-category m-3" style="background-image: linear-gradient(to right, rgba(1,1,1,0.5), rgba(1,1,1,10)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg);"></div>
+      <div class="card-category m-3" style="background-image: linear-gradient(rgba(1,1,1,1), rgba(1,1,1,1)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        <h4 class="card-cuisine"><%= dish.category.cuisine %></h4><br>
+        <h2 class="card-name"><%= dish.name %></h2>
+        <h2 class="card-rank">Rank</h2>
+        <p class="card-restaurant"><%= dish.restaurant.name %></p>
+        <% if dish.category.food_type %>
+          <p class="card-type"><%= dish.category.food_type %></p>
+        <% end %>
+      </div>
+      </div>
+    <% end %>
+  </div>
+-->
