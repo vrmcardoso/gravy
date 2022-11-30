@@ -58,8 +58,8 @@
 
 <div class="categories-container">
   <h2 Class="index-title">Most Popular Dishes</h1>
-  <div class="card-container">
-    <% @dishes.each do |dish| %>
+  <div class="card-container">   
+   <% @dishes.each do |dish| %>
       <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
         <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
         <h2 class="card-name"><%= dish.name %></h2>
@@ -72,3 +72,7 @@
     <% end %>
   </div>
  </div>
+
+
+
+
