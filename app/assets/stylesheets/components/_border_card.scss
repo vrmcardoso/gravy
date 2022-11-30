@@ -1,5 +1,19 @@
+.width-container {
+    width: 80%;
+    display: inline;
+}
+
+.flex-aler{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 6%;
+}
+
+
 .border-card {
     border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    max-height: 100%;
 }
 
 .map-border {

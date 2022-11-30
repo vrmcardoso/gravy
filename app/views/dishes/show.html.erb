@@ -1,15 +1,15 @@
-<div class="container mt-5 mb-5">
-    <div class="row justify-content-center mb-3">
+<div class="width-container">
+    <div class="row justify-content-center mt-3 mb-3">
         <div class="col-6">
-            <div class="border-card card border border-secondary">
+            <div class="border-card card">
                 <%= image_tag "comida1.webp", class: "border-card" %>
             </div>
         </div>
         <div class="col-6 col-sm-3">
-            <div class="border-card card mb-3 border border-secondary">
+            <div class="border-card card mb-3">
                 <%= image_tag "comida1.webp", class: "border-card" %>
             </div>
-            <div class="border-card card border border-secondary">
+            <div class="border-card card">
                 <%= image_tag "comida1.webp", class: "border-card" %>
             </div>
         </div>
@@ -17,36 +17,33 @@
     
     
     
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-3">
         <div class="col-6">
-            <div class="border-card card p-4 h-100 border border-secondary">
+            <div class="border-card card p-4 h-100">
                 <h1><%= @dish.name %></h1>
                 <p><%= @dish.recipe %></p>
-                <p><% if @dish.milk? %> milk
-                    <% else %>
-                        <s> milk </s>
-                    <% end %>
-                </p>
-                <p><% if @dish.eggs? %> eggs
-                    <% else %>
-                        <s> eggs </s>
-                    <% end %>
-                </p>
-                <p><% if @dish.shellfish? %> shellfish
-                    <% else %>
-                        <s> shellfish </s>
-                    <% end %>
-                </p>
-                <p><% if @dish.wheat? %> wheat
-                    <% else %>
-                        <s> wheat </s>
-                    <% end %>
-                </p>
-                <p><% if @dish.soy? %> soy
-                    <% else %>
-                        <s> soy </s>
-                    <% end %>
-                </p>
+                <div class="flex-aler">
+                    <p><% if @dish.milk? == true %>
+                          <%= image_tag "milk.png", style: 'width:15px' %>
+                        <% end %>
+                    </p>
+                    <p><% if @dish.eggs? == true %>
+                          <i class="fa-solid fa-egg"></i>
+                        <% end %>
+                    </p>
+                    <p><% if @dish.shellfish? == true %>
+                          <i class="fa-solid fa-shrimp"></i>
+                        <% end %>
+                    </p>
+                    <p><% if @dish.wheat? == true %>
+                          <i class="fa-solid fa-wheat-awn"></i>
+                        <% end %>
+                    </p>
+                    <p><% if @dish.soy? == true %>
+                          <%= image_tag "soy.png", style: 'width:15px' %>
+                        <% end %>
+                    </p>
+                </div>
             </div>
         </div>
         
@@ -55,10 +52,10 @@
         
         
         <div class="col-6 col-sm-3">
-            <div class="border-card card p-2 mb-3 border border-secondary">
+            <div class="border-card card p-2 mb-3">
                 <h3><%= @dish.restaurant.name %></h3>
             </div>
-            <div class="border-card card border border-secondary">
+            <div class="border-card card">
                 <div class="map-border"
                         data-controller="map"
                         data-map-markers-value="<%= @markers.to_json %>"
