@@ -1,6 +1,12 @@
 .card-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-flow: column;
+  // justify-content: center;
+  height: 220px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  max-width: 100%;
 }
 
 .card-category {
@@ -65,4 +71,21 @@
   padding: 3px 10px 1px 10px;
   border-radius: 20px;
   background: rgba(167, 167, 167, 0.5)
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 0px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, .3);
+  box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+.suggestions {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
