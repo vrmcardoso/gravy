@@ -15,42 +15,66 @@
         </div>
     </div>
     
-    
-    
+
     <div class="row justify-content-center mb-3">
-        <div class="col-6">
-            <div class="border-card card p-4 h-100">
-                <h1><%= @dish.name %></h1>
-                <p><%= @dish.recipe %></p>
-                <div class="flex-aler">
-                    <p><% if @dish.milk? == true %>
-                          <%= image_tag "milk.png", style: 'width:15px' %>
-                        <% end %>
-                    </p>
-                    <p><% if @dish.eggs? == true %>
-                          <i class="fa-solid fa-egg"></i>
-                        <% end %>
-                    </p>
-                    <p><% if @dish.shellfish? == true %>
-                          <i class="fa-solid fa-shrimp"></i>
-                        <% end %>
-                    </p>
-                    <p><% if @dish.wheat? == true %>
-                          <i class="fa-solid fa-wheat-awn"></i>
-                        <% end %>
-                    </p>
-                    <p><% if @dish.soy? == true %>
-                          <%= image_tag "soy.png", style: 'width:15px' %>
-                        <% end %>
-                    </p>
+    <div class="col-6">
+        <div class="border-card card p-4 h-100">
+            <h1><%= @dish.name %></h1>
+            <p><%= @dish.recipe %></p>
+            <div class="categories-container-alerg">
+                <div class="category-cards-container-alerg">
+                    <div class="category-card-alerg">
+                        <p> <% if @dish.milk? == true %>
+                            <i class="fa-solid fa-cow" title="milk"></i>
+                            <% else %>
+                            <i class="fa-solid fa-cow opacity-25" title="milk"></i>
+                            <% end %>
+                        </p>
+                    </div>                        
+                    <div class="category-card-alerg">
+                        <p> <% if @dish.peanuts? == true %>
+                            <i class="fa-solid fa-brain" title="peanuts"></i>
+                            <% else %>
+                            <i class="fa-solid fa-brain opacity-25" title="peanuts"></i>
+                            <% end %>
+                        </p>
+                    </div>                     
+                    <div class="category-card-alerg">
+                        <p> <% if @dish.eggs? == true %>
+                            <i class="fa-solid fa-egg" title="eggs"></i>
+                            <% else %>
+                            <i class="fa-solid fa-egg opacity-25" title="eggs"></i>
+                            <% end %>
+                        </p>
+                    </div>
+                    <div class="category-card-alerg">
+                        <p> <% if @dish.shellfish? == true %>
+                            <i class="fa-solid fa-shrimp" title="shellfish"></i>
+                            <% else %>
+                            <i class="fa-solid fa-shrimp opacity-25" title="shellfish"></i>
+                            <% end %>
+                        </p>
+                    </div>
+                    <div class="category-card-alerg">
+                        <p> <% if @dish.wheat? == true %>
+                            <i class="fa-solid fa-wheat-awn" title="wheat"></i>
+                            <% else %>
+                            <i class="fa-solid fa-wheat-awn opacity-25" title="wheat"></i>                                <% end %>
+                        </p>
+                    </div>
+                    <div class="category-card-alerg">
+                        <p> <% if @dish.soy? == true %>
+                            <i class="fa-solid fa-bowl-rice" title="soy"></i>
+                            <% else %>   
+                            <i class="fa-solid fa-bowl-rice opacity-25" title="soy"></i>                            
+                            <% end %>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        
-        
-        
-        
+    </div>
+
         <div class="col-6 col-sm-3">
             <div class="border-card card p-2 mb-3">
                 <h3><%= @dish.restaurant.name %></h3>
