@@ -16,7 +16,8 @@ class DishesController < ApplicationController
     @markers = 
       [{
         lat: @dish.restaurant.latitude,
-        lng: @dish.restaurant.longitude
+        lng: @dish.restaurant.longitude,
+        image_url: helpers.asset_url("IconGrande.png")
       }]
   end
 
