@@ -73,6 +73,14 @@
   background: rgba(167, 167, 167, 0.5)
 }
 
+
+.card-cuisine-show {
+  position: absolute;
+  font-size: 24px;
+  font-weight: 200;
+  top: 36px;
+  right: 30px;
+  
 ::-webkit-scrollbar {
   -webkit-appearance: none;
   width: 0px;
@@ -88,4 +96,5 @@
 .suggestions {
   margin-top: 10px;
   margin-bottom: 10px;
+
 }
