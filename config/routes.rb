@@ -8,10 +8,12 @@ Rails.application.routes.draw do
 
   resources :dishes, only: [:index, :show]
   resources :restaurants, only: [:show]
-  resources :categories do
-    member do
-      get :top
-    end
-  end
+  get "top", to: "categories#top"
+  # resources :categories, only: [:top]
+  # resources :categories do
+  #   member do
+  #     get :top
+  #   end
+  # end
   resources :users, only: [:new, :edit, :update, :show]
 end

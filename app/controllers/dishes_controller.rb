@@ -4,7 +4,7 @@ class DishesController < ApplicationController
 
     @dishes = Dish.all
     @restaurants = Restaurant.all
-    
+
     if params[:query].present?
       result = params[:query].capitalize
       dishes = Dish.all
@@ -27,12 +27,6 @@ class DishesController < ApplicationController
         "Wrong input"
         raise
       end
-
-      # @dishes = Dish.global_search(params[:query])
-      # @restaurants = Restaurant.global_search(params[:query])
-    else
-      # @dishes = Dish.all
-      # @restaurants = Restaurant.all
     end
   end
 
