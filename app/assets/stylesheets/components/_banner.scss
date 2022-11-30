@@ -1,0 +1,30 @@
+.banner-container {
+  display: flex;
+  justify-content: center;
+}
+
+.banner {
+  margin-top: 20px;
+  width: 80%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  padding: 150px 0;
+  display: center;
+
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  font-size: 32px;
+  text-align: center;
+}
+
+.banner p {
+  font-size: 20px;
+  color: white;
+  font-weight: 200;
+  text-align: center;
+}

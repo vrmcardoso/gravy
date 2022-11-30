@@ -1,0 +1,28 @@
+.search-bar {
+  width: 25%;
+}
+
+.search-form-control {
+  position: relative;
+}
+
+.search-button {
+  width: 40px;
+  height: 40px;
+  border: 5px;
+  background-color: #FFBB2E;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: -50px;
+  border-radius: 12px;
+  color: white;
+}
+
+.search-form-control .form-control {
+  height: 40px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border: 1px solid #E7E7E7;
+  border-radius: 15px;
+}
+

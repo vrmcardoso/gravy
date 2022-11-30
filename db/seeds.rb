@@ -7,6 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 require 'faker'
+require 'open-uri'
 
 puts "Cleaning database..."
 Restaurant.destroy_all
@@ -14,7 +15,7 @@ Category.destroy_all
 
 puts "Creating restaurants and dishes..."
 
-user = User.new(
+user = User.create(
   email: "vasco@gmail.com",
   password: "111111",
   first_name: "Vasco",
@@ -51,14 +52,15 @@ category5 = Category.create(
 )
 
 
+
 10.times do
   Restaurant.create(
     name: Faker::Restaurant.name,
     description: Faker::Restaurant.description,
-    address: Faker::Address.street_address
+    address: "16 Villa Gaudelet, Paris"
   )
     10.times do
-      Dish.create(
+      dish = Dish.create(
         name: Faker::Food.dish,
         recipe: Faker::Food.description,
         sum_points: rand(0..250),
@@ -69,7 +71,11 @@ category5 = Category.create(
         wheat: [true, false].sample,
         soy: [true, false].sample,
         restaurant_id: Restaurant.last.id,
-        category_id: rand(category1.id..category5.id)
+        category_id: rand(category1.id..category5.id),
       )
+      photo_url = 'https://res.cloudinary.com/dmndhddgf/image/upload/v1669803039/development/food1_w75bhq.jpg'
+      file = URI.open(photo_url)
+      dish.photo.attach(io: file, filename: "food", content_type: "image/jpg")
+      dish.save
     end
 end
