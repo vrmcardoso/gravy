@@ -5,11 +5,15 @@
       <p>Pick a dish or a cuisine</p>
       <center>
         <div class="search-bar">
-          <%= simple_form_for :dishes, url: root_path, method: :get do |f| %>
-          <div class="search-form-control form-group">
-            <input class="form-control string required" type="text" name="search[query]" id="search_query" />
-            <button name="button" type="submit" class="search-button"><i class="fas fa-search"></i></button>
-          </div>
+          <<%= form_with url: top_path, method: :get, class: "d-flex my-3" do  |f| %>
+            <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "Find a dish"
+            %>
+            <%= f.select :type,
+                collection: ["Dish", "Restaurant"] %>
+            <%= submit_tag "Search", class: "btn btn-primary" %>
           <% end %>
         </div>
       </center>
@@ -71,10 +75,6 @@
             <p class="card-type"><%= dish.category.food_type %></p>
           <% end %>
         </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
   <div class="categories-container">
     <h2 Class="index-title">Best Sushi in your area</h1>
     <div class="card-container">
