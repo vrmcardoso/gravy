@@ -55,18 +55,27 @@ justify-content: center;
 }
 
 .category-card-alerg {
-  width: 50%;
-  height: 75%;
+  width: 85%;
   border: 1px solid;
   border-radius: 15px;
   border-color: rgb(187, 187, 187);
   display: grid;
   justify-items: center;
   align-items: center;
+  display: flex;
+}
+
+.category-card-alerg span {
+  color: #FFBB2E;
+  margin: 0;
+  font-size: 120%;
+  margin-top: 2px;
+  margin-left: 24px;
 }
 
 .category-card-alerg p {
   color: #FFBB2E;
-  margin-top: 12%;
-  font-size: 120%;
+  margin: 0;
+  font-size: 50%;
+  margin-top: 2px;
 }
