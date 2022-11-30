@@ -17,11 +17,51 @@
   </div>
 </div>
 
-<center>
-  <div class="card-container mt-5">
+
+<div class="categories-container">
+  <h2 class="index-title">Most Popular Categories</h1>
+  <div class="category-cards-container">
+    <div class="category-card">
+      <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810099/development/italian_food_hec9ov.png" alt="icon of spaghetti">
+      <p>Italian cuisine</p>
+    </div>
+    <div class="category-card">
+      <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810475/development/asian_food_zn3hoi.png" alt="icon of spaghetti">
+      <p>Asian cuisine</p>
+    </div>
+    <div class="category-card">
+      <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810468/development/fireplace_vqj1pm.png" alt="icon of spaghetti">
+      <p>Christmas cuisine</p>
+    </div>
+    <div class="category-card">
+      <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810462/development/lefse_l3o5it.png" alt="icon of spaghetti">
+      <p>Norwegian cuisine</p>
+    </div>
+    <div class="category-card">
+      <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810453/development/pastel-de-nata_uz2tnz.png" alt="icon of spaghetti">
+      <p>Portuguese cuisine</p>
+    </div>
+    <div class="category-card">
+      <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810446/development/sushi_neytlg.png" alt="icon of spaghetti">
+      <p>Sushi</p>
+    </div>
+    <div class="category-card">
+      <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810417/development/spaghetti_ethggz.png" alt="icon of spaghetti">
+      <p>Pasta</p>
+    </div>
+    <div class="category-card">
+      <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810438/development/pizza_sxdpza.png" alt="icon of spaghetti">
+      <p>Pizza</p>
+    </div>
+  </div>
+</div>
+
+<div class="categories-container">
+  <h2 Class="index-title">Most Popular Dishes</h1>
+  <div class="card-container">
     <% @dishes.each do |dish| %>
       <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-        <h4 class="card-cuisine"><%= dish.category.cuisine %></h4><br>
+        <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
         <h2 class="card-name"><%= dish.name %></h2>
         <h2 class="card-rank">Rank</h2>
         <p class="card-restaurant"><%= dish.restaurant.name %></p>
@@ -31,4 +71,4 @@
       </div>
     <% end %>
   </div>
-</center>
+ </div>
