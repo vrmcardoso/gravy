@@ -51,8 +51,6 @@ category5 = Category.create(
   food_type: "Christmas"
 )
 
-
-
 10.times do
   Restaurant.create(
     name: Faker::Restaurant.name,
