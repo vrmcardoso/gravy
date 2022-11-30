@@ -1,37 +1,65 @@
 <div class="container mt-5 mb-5">
     <div class="row justify-content-center mb-3">
         <div class="col-6">
-            <div class="card rounded border-0">
-                <%= image_tag "2.jpg" %>
+            <div class="border-card card border border-secondary">
+                <%= image_tag "comida1.webp", class: "border-card" %>
             </div>
         </div>
         <div class="col-6 col-sm-3">
-            <div class="card mb-3 rounded border-0">
-                <%= image_tag "2.jpg" %>
+            <div class="border-card card mb-3 border border-secondary">
+                <%= image_tag "comida1.webp", class: "border-card" %>
             </div>
-            <div class="card rounded border-0">
-                <%= image_tag "2.jpg" %>
+            <div class="border-card card border border-secondary">
+                <%= image_tag "comida1.webp", class: "border-card" %>
             </div>
         </div>
     </div>
+    
+    
+    
     <div class="row justify-content-center">
         <div class="col-6">
-            <div class="card p-4 rounded border-0 h-100">
+            <div class="border-card card p-4 h-100 border border-secondary">
                 <h1><%= @dish.name %></h1>
                 <p><%= @dish.recipe %></p>
-                <%= @dish.milk %>
-                <%= @dish.eggs %>
-                <%= @dish.shellfish %>
-                <%= @dish.wheat %>
-                <%= @dish.soy %>
+                <p><% if @dish.milk? %> milk
+                    <% else %>
+                        <s> milk </s>
+                    <% end %>
+                </p>
+                <p><% if @dish.eggs? %> eggs
+                    <% else %>
+                        <s> eggs </s>
+                    <% end %>
+                </p>
+                <p><% if @dish.shellfish? %> shellfish
+                    <% else %>
+                        <s> shellfish </s>
+                    <% end %>
+                </p>
+                <p><% if @dish.wheat? %> wheat
+                    <% else %>
+                        <s> wheat </s>
+                    <% end %>
+                </p>
+                <p><% if @dish.soy? %> soy
+                    <% else %>
+                        <s> soy </s>
+                    <% end %>
+                </p>
             </div>
         </div>
+        
+        
+        
+        
+        
         <div class="col-6 col-sm-3">
-            <div class="card p-2 mb-3 rounded border-0">
+            <div class="border-card card p-2 mb-3 border border-secondary">
                 <h3><%= @dish.restaurant.name %></h3>
             </div>
-            <div class="card rounded border-0">
-                <div style="height: 150px;"
+            <div class="border-card card border border-secondary">
+                <div class="map-border"
                         data-controller="map"
                         data-map-markers-value="<%= @markers.to_json %>"
                         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
