@@ -2,13 +2,8 @@ class CategoriesController < ApplicationController
 
 
   def top
-    # @dishes = Dish.all.order("sum_points DESC")
-    # @restaurants = Restaurant.all
-    #@dishes_bolognese = Dish.all.where(category_id: 6).order("sum_points DESC")
-
     @dishes = Dish.all
     @restaurants = Restaurant.all
-
     if params[:query].present?
       result = params[:query].capitalize
       dishes = Dish.all
@@ -60,5 +55,4 @@ class CategoriesController < ApplicationController
     end
     return @names
   end
-
 end

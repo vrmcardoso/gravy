@@ -47,25 +47,34 @@
 .category-cards-container-alerg {
 display: grid;
 grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-grid-gap: 5px;
+grid-gap: 22px;
 justify-items: stretch;
 align-items: center;
 justify-content: center;
 }
 
 .category-card-alerg {
-  width: 50%;
-  height: 75%;
+  width: 80px;
+  height: 70px;
   border: 1px solid;
   border-radius: 15px;
   border-color: rgb(187, 187, 187);
   display: grid;
   justify-items: center;
   align-items: center;
+  position: relative;
+}
+
+.category-card-alerg i {
+  color: #FFBB2E;
+  margin-top: 15px;
+  font-size: 20px;
 }
 
 .category-card-alerg p {
   color: #FFBB2E;
   margin-top: 12%;
   font-size: 120%;
+  font-size: 70%;
+  margin-bottom: 10px;
 }

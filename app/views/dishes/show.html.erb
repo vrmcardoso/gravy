@@ -19,56 +19,65 @@
     <div class="row justify-content-center mb-3">
     <div class="col-6">
         <div class="border-card card p-4 h-100">
-            <h1><%= @dish.name %></h1>
-            <p><%= @dish.recipe %></p>
+            <div class="card-category-alerg">
+                <h1><%= @dish.name %></h1>
+                <p><%= @dish.recipe %></p>
+            </div>
             <div class="categories-container-alerg">
                 <div class="category-cards-container-alerg">
                     <div class="category-card-alerg">
-                        <p> <% if @dish.milk? == true %>
-                            <i class="fa-solid fa-cow" title="milk"></i>
+                            <% if @dish.milk? %>
+                              <span><i class="fa-solid fa-cow" title="milk"></i></span>
+                              <p>milk</p>
                             <% else %>
-                            <i class="fa-solid fa-cow opacity-25" title="milk"></i>
+                              <span><i class="fa-solid fa-cow opacity-25" title="milk"></i></span>
+                              <p class="opacity-25">milk</p>
                             <% end %>
-                        </p>
                     </div>                        
                     <div class="category-card-alerg">
-                        <p> <% if @dish.peanuts? == true %>
-                            <i class="fa-solid fa-brain" title="peanuts"></i>
+                              <% if @dish.peanuts? %>
+                              <span><i class="fa-solid fa-brain" title="peanuts"></i></span>
+                              <p>peanuts</p>
                             <% else %>
-                            <i class="fa-solid fa-brain opacity-25" title="peanuts"></i>
+                              <span><i class="fa-solid fa-brain opacity-25" title="peanuts"></i></span>
+                              <p class="opacity-25">peanuts</p>
                             <% end %>
-                        </p>
                     </div>                     
                     <div class="category-card-alerg">
-                        <p> <% if @dish.eggs? == true %>
-                            <i class="fa-solid fa-egg" title="eggs"></i>
+                            <% if @dish.eggs? %>
+                              <span><i class="fa-solid fa-egg" title="eggs"></i></span>
+                              <p>eggs</p>
                             <% else %>
-                            <i class="fa-solid fa-egg opacity-25" title="eggs"></i>
+                              <span><i class="fa-solid fa-egg opacity-25" title="eggs"></i></span>
+                              <p class="opacity-25">eggs</p>
                             <% end %>
-                        </p>
                     </div>
                     <div class="category-card-alerg">
-                        <p> <% if @dish.shellfish? == true %>
-                            <i class="fa-solid fa-shrimp" title="shellfish"></i>
+                            <% if @dish.shellfish? %>
+                              <span><i class="fa-solid fa-shrimp" title="shellfish"></i></span>
+                              <p>shellfish</p>
                             <% else %>
-                            <i class="fa-solid fa-shrimp opacity-25" title="shellfish"></i>
+                              <span><i class="fa-solid fa-shrimp opacity-25" title="shellfish"></i></span>
+                              <p class="opacity-25">shellfish</p>
                             <% end %>
-                        </p>
                     </div>
                     <div class="category-card-alerg">
-                        <p> <% if @dish.wheat? == true %>
-                            <i class="fa-solid fa-wheat-awn" title="wheat"></i>
+                           <% if @dish.wheat? %>
+                              <span><i class="fa-solid fa-wheat-awn" title="wheat"></i></span>
+                              <p>wheat</p>
                             <% else %>
-                            <i class="fa-solid fa-wheat-awn opacity-25" title="wheat"></i>                                <% end %>
-                        </p>
+                              <span><i class="fa-solid fa-wheat-awn opacity-25" title="wheat"></i></span>
+                              <p class="opacity-25">wheat</p>                      
+                            <% end %>
                     </div>
                     <div class="category-card-alerg">
-                        <p> <% if @dish.soy? == true %>
-                            <i class="fa-solid fa-bowl-rice" title="soy"></i>
+                            <% if @dish.soy? %>
+                              <span><i class="fa-solid fa-bowl-rice" title="soy"></i></span>
+                              <p>soy</p>
                             <% else %>   
-                            <i class="fa-solid fa-bowl-rice opacity-25" title="soy"></i>                            
+                              <span><i class="fa-solid fa-bowl-rice opacity-25" title="soy"></i></span>
+                              <p class="opacity-25">soy</p>                           
                             <% end %>
-                        </p>
                     </div>
                 </div>
             </div>
