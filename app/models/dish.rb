@@ -2,6 +2,7 @@ class Dish < ApplicationRecord
   belongs_to :restaurant
   belongs_to :category
   has_many :ranks
+  has_one_attached :photo
 
   include PgSearch::Model
   pg_search_scope :global_search,
