@@ -1,17 +1,17 @@
 
 <div class="navbar2">
-<button type="button"><%=link_to "Sushi", top_path(query: "Portuguese")%></button>
-<button type="button"> Pizza</button>
-<button type="button"> Pasta</button>
-<button type="button"> Christmas</button>
-<button type="button"> Chinese</button>
-<button type="button"> Portuguese</button>
-<button type="button"> <i class="fa-solid fa-bars"></i></button>
-
-
+<%= link_to "Sushi", top_path(query: "Sushi"), class: "btn buttons"%>
+<%= link_to "Pizza", top_path(query: "Pizza"), class: "btn buttons"%>
+<%= link_to "Pasta", top_path(query: "Pasta"), class: "btn buttons"%>
+<%= link_to "Portuguese", top_path(query: "Portuguese"), class: "btn buttons"%>
+<%= link_to "Norwegian", top_path(query: "Norwegian"), class: "btn buttons"%>
+<%= link_to "Italian", top_path(query: "Italian"), class: "btn buttons"%>
 </div>
+
+
+
   <div class="big-box container">
-    <%@dishes.first(10).each_with_index do |dish, rank|%>
+    <% @results.first(10).each_with_index do |dish, rank|%>
       <%=link_to "dishes/#{dish.id}" do%>
     <div class="card-product">
       <img src="https://images.pexels.com/photos/1438672/pexels-photo-1438672.jpeg?auto=compress&cs=tinysrgb&w=600" />
@@ -43,15 +43,15 @@
               <i class="fa-solid fa-wheat-awn"></i>
             <% end %>
           </div>
-          <div class="right-box">
+
             <p>#<%= rank + 1 %> overall</p>
-          </div>
+
         </div>
       </div>
   </div>
       <%end%>
-</div>
 <%end%>
+</div>
 
 <!--
 
