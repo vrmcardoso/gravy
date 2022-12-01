@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   #   end
   # end
   resources :users, only: [:new, :edit, :update, :show]
+  get "show", to: "ranks#show"
 end

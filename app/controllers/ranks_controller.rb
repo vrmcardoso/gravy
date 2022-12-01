@@ -1,0 +1,3 @@
+class RanksController < ApplicationController
+  
+end
