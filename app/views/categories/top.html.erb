@@ -53,22 +53,24 @@
 <%end%>
 </div>
 
-<!--
+
 
    <div class="card-container-2 mt-5">
-    <% @dishes.each do |dish| %>
-    <div class="both-boxes">
-    <div class="card-category m-3" style="background-image: linear-gradient(to right, rgba(1,1,1,0.5), rgba(1,1,1,10)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg);"></div>
-      <div class="card-category m-3" style="background-image: linear-gradient(rgba(1,1,1,1), rgba(1,1,1,1)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-        <h4 class="card-cuisine"><%= dish.category.cuisine %></h4><br>
-        <h2 class="card-name"><%= dish.name %></h2>
-        <h2 class="card-rank">Rank</h2>
-        <p class="card-restaurant"><%= dish.restaurant.name %></p>
-        <% if dish.category.food_type %>
-          <p class="card-type"><%= dish.category.food_type %></p>
-        <% end %>
-      </div>
-      </div>
-    <% end %>
-  </div>
--->
+      <% @dishes.each do |dish| %>
+        <div class="both-boxes mt-3">
+          <div class="card-category-3" style="background-image: linear-gradient(to right, rgba(10,10,10,0.5), rgba(10,10,10,1)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg);">
+          </div>
+
+          <div class="rank-box"></div>
+            <div class="card-category-2" style="background-image: linear-gradient(rgba(10,10,10,1), rgba(10,10,10,1)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+              <h4 class="card-cuisine"><%= dish.category.cuisine %></h4><br>
+              <h2 class="card-name"><%= dish.name %></h2>
+              <h2 class="card-rank">Rank</h2>
+              <p class="card-restaurant"><%= dish.restaurant.name %></p>
+              <% if dish.category.food_type %>
+                <p class="card-type"><%= dish.category.food_type %></p>
+              <% end %>
+            </div>
+        </div>
+          <% end %>
+    </div>
