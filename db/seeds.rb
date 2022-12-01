@@ -12,16 +12,34 @@ require 'open-uri'
 puts "Cleaning database..."
 Restaurant.destroy_all
 Category.destroy_all
+User.destroy_all
 
 puts "Creating restaurants and dishes..."
 
-user = User.create(
+user1 = User.create(
   email: "vasco@gmail.com",
   password: "111111",
   first_name: "Vasco",
   last_name: "Cardoso",
   address: "Le Wagon Lisboa"
 )
+
+user2 = User.create(
+  email: "miguel@gmail.com",
+  password: "111111",
+  first_name: "Miguel",
+  last_name: "Silva",
+  address: "Rua Marcos Portugal, Lisboa Portugal"
+)
+
+user3 = User.create(
+  email: "ze@gmail.com",
+  password: "111111",
+  first_name: "Ze",
+  last_name: "Manel",
+  address: "Arroios"
+)
+
 category1 = Category.create(
   name: "Spaghetti Bolognese",
   cuisine: "Italian",
@@ -76,4 +94,15 @@ category5 = Category.create(
       dish.photo.attach(io: file, filename: "food", content_type: "image/jpg")
       dish.save
     end
+end
+
+dish_first = Dish.first
+dish_last = Dish.last
+5.times do
+  rank = Rank.create(
+    ranking: rand(0..250),
+    user_id: rand(user1.id..user3.id),
+    dish_id: rand(dish_first.id..dish_last.id)
+  )
+  rank.save
 end
