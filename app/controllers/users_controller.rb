@@ -2,6 +2,16 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @ranks = Rank.where("user_id = ?", @user.id)
+    @dishes = []
+    @ranks.each do |rank|
+      @dishes << Dish.find(rank.dish_id)
+    end
+    @restaurants = []
+    @dishes.each do |dish|
+      @restaurants << Restaurant.find(dish.restaurant_id)
+    end
+    
   end
 
   def edit

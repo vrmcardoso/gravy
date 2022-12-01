@@ -5,16 +5,16 @@
                 <%= image_tag "comida1.webp", class: "border-card" %>
             </div>
         </div>
-        <div class="col-3">
-            <div class="border-card card" style="height: 50%">
+        <div class="col-3 d-flex justify-content-between flex-column">
+            <div class="border-card card" style="height: 48%">
                 <%= image_tag "comida1.webp", class: "border-card h-100 dish-img" %>
             </div>
-            <div class="border-card card" style="height: 50%">
+            <div class="border-card card" style="height: 48%">
                 <%= image_tag "comida1.webp", class: "border-card h-100 dish-img" %>
             </div>
         </div>
     </div>
-    
+
         <div class="row justify-content-center mb-3">
         <div class="col-9">
             <div class="p-4">
@@ -38,12 +38,14 @@
     <div class="row justify-content-center mb-3">
         <div class="card-container-rest">
             <% @restaurant.dishes.each do |dish|%>
-                <div class="card-category-rest m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-                    <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
-                    <h2 class="card-name"><%= dish.name %></h2>
-                    <h2 class="card-rank">Rank</h2>
-                    <p class="card-restaurant"><%= dish.restaurant.name %></p>
-                </div>
+              <%= link_to dish_path(dish) do %>
+                  <div class="card-category-rest m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+                      <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
+                      <h2 class="card-name"><%= dish.name %></h2>
+                      <h2 class="card-rank">Rank</h2>
+                      <p class="card-restaurant"><%= dish.restaurant.name %></p>
+                  </div>
+              <% end %>
             <% end %>
         </div>
     </div>
