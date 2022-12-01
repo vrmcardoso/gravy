@@ -25,6 +25,24 @@
   position: relative;
 }
 
+.card-tops-category {
+  background-size: cover;
+  background-position: center;
+  height: 100px;
+  width: 270px;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
 .card-cuisine {
   position: absolute;
   font-size: 16px;
@@ -40,6 +58,12 @@
   top: 40px;
   right: 20px;
   margin-top: 3px;
+}
+
+.card-top-name {
+  font-size: 20px;
+  font-weight: 400;
+  margin: auto;
 }
 
 .card-rank {
@@ -71,6 +95,21 @@
   padding: 3px 10px 1px 10px;
   border-radius: 20px;
   background: rgba(167, 167, 167, 0.5)
+}
+
+.cuisines-container {
+  position: absolute;
+  top: 135px;
+  right: 20px;
+}
+
+.card-cuisines {
+  font-size: 15px;
+  font-weight: 100;
+  background-color: rgb(186, 186, 186);
+  padding: 3px 10px 1px 10px;
+  border-radius: 20px;
+  color: rgba(167, 167, 167, 0.5)
 }
 
 

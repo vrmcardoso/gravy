@@ -45,29 +45,49 @@ category1 = Category.create(
   cuisine: "Italian",
   food_type: "Pasta"
 )
+photo_url = 'https://res.cloudinary.com/dmndhddgf/image/upload/v1669905623/development/bollognese_in1elq.jpg'
+file = URI.open(photo_url)
+category1.photo.attach(io: file, filename: "food", content_type: "image/jpg")
+category1.save
 
 category2 = Category.create(
   name: "Pizza Margherita",
   cuisine: "Italian",
   food_type: "Pizza"
 )
+photo_url = 'https://res.cloudinary.com/dmndhddgf/image/upload/v1669905689/development/pizza_marguerita_qatjha.jpg'
+file = URI.open(photo_url)
+category2.photo.attach(io: file, filename: "food", content_type: "image/jpg")
+category2.save
 
 category3 = Category.create(
   name: "Francesinha",
   cuisine: "Portuguese"
 )
+photo_url = 'https://res.cloudinary.com/dmndhddgf/image/upload/v1669905810/development/francesinha_uy2g1l.webp'
+file = URI.open(photo_url)
+category3.photo.attach(io: file, filename: "food", content_type: "image/jpg")
+category3.save
 
 category4 = Category.create(
   name: "Sushi to Sashimi",
   cuisine: "Asian",
   food_type: "Sushi"
 )
+photo_url = 'https://res.cloudinary.com/dmndhddgf/image/upload/v1669905931/development/sushi_to_sashimi_ep7u3k.jpg'
+file = URI.open(photo_url)
+category4.photo.attach(io: file, filename: "food", content_type: "image/jpg")
+category4.save
 
 category5 = Category.create(
   name: "pinnekjøtt",
   cuisine: "Norwegian",
   food_type: "Christmas"
 )
+photo_url = 'https://res.cloudinary.com/dmndhddgf/image/upload/v1669906035/development/pinnekj%C3%B8tt_ftkhh2.jpg'
+file = URI.open(photo_url)
+category5.photo.attach(io: file, filename: "food", content_type: "image/jpg")
+category5.save
 
 10.times do
   Restaurant.create(
@@ -75,7 +95,7 @@ category5 = Category.create(
     description: Faker::Restaurant.description,
     address: "16 Villa Gaudelet, Paris"
   )
-    10.times do
+    5.times do
       dish = Dish.create(
         name: Faker::Food.dish,
         recipe: Faker::Food.description,
@@ -98,7 +118,7 @@ end
 
 dish_first = Dish.first
 dish_last = Dish.last
-5.times do
+25.times do
   rank = Rank.create(
     ranking: rand(0..250),
     user_id: rand(user1.id..user3.id),
