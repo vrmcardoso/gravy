@@ -1,2 +1,11 @@
 <h1> hello  </h1>
 
+ <ul> <% @relevant_categories.each do |relevant_categorie| %>
+  <li> Name: <%= relevant_categorie %> </li>
+ <% end %>
+ </ul>
+
+ <ul> <% @user_ranked_dishes.each do |user_ranked_dishe| %>
+  <li> Name: <%= user_ranked_dishe.name %> </li>
+  <% end %>
+ </ul>
