@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    
+
 
     <div class="row justify-content-center mb-3">
     <div class="col-9">
@@ -33,7 +33,7 @@
                               <span><i class="fa-solid fa-cow text-secondary" title="milk"></i></span>
                               <p class="text-secondary">milk</p>
                             <% end %>
-                    </div>                        
+                    </div>
                     <div class="category-card-alerg">
                               <% if @dish.peanuts? %>
                               <span><i class="fa-solid fa-brain" title="peanuts"></i></span>
@@ -42,7 +42,7 @@
                               <span><i class="fa-solid fa-brain text-secondary" title="peanuts"></i></span>
                               <p class="text-secondary">peanuts</p>
                             <% end %>
-                    </div>                     
+                    </div>
                     <div class="category-card-alerg">
                             <% if @dish.eggs? %>
                               <span><i class="fa-solid fa-egg" title="eggs"></i></span>
@@ -67,16 +67,16 @@
                               <p>wheat</p>
                             <% else %>
                               <span><i class="fa-solid fa-wheat-awn text-secondary" title="wheat"></i></span>
-                              <p class="text-secondary">wheat</p>                      
+                              <p class="text-secondary">wheat</p>
                             <% end %>
                     </div>
                     <div class="category-card-alerg">
                             <% if @dish.soy? %>
                               <span><i class="fa-solid fa-bowl-rice" title="soy"></i></span>
                               <p>soy</p>
-                            <% else %>   
+                            <% else %>
                               <span><i class="fa-solid fa-bowl-rice text-secondary" title="soy"></i></span>
-                              <p class="text-secondary">soy</p>                           
+                              <p class="text-secondary">soy</p>
                             <% end %>
                     </div>
                 </div>
@@ -87,6 +87,10 @@
         <div class="col-6 col-sm-3">
             <div class="border-card p-2">
                 <h3><%= @dish.restaurant.name %></h3>
+
+              <%= link_to restaurant_path(@dish.restaurant) do %>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <% end %>
             </div>
             <div class="border-card map-border card">
                 <div class="map-border"
