@@ -20,11 +20,20 @@
   width: 75%;
 }
 
-.fav-rests-container {
+.fav-dishes-container {
   display: flex;
   width: 100%;
   margin-left: 20px;
   flex-direction: column;
+}
+
+.fav-lists-container {
+  display: flex;
+  width: 100%;
+  margin-left: 20px;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
 }
 
 .profile-sidebar h5 {

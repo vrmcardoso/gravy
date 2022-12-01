@@ -20,7 +20,7 @@
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669904205/development/Sushi_badge_ftjdv6.png" alt="sushi badge">
     </div>
 
-    <div class="tops">
+    <div class="tops mb-5">
       <h4>Your Lists</h4>
       <div class="top-container">
         <div class="card-tops-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path @dishes.first.category.photo.key %>')">
@@ -31,25 +31,32 @@
         </div>
         <div class="card-tops-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path @dishes.last.category.photo.key %>')">
           <h2 class="card-top-name">Your rank of: <%= @dishes.last.name %></h2>
-      </div>
+        </div>
+        <div class="card-tops-category" style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5))">
+          <i class="fa-solid fa-plus"></i>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="profile-main-container">
-    <div class="fav-rests-container">
-      <h5>Your favorite restaurants</h5>
+    <div class="fav-dishes-container">
+      <h5>Your favorite dishes</h5>
       <div class="card-container">
-      <% @restaurants.each do |restaurant| %>
-        <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://media.cntraveler.com/photos/5bc8ec072383b345456ab323/master/w_2580%2Cc_limit/Prado__RC36688-EditRodrigo-Cardoso.jpg)">
-          <h2 class="card-name"><%= restaurant.name %></h2>
+      <% @dishes.each do |dish| %>
+        <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path dish.category.photo.key %>')">
+          <h2 class="card-name"><%= dish.name %></h2>
           <h2 class="card-rank">Rank</h2>
             <div class="cuisines-container">
-              <p class="card-cuisine"><%= restaurant.categories[1].cuisine %></p>
+              <p class="card-cuisines"><%= dish.category.cuisine %></p>
             </div>
         </div>
         <% end %>
+      </div>
     </div>
+
+    <div class="fav-lists-container mt-5">
+      <%= render "shared/list" %>
     </div>
   </div>
 </div>
