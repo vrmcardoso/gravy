@@ -4,17 +4,17 @@
       <h1>Find the best dishes in your town</h1>
       <p>Pick a dish or a cuisine</p>
       <center>
-        <div class="search-bar" style="background-color: white; width: 31%; border-radius: 44px; display: flex; height: 72px;">
+        <div class="search-bar" style="">
           <%= form_with url: top_path, method: :get, class: "d-flex my-3 form_style" do  |f| %>
             <%= text_field_tag :query,
                 params[:query],
                 class: "form-control",
-                style: "background-color: white; margin-left: 5%; margin-right: 8%; border: none; width: 167px;",
+                style: "background-color: white; margin-left: 5%; margin-right: -7%; border: none; width: 167px; border-radius: 10px; height: 42px",
                 placeholder: "Find a dish"
                 %>
-            <%= f.select(:type, ["Dish", "Restaurant"], {}, { class: "form_style" }) %>
-            <button class= "btn btn-warning btn-lg rounded-pill button" >
-              <i class="fa-solid fa-magnifying-glass"></i>
+            <%= f.select(:type, ["Dish", "Restaurant"], {}, { class: "form_style_select" }) %>
+            <button class= "button-search" >
+              <i class="fa-solid fa-magnifying-glass mt-2"></i>
             </button>
           <% end %>
         </div>
