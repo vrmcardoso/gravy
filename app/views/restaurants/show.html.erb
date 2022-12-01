@@ -1,0 +1,51 @@
+<div class="width-container-rest">
+    <div class="row justify-content-center mt-3 mb-3">
+        <div class="col-9">
+            <div class="border-card card">
+                <%= image_tag "comida1.webp", class: "border-card" %>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="border-card card" style="height: 50%">
+                <%= image_tag "comida1.webp", class: "border-card h-100 dish-img" %>
+            </div>
+            <div class="border-card card" style="height: 50%">
+                <%= image_tag "comida1.webp", class: "border-card h-100 dish-img" %>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="row justify-content-center mb-3">
+        <div class="col-9">
+            <div class="p-4">
+                <div class="card-category-alerg">
+                    <h1><%= @restaurant.name %></h1>
+                    <p><%= @restaurant.description %></p>
+                    <p><%= @restaurant.address %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="border-card card">
+                <div class="map-border"
+                    data-controller="map"
+                    data-map-markers-value="<%= @markers.to_json %>"
+                    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-3">
+        <div class="card-container-rest">
+            <% @restaurant.dishes.each do |dish|%>
+                <div class="card-category-rest m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+                    <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
+                    <h2 class="card-name"><%= dish.name %></h2>
+                    <h2 class="card-rank">Rank</h2>
+                    <p class="card-restaurant"><%= dish.restaurant.name %></p>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

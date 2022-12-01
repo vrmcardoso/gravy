@@ -78,3 +78,10 @@ justify-content: center;
   font-size: 70%;
   margin-bottom: 10px;
 }
+
+.category-cards-container-rest {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+  justify-items: center;
+}

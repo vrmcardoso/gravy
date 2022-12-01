@@ -108,3 +108,30 @@
   margin-bottom: 10px;
 
 }
+
+.card-category-rest {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  width: 250px;
+  justify-content: right;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.card-container-rest {
+  display: grid;
+  grid-auto-flow: column;
+  // justify-content: center;
+  height: 220px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  max-width: 100%;
+}
