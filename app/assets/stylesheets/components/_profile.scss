@@ -2,16 +2,29 @@
   width: 80%;
   margin: auto;
   margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .profile-sidebar {
-  width: 20%;
+  width: 25%;
   display: flex;
   flex-direction: column;
   justify-items: center;
   border-right: 1px solid rgb(199, 199, 199);
   text-align: center;
   justify-content: center;
+}
+
+.profile-main-container {
+  width: 75%;
+}
+
+.fav-rests-container {
+  display: flex;
+  width: 100%;
+  margin-left: 20px;
+  flex-direction: column;
 }
 
 .profile-sidebar h5 {
@@ -54,4 +67,11 @@
 
 .tops {
   margin-top: 40px;
+}
+
+.top-container {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
 }
