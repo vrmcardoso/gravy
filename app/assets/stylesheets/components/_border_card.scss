@@ -3,6 +3,13 @@
     display: inline;
 }
 
+.width-container-rest {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
 .flex-aler{
     display: flex;
     justify-content: space-evenly;
@@ -25,4 +32,9 @@
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     max-height: 92%;
+}
+
+.dish-img {
+    object-fit: cover;
+    object-position: center;
 }
