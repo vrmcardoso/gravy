@@ -12,13 +12,13 @@ class CategoriesController < ApplicationController
       name
       if @cuisines.include? "#{result}"
         cuisine_dishes = dishes.select { |dish| dish.category.cuisine == params[:query] }
-        cuisine_dishes.sort_by { |dish| dish.sum_points}.reverse
+        cuisine_dishes.sort_by { |dish| dish.sum_points }.reverse
       elsif @food_types.include? "#{result}"
         food_type_dishes = dishes.select { |dish| dish.category.food_type == params[:query] }
-        food_type_dishes.sort_by { |dish| dish.sum_points}.reverse
+        food_type_dishes.sort_by { |dish| dish.sum_points }.reverse
       elsif @names.include? "#{result}"
         name_dishes = dishes.select { |dish| dish.category.name == params[:query] }
-        name_dishes.sort_by { |dish| dish.sum_points}.reverse
+        name_dishes.sort_by { |dish| dish.sum_points }.reverse
       else
         "Wrong input"
       end
