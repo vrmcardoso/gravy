@@ -10,9 +10,11 @@
 @import "categories_cards";
 @import "footer";
 @import "forms";
+@import "profile";
 
 body {
   background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-
-
