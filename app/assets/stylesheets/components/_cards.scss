@@ -120,6 +120,41 @@
 
 .both-boxes {
   display: flex;
+  justify-content: center;
+}
+
+.card-category-2 {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  width: 15%;
+  justify-content: right;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  position: relative;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.rank-box {
+  background-color: rgb(10, 10, 10);
+  width:10%;
+  position: relative;
+  height: 180px;
+
+}
+
+.card-category-3 {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  width: 40%;
+  position: relative;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 
 .card-cuisine-show {
