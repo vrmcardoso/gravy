@@ -8,7 +8,9 @@ class CategoriesController < ApplicationController
     if params[:query].present?
       result = params[:query].capitalize
       dishes = Dish.all
-       
+      cuisine
+      food_type
+      name
       if @cuisines.include? "#{result}"
         cuisine_dishes = dishes.select { |dish| dish.category.cuisine == result }
         @results = cuisine_dishes.sort_by { |dish| dish.sum_points}.reverse
