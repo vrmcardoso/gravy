@@ -1,6 +1,6 @@
 <div class="card-container-2 mt-5 mb-5">
   <% count = 0 %>
-    <% @dishes_sorted.first(10).each_with_index do |dish| %>
+    <% @results.first(10).each_with_index do |dish| %>
     <%= link_to dish_path(dish) do %>
       <% count += 1 %>
       <div class="both-boxes mt-3">
