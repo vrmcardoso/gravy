@@ -40,7 +40,6 @@
 
 .categories-container-alerg {
   width: 80%;
-  margin: auto;
   margin-top: 1%;
 }
 
@@ -84,4 +83,20 @@ justify-content: center;
   grid-template-columns: 1fr 1fr;
   grid-gap: 5px;
   justify-items: center;
+}
+
+.categories-container-rest {
+  width: 80%;
+  margin: auto;
+  margin-top: 30px;
+  background-color:  red;
+  display: grid;
+}
+
+.restaurant-details{
+  max-width: 60%;
+}
+
+.restaraunt-info {
+  max-width: 20%;
 }
