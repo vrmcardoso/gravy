@@ -56,7 +56,11 @@
     </div>
 
     <div class="fav-lists-container mt-5">
-    <h2 class="mb-4">Your rank for: <%= @target_category.name %></h2>
+    <% if @target_category %>
+      <h2 class="mb-4">Your rank for: <%= @target_category.name %></h2>
+      <% else %>
+      <h2>Choose a category</h2>
+    <% end %>
       <% count = 0 %>
       <% @dishes_sorted.first(10).each_with_index do |dish| %>
       <div class="card-container-2 mt-3 mb-3">
