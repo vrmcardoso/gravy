@@ -24,13 +24,13 @@
       <h4>Your Lists</h4>
       <div class="top-container">
         <div class="card-tops-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path @dishes.first.category.photo.key %>')">
-          <h2 class="card-top-name">Your rank of: <%= @dishes.first.name %></h2>
+          <h2 class="card-top-name">Your rank of: <%= @dishes.first.category.name %></h2>
         </div>
         <div class="card-tops-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path @dishes[2].category.photo.key %>')">
-          <h2 class="card-top-name">Your rank of: <%= @dishes[2].name %></h2>
+          <h2 class="card-top-name">Your rank of: <%= @dishes[2].category.name %></h2>
         </div>
         <div class="card-tops-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path @dishes.last.category.photo.key %>')">
-          <h2 class="card-top-name">Your rank of: <%= @dishes.last.name %></h2>
+          <h2 class="card-top-name">Your rank of: <%= @dishes.last.category.name %></h2>
         </div>
         <div class="card-tops-category" style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5))">
           <i class="fa-solid fa-plus"></i>
@@ -44,6 +44,7 @@
       <h5>Your favorite dishes</h5>
       <div class="card-container">
       <% @dishes.each do |dish| %>
+      <%= link_to dish_path(dish) do %>
         <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path dish.category.photo.key %>')">
           <h2 class="card-name"><%= dish.name %></h2>
           <h2 class="card-rank">Rank</h2>
@@ -52,10 +53,12 @@
             </div>
         </div>
         <% end %>
+        <% end %>
       </div>
     </div>
 
     <div class="fav-lists-container mt-5">
+
       <%= render "shared/list" %>
     </div>
   </div>
