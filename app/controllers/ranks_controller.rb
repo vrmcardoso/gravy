@@ -52,7 +52,6 @@ class RanksController < ApplicationController
 
       @dishes_sorted = @result.map { |result| Dish.find(result[:id])}
 
-      raise
     # @target_category = @categories(params[:id])
     # @user_target_category_dishes = @user_ranked_dishes.filter { |user_ranked_dish| @all_user_categories_id[@target_category] == user_ranked_dish.category.id }
     # @user_target_category_dishes.each do |dish|
@@ -66,6 +65,5 @@ class RanksController < ApplicationController
 
     # @dishes_sorted = @result.map { |result| Dish.find(result[:id])}
 
-raise
   end
 end

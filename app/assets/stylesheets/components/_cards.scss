@@ -156,6 +156,17 @@
   justify-content: center;
 }
 
+.rank-box-2 {
+  background-color: rgb(10, 10, 10);
+  width:30%;
+  position: relative;
+  height: 180px;
+  box-shadow: -10px 0px 0px 0px rgb(7, 7, 7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .rank-box img {
   width: 60%;
 }
@@ -165,11 +176,30 @@
   font-size: 40px;
 }
 
+.rank-box-2 img {
+  width: 60%;
+}
+
+.rank-box-2 p {
+  color: white;
+  font-size: 40px;
+}
+
 .card-category-3 {
   background-size: cover;
   background-position: center;
   height: 180px;
   width: 30%;
+  position: relative;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.card-category-4 {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  width: 40%;
   position: relative;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
