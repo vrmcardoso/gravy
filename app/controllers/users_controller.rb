@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @dishes.each do |dish|
       @restaurants << Restaurant.find(dish.restaurant_id)
     end
-    
+    @results = []
   end
 
   def edit
