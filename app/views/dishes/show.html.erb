@@ -1,103 +1,93 @@
 <div class="width-container-rest">
     <div class="row justify-content-center mt-3 mb-3">
         <div class="col-9">
-            <div class="border-card card">
-                <%= image_tag "comida1.webp", class: "border-card" %>
+            <div>
+                <h1><%= @dish.name %></h1>
+                <%= cl_image_tag @dish.photo.key, class: "border-card" %>
             </div>
         </div>
         <div class="col-3 d-flex justify-content-between flex-column">
             <div class="border-card card" style="height: 48%">
-                <%= image_tag "comida1.webp", class: "border-card h-100 dish-img" %>
-            </div>
-            <div class="border-card card" style="height: 48%">
-                <%= image_tag "comida1.webp", class: "border-card h-100 dish-img" %>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="row justify-content-center mb-3">
-    <div class="col-9">
-        <div class="border-card-descri p-4">
-            <div class="card-category-alerg">
-                <h1><%= @dish.name %></h1>
-                <p><%= @dish.recipe %></p>
-            </div>
-            <div class="categories-container-alerg">
-                <div class="category-cards-container-alerg">
-                    <div class="category-card-alerg">
-                            <% if @dish.milk? %>
-                              <span><i class="fa-solid fa-cow" title="milk"></i></span>
-                              <p>milk</p>
-                            <% else %>
-                              <span><i class="fa-solid fa-cow text-secondary" title="milk"></i></span>
-                              <p class="text-secondary">milk</p>
-                            <% end %>
-                    </div>
-                    <div class="category-card-alerg">
-                              <% if @dish.peanuts? %>
-                              <span><i class="fa-solid fa-brain" title="peanuts"></i></span>
-                              <p>peanuts</p>
-                            <% else %>
-                              <span><i class="fa-solid fa-brain text-secondary" title="peanuts"></i></span>
-                              <p class="text-secondary">peanuts</p>
-                            <% end %>
-                    </div>
-                    <div class="category-card-alerg">
-                            <% if @dish.eggs? %>
-                              <span><i class="fa-solid fa-egg" title="eggs"></i></span>
-                              <p>eggs</p>
-                            <% else %>
-                              <span><i class="fa-solid fa-egg text-secondary" title="eggs"></i></span>
-                              <p class="text-secondary">eggs</p>
-                            <% end %>
-                    </div>
-                    <div class="category-card-alerg">
-                            <% if @dish.shellfish? %>
-                              <span><i class="fa-solid fa-shrimp" title="shellfish"></i></span>
-                              <p>shellfish</p>
-                            <% else %>
-                              <span><i class="fa-solid fa-shrimp text-secondary" title="shellfish"></i></span>
-                              <p class="text-secondary">shellfish</p>
-                            <% end %>
-                    </div>
-                    <div class="category-card-alerg">
-                           <% if @dish.wheat? %>
-                              <span><i class="fa-solid fa-wheat-awn" title="wheat"></i></span>
-                              <p>wheat</p>
-                            <% else %>
-                              <span><i class="fa-solid fa-wheat-awn text-secondary" title="wheat"></i></span>
-                              <p class="text-secondary">wheat</p>
-                            <% end %>
-                    </div>
-                    <div class="category-card-alerg">
-                            <% if @dish.soy? %>
-                              <span><i class="fa-solid fa-bowl-rice" title="soy"></i></span>
-                              <p>soy</p>
-                            <% else %>
-                              <span><i class="fa-solid fa-bowl-rice text-secondary" title="soy"></i></span>
-                              <p class="text-secondary">soy</p>
-                            <% end %>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-        <div class="col-6 col-sm-3">
-            <div class="border-card p-2">
+                <div class="border-card p-1">
                 <h3><%= @dish.restaurant.name %></h3>
 
-              <%= link_to restaurant_path(@dish.restaurant) do %>
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            <% end %>
+                <%= link_to restaurant_path(@dish.restaurant) do %>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                <% end %>
             </div>
-            <div class="border-card map-border card">
+            <div class="border-card-map card">
                 <div class="map-border"
-                        data-controller="map"
-                        data-map-markers-value="<%= @markers.to_json %>"
-                        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+                    data-controller="map"
+                    data-map-markers-value="<%= @markers.to_json %>"
+                    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
             </div>
         </div>
+    </div>
+
+
+    <div class="row m-0 mb-3">
+      <div class="col-9">
+          <div class="mt-4">
+                <p><%= @dish.recipe %></p>
+              <div class="categories-container-alerg">
+                  <div class="category-cards-container-alerg">
+                      <div class="category-card-alerg">
+                              <% if @dish.milk? %>
+                                <span><i class="fa-solid fa-cow" title="milk"></i></span>
+                                <p>milk</p>
+                              <% else %>
+                                <span><i class="fa-solid fa-cow text-secondary" title="milk"></i></span>
+                                <p class="text-secondary">milk</p>
+                              <% end %>
+                      </div>
+                      <div class="category-card-alerg">
+                                <% if @dish.peanuts? %>
+                                <span><i class="fa-solid fa-brain" title="peanuts"></i></span>
+                                <p>peanuts</p>
+                              <% else %>
+                                <span><i class="fa-solid fa-brain text-secondary" title="peanuts"></i></span>
+                                <p class="text-secondary">peanuts</p>
+                              <% end %>
+                      </div>
+                      <div class="category-card-alerg">
+                              <% if @dish.eggs? %>
+                                <span><i class="fa-solid fa-egg" title="eggs"></i></span>
+                                <p>eggs</p>
+                              <% else %>
+                                <span><i class="fa-solid fa-egg text-secondary" title="eggs"></i></span>
+                                <p class="text-secondary">eggs</p>
+                              <% end %>
+                      </div>
+                      <div class="category-card-alerg">
+                              <% if @dish.shellfish? %>
+                                <span><i class="fa-solid fa-shrimp" title="shellfish"></i></span>
+                                <p>shellfish</p>
+                              <% else %>
+                                <span><i class="fa-solid fa-shrimp text-secondary" title="shellfish"></i></span>
+                                <p class="text-secondary">shellfish</p>
+                              <% end %>
+                      </div>
+                      <div class="category-card-alerg">
+                            <% if @dish.wheat? %>
+                                <span><i class="fa-solid fa-wheat-awn" title="wheat"></i></span>
+                                <p>wheat</p>
+                              <% else %>
+                                <span><i class="fa-solid fa-wheat-awn text-secondary" title="wheat"></i></span>
+                                <p class="text-secondary">wheat</p>
+                              <% end %>
+                      </div>
+                      <div class="category-card-alerg">
+                              <% if @dish.soy? %>
+                                <span><i class="fa-solid fa-bowl-rice" title="soy"></i></span>
+                                <p>soy</p>
+                              <% else %>
+                                <span><i class="fa-solid fa-bowl-rice text-secondary" title="soy"></i></span>
+                                <p class="text-secondary">soy</p>
+                              <% end %>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
     </div>
 </div>

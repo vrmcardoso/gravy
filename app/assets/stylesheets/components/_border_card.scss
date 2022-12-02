@@ -18,13 +18,26 @@
 
 
 .border-card {
-    max-height: 100%;
     border-radius: 10px;
+    border: none;
+    width: 100%;
+    max-height: 396px;
+    object-fit: cover;
+}
+
+.border-card-map {
+    border-radius: 10px;
+    margin-top: 142px;
+}
+
+.border-card-map-rest {
+    border-radius: 10px;
+    margin-top: 0px;
 }
 
 .map-border {
     border-radius: 10px;
-    height: 150px;
+    height: 234px;;
 }
 
 .border-card-descri {
@@ -34,4 +47,11 @@
 .dish-img {
     object-fit: cover;
     object-position: center;
+}
+
+.border-card-rest {
+    width: 100%;
+    max-height: 396px;
+    object-fit: cover;
+    border-radius: 10px;
 }
