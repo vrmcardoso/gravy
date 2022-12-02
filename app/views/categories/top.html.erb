@@ -1,76 +1,11 @@
 
 <div class="navbar2">
-<%= link_to "Sushi", top_path(query: "Sushi"), class: "btn buttons"%>
-<%= link_to "Pizza", top_path(query: "Pizza"), class: "btn buttons"%>
-<%= link_to "Pasta", top_path(query: "Pasta"), class: "btn buttons"%>
-<%= link_to "Portuguese", top_path(query: "Portuguese"), class: "btn buttons"%>
-<%= link_to "Norwegian", top_path(query: "Norwegian"), class: "btn buttons"%>
-<%= link_to "Italian", top_path(query: "Italian"), class: "btn buttons"%>
+  <%= link_to "Sushi", top_path(query: "Sushi"), class: "btn buttons"%>
+  <%= link_to "Pizza", top_path(query: "Pizza"), class: "btn buttons"%>
+  <%= link_to "Pasta", top_path(query: "Pasta"), class: "btn buttons"%>
+  <%= link_to "Portuguese", top_path(query: "Portuguese"), class: "btn buttons"%>
+  <%= link_to "Norwegian", top_path(query: "Norwegian"), class: "btn buttons"%>
+  <%= link_to "Italian", top_path(query: "Italian"), class: "btn buttons"%>
 </div>
 
-
-
-  <div class="big-box container">
-    <% @results.first(10).each_with_index do |dish, rank|%>
-      <%=link_to "dishes/#{dish.id}" do%>
-    <div class="card-product">
-      <img src="https://images.pexels.com/photos/1438672/pexels-photo-1438672.jpeg?auto=compress&cs=tinysrgb&w=600" />
-      <div class="card-product-infos">
-        <div class="card-info">
-          <div class=left-box>
-            <h2><%= dish.name %></h2>
-            <p><%= dish.recipe%></p>
-            <p><i class="fa-solid fa-utensils"></i> <%= @restaurants.find_by(id: dish.restaurant_id).name%></p>
-            <p><i class="fa-solid fa-thumbtack"></i><%= @restaurants.find_by(id: dish.restaurant_id).address%></p>
-          </div>
-          <div class="symbols">
-            <% if dish.peanuts? %>
-              <i class="fa-solid fa-brain"></i>
-            <% end %>
-            <% if dish.milk?%>
-              <i class="fa-solid fa-cow"></i>
-            <% end %>
-            <% if dish.eggs? %>
-              <i class="fa-solid fa-egg"></i>
-            <% end %>
-            <% if dish.shellfish? %>
-              <i class="fa-solid fa-shrimp"></i>
-            <% end %>
-            <% if dish.soy? %>
-              <i class="fa-solid fa-bowl-rice"></i>
-            <% end %>
-            <% if dish.wheat? %>
-              <i class="fa-solid fa-wheat-awn"></i>
-            <% end %>
-          </div>
-
-            <p>#<%= rank + 1 %> overall</p>
-
-        </div>
-      </div>
-  </div>
-      <%end%>
-<%end%>
-</div>
-
-
-
-   <div class="card-container-2 mt-5">
-      <% @dishes.each do |dish| %>
-        <div class="both-boxes mt-3">
-          <div class="card-category-3" style="background-image: linear-gradient(to right, rgba(10,10,10,0.5), rgba(10,10,10,1)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg);">
-          </div>
-
-          <div class="rank-box"></div>
-            <div class="card-category-2" style="background-image: linear-gradient(rgba(10,10,10,1), rgba(10,10,10,1)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-              <h4 class="card-cuisine"><%= dish.category.cuisine %></h4><br>
-              <h2 class="card-name"><%= dish.name %></h2>
-              <h2 class="card-rank">Rank</h2>
-              <p class="card-restaurant"><%= dish.restaurant.name %></p>
-              <% if dish.category.food_type %>
-                <p class="card-type"><%= dish.category.food_type %></p>
-              <% end %>
-            </div>
-        </div>
-          <% end %>
-    </div>
+<%= render "shared/list" %>

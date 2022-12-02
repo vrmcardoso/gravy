@@ -22,9 +22,10 @@
   border: 1px solid;
   border-radius: 15px;
   border-color: rgb(187, 187, 187);
-  display: grid;
-  justify-items: center;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .category-card img {
