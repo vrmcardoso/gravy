@@ -85,3 +85,5 @@ gem "pg_search"
 
 gem "geocoder"
 
+
+gem "acts_as_list", "~> 1.0"
