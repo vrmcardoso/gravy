@@ -126,3 +126,14 @@ dish_last = Dish.last
   )
   rank.save
 end
+
+restaurant_first = Restaurant.first
+restaurant_last = Restaurant.last
+10.times do
+  restaurant_category = RestaurantCategory.create(
+    category_id: rand(category1.id..category5.id),
+    restaurant_id: rand(restaurant_first.id..restaurant_last.id),
+    points: rand(0..500)
+  )
+  restaurant_category.save
+end

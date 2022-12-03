@@ -4,66 +4,40 @@ class RanksController < ApplicationController
     @dishes = Dish.all
     @categories = Category.all
     @ranks = Rank.all
+    @restaurants = Restaurant.all
+    @restaurants_categories = RestaurantCategory.all
 
-    # get the current user ranks (i.e ranking >0 and id= current id)
-    @user_ranks = @ranks.select { |rank| rank.user_id == current_user.id }
+    # @target_restaurant = @restaurants.last
+    # @restaurant_dishes = @target_restaurant.dishes
+    # @restaurant_categories = []
+    # @restaurant_dishes.each do |dish|
+    #   @restaurant_categories << dish.category
+    # end
+    # @restaurant_categories = @restaurant_categories.uniq
 
+    target_categories = []
+    target_restaurant_categories = @restaurants_categories.select { |res_cat| res_cat.restaurant_id == 4 }
+    target_restaurant_categories.each do |res_cat|
+      target_categories << { category: res_cat.category_id, points: res_cat.points }
+    end
+    target_categories = target_categories.uniq
 
-    @relevant_categories = []
-    @all_dishes = []
-    @all_user_categories_id = []
-
-    @user_ranks.each do |user_rank|
-      @dish_id = user_rank.dish_id
-      @dish = @dishes.find { |dish| dish.id == @dish_id }
-      @all_dishes << @dish
-      @category_id = @dish.category_id
-      @user_categories = @categories.find { |category| category.id == @category_id }
-      @all_user_categories_id << @user_categories.id
-      @all_user_categories_id = @all_user_categories_id.uniq
-      @relevant_categories << @user_categories.name
-      @relevant_categories = @relevant_categories.uniq
+    # all restaurants for a specific category
+    all_target_category_restaurants = @restaurants_categories.select { |res_cat| res_cat.category_id == 2 }
+    target_restaurants = []
+    all_target_category_restaurants.each do |res_cat|
+      target_restaurants << { restaurant: res_cat.restaurant_id, points: res_cat.points}
     end
 
+    # rank of restaurant
+    target_restaurant_sort = target_restaurants.sort_by { |result| result[:points] }.reverse
+    @target_restaurant_sort = target_restaurant_sort.map { |result| Restaurant.find(result[:restaurant]) }
 
 
-    @user_ranked_dishes = @all_dishes.filter { |dish| @relevant_categories.include? dish.category.name }
+    target_restaurant = @restaurants.find { |restaurant| restaurant.id = 4}
 
-    #dishes of a specific User_category
-    @dishes_category_zero = @user_ranked_dishes.filter { |user_ranked_dish| @all_user_categories_id[0] == user_ranked_dish.category.id }
 
-    #sort dishes by user rank
-      #dish id
-      @dishes_category_zero[0].id
-      #rank of that dish
-      @rank = @user_ranks.find { |user_rank| user_rank.dish_id == @dishes_category_zero[0].id }
-      #rank "points"
-      @rank.ranking
-
-      results = []
-      @dishes_category_zero.each do |dish|
-        @id = dish.id
-        @rank = @user_ranks.find { |user_rank| user_rank.dish_id == @id }
-        @rank_ranking = @rank.ranking
-        results << { id: @id, rank: @rank_ranking }
-      end
-
-      @result = results.sort_by { |result| result[:rank] }.reverse
-
-      @dishes_sorted = @result.map { |result| Dish.find(result[:id])}
-
-    # @target_category = @categories(params[:id])
-    # @user_target_category_dishes = @user_ranked_dishes.filter { |user_ranked_dish| @all_user_categories_id[@target_category] == user_ranked_dish.category.id }
-    # @user_target_category_dishes.each do |dish|
-    #   @id = dish.id
-    #   @rank = @user_ranks.find { |user_rank| user_rank.dish_id == @id }
-    #   @rank_ranking = @rank.ranking
-    #   results << { id: @id, rank: @rank_ranking }
-    # end
-
-    # @result = results.sort_by { |result| result[:rank] }.reverse
-
-    # @dishes_sorted = @result.map { |result| Dish.find(result[:id])}
+    raise
 
   end
 end
