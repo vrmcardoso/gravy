@@ -27,49 +27,49 @@
   <h2 class="index-title">Most Popular Categories</h1>
   <div class="category-cards-container">
     <%= link_to top_path(query: "Italian") do %>
-    <div class="category-card">
+    <div class="category-card grow-rotate">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810099/development/italian_food_hec9ov.png" alt="icon of spaghetti">
       <p>Italian</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Asian") do %>
-    <div class="category-card">
+    <div class="category-card grow-rotate">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810475/development/asian_food_zn3hoi.png" alt="icon of spaghetti">
       <p>Asian</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Christmas") do %>
-    <div class="category-card">
+    <div class="category-card grow-rotate">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810468/development/fireplace_vqj1pm.png" alt="icon of spaghetti">
       <p>Christmas</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Norwegian") do %>
-    <div class="category-card">
+    <div class="category-card grow-rotate">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810462/development/lefse_l3o5it.png" alt="icon of spaghetti">
       <p>Norwegian</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Portuguese") do %>
-    <div class="category-card">
+    <div class="category-card grow-rotate">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810453/development/pastel-de-nata_uz2tnz.png" alt="icon of spaghetti">
       <p>Portuguese</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Sushi") do %>
-    <div class="category-card">
+    <div class="category-card grow-rotate">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810446/development/sushi_neytlg.png" alt="icon of spaghetti">
       <p>Sushi</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Pasta") do %>
-    <div class="category-card">
+    <div class="category-card grow-rotate">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810417/development/spaghetti_ethggz.png" alt="icon of spaghetti">
       <p>Pasta</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Pizza") do %>
-    <div class="category-card">
+    <div class="category-card grow-rotate">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810438/development/pizza_sxdpza.png" alt="icon of spaghetti">
       <p>Pizza</p>
     </div>
@@ -84,7 +84,7 @@
       <% @dishes.each do |dish| %>
         <%=link_to "dishes/#{dish.id}" do%>
           <% if dish.category.food_type == "Pizza" %>
-          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <div class="card-category m-3 grow" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
             <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
             <h2 class="card-name"><%= dish.name %></h2>
             <h2 class="card-rank">Rank</h2>
@@ -104,7 +104,7 @@
       <% @dishes.each do |dish| %>
         <%=link_to "dishes/#{dish.id}" do%>
           <% if dish.category.cuisine == "Asian" %>
-          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <div class="card-category m-3 grow" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
             <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
             <h2 class="card-name"><%= dish.name %></h2>
             <h2 class="card-rank">Rank</h2>
@@ -124,7 +124,7 @@
       <% @dishes.each do |dish| %>
         <%=link_to "dishes/#{dish.id}" do%>
           <% if dish.category.name == "Francesinha" %>
-          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <div class="card-category m-3 grow" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
             <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
             <h2 class="card-name"><%= dish.name %></h2>
             <h2 class="card-rank">Rank</h2>
