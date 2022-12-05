@@ -17,26 +17,29 @@
 }
 
 .category-card {
-  width: 110px;
-  height: 90px;
-  border: 1px solid;
+  width: 122px;
+  height: 100px;
+  border: 0px solid;
   border-radius: 15px;
   border-color: rgb(187, 187, 187);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  box-shadow: 2px 2px 4px 1px rgba(54, 54, 54, 0.324);
 }
 
 .category-card img {
   width: 40px;
-  margin-top: 15px;
+  margin-top: 12px;
 }
 
 .category-card p {
-  color: #FFBB2E;
-  margin-top: 5px;
-  font-size: 12px;
+  color: #323232;
+  margin-top: 9px;
+  font-size: 16px;
+  font-weight: bold;
+
 }
 
 .categories-container-alerg {
