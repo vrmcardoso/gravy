@@ -28,6 +28,9 @@ class DishesController < ApplicationController
         raise
       end
     end
+    @sorted_francesinhas = sort_dishes_by_name("Francesinha")
+    @sorted_sushi = sort_dishes_by_food_type("Sushi")
+    @sorted_pizzas = sort_dishes_by_food_type("Pizza")
   end
 
   def cuisine
@@ -91,8 +94,59 @@ class DishesController < ApplicationController
         lng: @dish.restaurant.longitude,
         image_url: helpers.asset_url("IconGrande.png")
       }]
+
+    @cuisines.each do |cuisine|
+      rank_restaurant(@restaurant, cuisine)
+    end
   end
 
+  private
+
+  def sort_dishes_by_food_type(food_type)
+    @categories = Category.where("food_type = ?", food_type)
+    @sorted_dishes = []
+    @categories.each do |category|
+      cat_dishes = Dish.where("category_id = ?", category.id)
+        cat_dishes.each do |dish|
+          @sorted_dishes << dish
+        end
+    end
+    @sorted_dishes.sort_by { |dish| dish.sum_points }
+  end
+
+  def sort_dishes_by_cuisine(cuisine)
+    @categories = Category.where("cuisine = ?", cuisine)
+    @sorted_dishes = []
+    @categories.each do |category|
+      cat_dishes = Dish.where("category_id = ?", category.id)
+        cat_dishes.each do |dish|
+          @sorted_dishes << dish
+        end
+    end
+    @sorted_dishes.sort_by { |dish| dish.sum_points }
+  end
+
+  def sort_dishes_by_name(name)
+    @categories = Category.where("name = ?", name)
+    @sorted_dishes = []
+    @categories.each do |category|
+      cat_dishes = Dish.where("category_id = ?", category.id)
+        cat_dishes.each do |dish|
+          @sorted_dishes << dish
+        end
+    end
+    @sorted_dishes.sort_by { |dish| dish.sum_points }
+  end
+
+  def rank_restaurant(restaurant, cuisine)
+    all_restaurants = Restaurant.all
+    target_restaurants = all_restaurants.select { |rest| rest.categories.each { |cat| cat.cuisine == cuisine }}
+    all_restaurant_categories = RestaurantCategory.all
+    target_categories = Category.where("cuisine = ?", cuisine)
+    target_restaurant_categories = all_restaurant_categories.select { |rest_cat| target_categories.include?(rest_cat.category) }
+    
+
+  end
   # def cuisine
   #   @dishes = = Dish.global_search(params[:query])
   # end

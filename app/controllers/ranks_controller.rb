@@ -50,10 +50,13 @@ class RanksController < ApplicationController
   def create
     @dish = Dish.find(params[:dish_id])
     @rank = Rank.new(rank_params)
+    new_rank = rank_params["ranking"].to_i
     @rank.user = current_user
     @rank.dish = @dish
     if @rank.save
+      rank_rearrange(@dish, new_rank)
       @dish.update(sum_points: ranking_converter(@dish.sum_points, rank_params["ranking"].to_i))
+      restaurant_points_update(Restaurant.find(@dish.restaurant_id))
       redirect_to @dish
     else
       render "dishes/show", status: :unprocessable_entity
@@ -65,8 +68,10 @@ class RanksController < ApplicationController
     @rank = current_user.ranks.find_by(dish: @dish)
     old_rank = @rank.ranking.to_i
     new_rank = rank_params["ranking"].to_i
+    rank_rearrange(@dish, new_rank)
     @rank.update(ranking: new_rank)
     @dish.update(sum_points: ranking_converter(@dish.sum_points, new_rank, old_rank))
+    restaurant_points_update(Restaurant.find(@dish.restaurant_id))
     redirect_to @dish
   end
 
@@ -77,7 +82,11 @@ class RanksController < ApplicationController
   end
 
   def ranking_converter(sum, new_rank, old_rank = 0)
-    new_inverted_rank = 10 - new_rank + 1
+    if new_rank < 11
+      new_inverted_rank = 10 - new_rank + 1
+    else
+      new_inverted_rank = 0
+    end
     if old_rank > 0
       old_inverted_rank = 10 - old_rank + 1
     else
@@ -85,5 +94,35 @@ class RanksController < ApplicationController
     end
     output = sum + new_inverted_rank - old_inverted_rank
     return output
+  end
+
+  def rank_rearrange(dish, new_rank)
+    @category = Category.find(dish.category_id)
+    @dishes = Dish.where("category_id = ?", @category.id)
+    @ranks = []
+    @dishes.each do |dish|
+      if rank = dish.ranks.find_by(user: current_user)
+        @ranks << rank
+      end
+    end
+    @ranks.each do |rank|
+      if rank.ranking >= new_rank
+        old_rank = rank.ranking
+        rank.update(ranking: rank.ranking + 1)
+        dish = Dish.find(rank.dish_id)
+        dish.update(sum_points: ranking_converter(dish.sum_points, rank.ranking, old_rank))
+      end
+    end
+  end
+
+  def restaurant_points_update(restaurant)
+    @restaurant_categories = RestaurantCategory.where("restaurant_id = ?", restaurant.id)
+    sum = 0
+    @restaurant_categories.each do |rest_category|
+      @restaurant.dishes.each do |dish|
+        sum += dish.sum_points
+      end
+      rest_category.update(points: sum)
+    end
   end
 end
