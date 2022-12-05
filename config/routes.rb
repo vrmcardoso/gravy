@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :todos do 
+  resources :todos do
     member do
       patch :move
     end
-  end 
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "dishes#index"
 
-  resources :dishes, only: [:index, :show]
+  resources :dishes, only: [:index, :show] do
+    resources :ranks, only: [:create, :update]
+  end
   resources :restaurants, only: [:show]
   get "top", to: "categories#top"
   # resources :categories, only: [:top]

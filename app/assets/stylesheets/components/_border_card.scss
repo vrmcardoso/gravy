@@ -20,14 +20,13 @@
 .border-card {
     border-radius: 10px;
     border: none;
-    width: 100%;
+    width: 90%;
     max-height: 396px;
     object-fit: cover;
 }
 
 .border-card-map {
     border-radius: 10px;
-    margin-top: 142px;
 }
 
 .border-card-map-rest {
@@ -37,7 +36,9 @@
 
 .map-border {
     border-radius: 10px;
-    height: 234px;;
+    height: 234px;
+    width: 90%;
+    margin: auto;
 }
 
 .border-card-descri {

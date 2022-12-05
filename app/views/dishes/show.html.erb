@@ -1,3 +1,110 @@
+<div class="profile-container">
+  <div class="profile-main-container">
+    <div class="banner-container">
+      <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @dish.photo.key %>');">
+        <div class="container">
+          <h1><%= @dish.name %></h1>
+        </div>
+      </div>
+    </div>
+    <div class="dish-info">
+      <div class="dish-copy">
+        <h4><%= @dish.recipe %></h4>
+        <h5>Price: $$</h5>
+        <%= simple_form_for [@dish,@rank] do |f| %>
+          <%= f.input :ranking, collection: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+      <div class="categories-container-alerg">
+                  <div class="category-cards-container-alerg">
+                      <div class="category-card-alerg">
+                              <% if @dish.milk? %>
+                                <span><i class="fa-solid fa-cow" title="milk"></i></span>
+                                <p>milk</p>
+                              <% else %>
+                                <span><i class="fa-solid fa-cow text-secondary" title="milk"></i></span>
+                                <p class="text-secondary">milk</p>
+                              <% end %>
+                      </div>
+                      <div class="category-card-alerg">
+                                <% if @dish.peanuts? %>
+                                <span><i class="fa-solid fa-brain" title="peanuts"></i></span>
+                                <p>peanuts</p>
+                              <% else %>
+                                <span><i class="fa-solid fa-brain text-secondary" title="peanuts"></i></span>
+                                <p class="text-secondary">peanuts</p>
+                              <% end %>
+                      </div>
+                      <div class="category-card-alerg">
+                              <% if @dish.eggs? %>
+                                <span><i class="fa-solid fa-egg" title="eggs"></i></span>
+                                <p>eggs</p>
+                              <% else %>
+                                <span><i class="fa-solid fa-egg text-secondary" title="eggs"></i></span>
+                                <p class="text-secondary">eggs</p>
+                              <% end %>
+                      </div>
+                      <div class="category-card-alerg">
+                              <% if @dish.shellfish? %>
+                                <span><i class="fa-solid fa-shrimp" title="shellfish"></i></span>
+                                <p>shellfish</p>
+                              <% else %>
+                                <span><i class="fa-solid fa-shrimp text-secondary" title="shellfish"></i></span>
+                                <p class="text-secondary">shellfish</p>
+                              <% end %>
+                      </div>
+                      <div class="category-card-alerg">
+                            <% if @dish.wheat? %>
+                                <span><i class="fa-solid fa-wheat-awn" title="wheat"></i></span>
+                                <p>wheat</p>
+                              <% else %>
+                                <span><i class="fa-solid fa-wheat-awn text-secondary" title="wheat"></i></span>
+                                <p class="text-secondary">wheat</p>
+                              <% end %>
+                      </div>
+                      <div class="category-card-alerg">
+                              <% if @dish.soy? %>
+                                <span><i class="fa-solid fa-bowl-rice" title="soy"></i></span>
+                                <p>soy</p>
+                              <% else %>
+                                <span><i class="fa-solid fa-bowl-rice text-secondary" title="soy"></i></span>
+                                <p class="text-secondary">soy</p>
+                              <% end %>
+                      </div>
+                  </div>
+              </div>
+    </div>
+  </div>
+
+  <div class="profile-sidebar-2">
+    <%= link_to restaurant_path(@restaurant) do %>
+      <div class="restaurant-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path @dish.photo.key %>')">
+        <div class="card-cuisine-list">
+          <% @cuisines.each do |cuisine| %>
+            <p class="card-type-list"><%= cuisine %> </p>
+          <% end %>
+        </div>
+        <h2 class="card-name"><%= @restaurant.name %></h2>
+        <h2 class="card-rank">Rank</h2>
+      </div>
+    <% end %>
+    <div class="map-border"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
 <div class="width-container-rest">
     <div class="row justify-content-center mt-3 mb-3">
         <div class="col-9">
@@ -10,20 +117,27 @@
             <div class="border-card card" style="height: 48%">
                 <div class="border-card p-1">
                 <h3><%= @dish.restaurant.name %></h3>
-
-                <%= link_to restaurant_path(@dish.restaurant) do %>
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                <%= link_to restaurant_path(@restaurant) do %>
+                  <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path @dish.photo.key %>')">
+                  <div class="card-cuisine-list">
+                    <% @cuisines.each do |cuisine| %>
+                      <p class="card-type-list"><%= cuisine %> </p>
+                    <% end %>
+                  </div>
+                  <h2 class="card-name"><%= @restaurant.name %></h2>
+                  <h2 class="card-rank">Rank</h2>
+                </div>
                 <% end %>
             </div>
             <div class="border-card-map card">
                 <div class="map-border"
                     data-controller="map"
                     data-map-markers-value="<%= @markers.to_json %>"
-                    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+                    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+                </div>
             </div>
         </div>
     </div>
-
 
     <div class="row m-0 mb-3">
       <div class="col-9">
