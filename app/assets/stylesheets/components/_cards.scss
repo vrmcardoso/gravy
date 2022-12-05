@@ -41,6 +41,24 @@
   margin: auto;
 }
 
+.restaurant-card-category-2 {
+  background-size: cover;
+  background-position: center;
+  height: 220px;
+  width: 90%;
+  justify-content: right;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+  margin: auto;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(asset_path('Restaurant.jpeg'));
+}
+
 .card-tops-category {
   background-size: cover;
   background-position: center;

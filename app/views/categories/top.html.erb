@@ -10,9 +10,9 @@
 
 <div>
   <% if @type == "Dish" %>
-  <center> <h2> Best dishes for <%= params[:query] %> </h2> </center>
+  <center> <h1 class="my-3" > Best dishes for <%= params[:query] %> </h1> </center>
   <% else %>
-  <center> <h2> Best restaurants for <%= params[:query] %> </h2> </center>
+  <center> <h1 class="my-3" > Best restaurants for <%= params[:query] %> </h1> </center>
   <% end %>
   <%= render "shared/list" %>
 </div>
