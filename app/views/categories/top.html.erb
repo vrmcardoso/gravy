@@ -8,4 +8,11 @@
   <%= link_to "Italian", top_path(query: "Italian"), class: "btn buttons"%>
 </div>
 
-<%= render "shared/list" %>
+<div>
+  <% if @type == "Dish" %>
+  <center> <h2> Best dishes for <%= params[:query] %> </h2> </center>
+  <% else %>
+  <center> <h2> Best restaurants for <%= params[:query] %> </h2> </center>
+  <% end %>
+  <%= render "shared/list" %>
+</div>
