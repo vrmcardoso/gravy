@@ -38,6 +38,20 @@
 	}
 }
 
+.grow-rotate-2 {
+  display: inline-block;
+	transition-duration: .3s;
+	transition-property: transform;
+
+	@include hideTapHighlightColor();
+	@include hardwareAccel();
+	@include improveAntiAlias();
+
+	&:hover {
+		transform: scale(1.1) rotate(-4deg);
+	}
+}
+
 .grow {
 	display: inline-block;
 	transition-duration: .3s;
