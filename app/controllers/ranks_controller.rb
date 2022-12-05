@@ -40,4 +40,44 @@ class RanksController < ApplicationController
     raise
 
   end
+
+  def create
+    @dish = Dish.find(params[:dish_id])
+    @rank = Rank.new(rank_params)
+    @rank.user = current_user
+    @rank.dish = @dish
+    if @rank.save
+      @dish.update(sum_points: ranking_converter(@dish.sum_points, rank_params["ranking"].to_i))
+      redirect_to @dish
+    else
+      render "dishes/show", status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @dish = Dish.find(params[:dish_id])
+    @rank = current_user.ranks.find_by(dish: @dish)
+    old_rank = @rank.ranking.to_i
+    new_rank = rank_params["ranking"].to_i
+    @rank.update(ranking: new_rank)
+    @dish.update(sum_points: ranking_converter(@dish.sum_points, new_rank, old_rank))
+    redirect_to @dish
+  end
+
+  private
+
+  def rank_params
+    params.require(:rank).permit(:ranking)
+  end
+
+  def ranking_converter(sum, new_rank, old_rank = 0)
+    new_inverted_rank = 10 - new_rank + 1
+    if old_rank > 0
+      old_inverted_rank = 10 - old_rank + 1
+    else
+      old_inverted_rank = 0
+    end
+    output = sum + new_inverted_rank - old_inverted_rank
+    return output
+  end
 end

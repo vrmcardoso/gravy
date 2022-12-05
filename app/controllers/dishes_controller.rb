@@ -69,7 +69,22 @@ class DishesController < ApplicationController
 
   def show
     @dish = Dish.find(params[:id])
+    @restaurant = Restaurant.find(@dish.restaurant_id)
+    @restaurant_categories = RestaurantCategory.where("restaurant_id = ?", @restaurant.id)
+    @categories = []
+    @restaurant_categories.each do |category|
+      @categories << Category.find(category.category_id)
+    end
+    @cuisines = []
+    @categories.each do |category|
+      @cuisines << category.cuisine
+    end
 
+    @rank = current_user.ranks.find_by(dish: @dish)
+    unless @rank.present?
+      @rank = Rank.new
+    end
+    @cuisines = @cuisines.uniq
     @markers =
       [{
         lat: @dish.restaurant.latitude,
