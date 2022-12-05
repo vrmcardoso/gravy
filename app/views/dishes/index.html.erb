@@ -82,19 +82,17 @@
   <div class="categories-container">
     <h2 Class="index-title">Best Pizzas in your area</h1>
     <div class="card-container">
-      <% @dishes.each do |dish| %>
+      <% @sorted_pizzas.each_with_index do |dish, rank| %>
         <%=link_to "dishes/#{dish.id}" do%>
-          <% if dish.category.food_type == "Pizza" %>
-          <div class="card-category m-3 grow" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path dish.photo.key %>')">
             <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
             <h2 class="card-name"><%= dish.name %></h2>
-            <h2 class="card-rank">Rank</h2>
+            <h2 class="card-rank">Rank: <%= rank + 1 %></h2>
             <p class="card-restaurant"><%= dish.restaurant.name %></p>
             <% if dish.category.food_type %>
               <p class="card-type"><%= dish.category.food_type %></p>
             <% end %>
           </div>
-          <% end %>
         <% end %>
       <% end %>
     </div>
@@ -102,13 +100,13 @@
   <div class="categories-container">
     <h2 Class="index-title">Best Sushi in your area</h1>
     <div class="card-container">
-      <% @dishes.each do |dish| %>
+      <% @sorted_sushi.each_with_index do |dish, rank| %>
         <%=link_to "dishes/#{dish.id}" do%>
           <% if dish.category.cuisine == "Asian" %>
-          <div class="card-category m-3 grow" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path dish.photo.key %>')">
             <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
             <h2 class="card-name"><%= dish.name %></h2>
-            <h2 class="card-rank">Rank</h2>
+            <h2 class="card-rank">Rank: <%= rank + 1 %></h2>
             <p class="card-restaurant"><%= dish.restaurant.name %></p>
             <% if dish.category.food_type %>
               <p class="card-type"><%= dish.category.food_type %></p>
@@ -122,13 +120,13 @@
   <div class="categories-container">
     <h2 Class="index-title">Best Francesinhas in your area</h1>
     <div class="card-container">
-      <% @dishes.each do |dish| %>
+      <% @sorted_francesinhas.each_with_index do |dish, rank| %>
         <%=link_to "dishes/#{dish.id}" do%>
           <% if dish.category.name == "Francesinha" %>
-          <div class="card-category m-3 grow" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path dish.photo.key %>')">
             <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
             <h2 class="card-name"><%= dish.name %></h2>
-            <h2 class="card-rank">Rank</h2>
+            <h2 class="card-rank">Rank: <%= rank + 1 %></h2>
             <p class="card-restaurant"><%= dish.restaurant.name %></p>
             <% if dish.category.food_type %>
               <p class="card-type"><%= dish.category.food_type %></p>
