@@ -1,6 +1,6 @@
 
 <div class="navbar2">
-  <%= link_to "Sushi", top_path(query: "Sushi"), class: "btn buttons"%>
+  <%= link_to "Sushi", top_path(query: "Sushi", type: "Dish"), class: "btn buttons"%>
   <%= link_to "Pizza", top_path(query: "Pizza"), class: "btn buttons"%>
   <%= link_to "Pasta", top_path(query: "Pasta"), class: "btn buttons"%>
   <%= link_to "Portuguese", top_path(query: "Portuguese"), class: "btn buttons"%>
@@ -8,11 +8,29 @@
   <%= link_to "Italian", top_path(query: "Italian"), class: "btn buttons"%>
 </div>
 
-<div>
-  <% if @type == "Dish" %>
-  <center> <h2> Best dishes for <%= params[:query] %> </h2> </center>
-  <% else %>
-  <center> <h2> Best restaurants for <%= params[:query] %> </h2> </center>
-  <% end %>
-  <%= render "shared/list" %>
+<div class="d-flex">
+  <div class="col-8">
+    <% if @type == "Dish" %>
+      <center> <h1 class="my-3" > Best dishes for <%= params[:query] %> </h1> </center>
+    <% else %>
+      <center> <h1 class="my-3" > Best restaurants for <%= params[:query] %> </h1> </center>
+    <% end %>
+  </div>
+  <div class="col-2">
+    <form class="form">
+      <h5 class="mt-3">Choose rank</h5>
+      <div class="switch-field">
+        <input type="radio" id="radio-one" name="switch-one" value="yes" checked
+        />
+        <label for="radio-one">
+        <%= link_to "Dish", top_path(query: params[:query], type: "Dish") %>
+        </label>
+        <input type="radio" id="radio-two" name="switch-one" value="no"/>
+        <label for="radio-two">
+        <%= link_to "Restaurant", top_path(query: params[:query], type: "Restaurant") %>
+        </label>
+      </div>
+  </div>
 </div>
+
+<%= render "shared/list" %>
