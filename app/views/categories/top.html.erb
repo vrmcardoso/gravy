@@ -1,12 +1,50 @@
 
 <div class="navbar2">
-  <%= link_to "Sushi", top_path(query: "Sushi", type: @type), class: "btn buttons"%>
-  <%= link_to "Pizza", top_path(query: "Pizza", type: @type), class: "btn buttons"%>
-  <%= link_to "Pasta", top_path(query: "Pasta", type: @type), class: "btn buttons"%>
-  <%= link_to "Portuguese", top_path(query: "Portuguese", type: @type), class: "btn buttons"%>
-  <%= link_to "Norwegian", top_path(query: "Norwegian", type: @type), class: "btn buttons"%>
-  <%= link_to "Italian", top_path(query: "Italian", type: @type), class: "btn buttons"%>
+
+
+  <%= link_to top_path(query: "Sushi", type: "Dish"), :action => 'go' do %>
+      <div class="icon-card">
+      <img src="https://res.cloudinary.com/dmndhddgf/image/upload/e_blackwhite/c_fill,h_30,w_30/v1669810446/development/sushi_neytlg.png" alt="icon of sushi" class="mb-2">
+      <p>Sushi</p>
+      </div>
+  <% end %>
+
+  <%= link_to top_path(query: "Portuguese", type: "Dish"), :action => 'go' do %>
+      <div class="icon-card">
+      <img src="https://res.cloudinary.com/dmndhddgf/image/upload/e_blackwhite/c_fill,h_30,w_30/v1669810453/development/pastel-de-nata_uz2tnz.png" alt="icon of denata" class="mb-2">
+      <p>Portuguese</p>
+      </div>
+  <% end %>
+
+  <%= link_to top_path(query: "Pasta", type: "Dish"), :action => 'go' do %>
+      <div class="icon-card">
+      <img src="https://res.cloudinary.com/dmndhddgf/image/upload/e_blackwhite/c_fill,h_30,w_30/v1669810417/development/spaghetti_ethggz.png" alt="icon of pasta" class="mb-2">
+      <p>Pasta</p>
+      </div>
+  <% end %>
+
+  <%= link_to top_path(query: "Pizza", type: "Dish"), :action => 'go' do %>
+      <div class="icon-card">
+      <img src="https://res.cloudinary.com/dmndhddgf/image/upload/e_blackwhite/c_fill,h_30,w_30/v1669810438/development/pizza_sxdpza.png" alt="icon of pizza" class="mb-2">
+      <p>Pizza</p>
+      </div>
+  <% end %>
+
+  <%= link_to top_path(query: "Italian", type: "Dish"), :action => 'go' do %>
+      <div class="icon-card">
+      <img src="https://res.cloudinary.com/dmndhddgf/image/upload/e_blackwhite/c_fill,h_30,w_30/v1669810099/development/italian_food_hec9ov.png" alt="icon of italia" class="mb-2">
+      <p>Italian</p>
+      </div>
+  <% end %>
+
+  <%= link_to top_path(query: "Asian", type: "Dish"), :action => 'go' do %>
+      <div class="icon-card">
+      <img src="https://res.cloudinary.com/dmndhddgf/image/upload/e_blackwhite/c_fill,h_30,w_30/v1669810475/development/asian_food_zn3hoi.png" alt="icon of asia" class="mb-2">
+      <p>Asian</p>
+      </div>
+  <% end %>
 </div>
+
 
 <div class="d-flex">
   <div class="col-8">

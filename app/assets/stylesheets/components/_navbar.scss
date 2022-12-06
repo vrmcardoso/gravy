@@ -2,6 +2,10 @@
   justify-content: space-between;
   background: white;
   width: 80%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,5 +13,5 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 100px;
+  width: 150px;
 }
