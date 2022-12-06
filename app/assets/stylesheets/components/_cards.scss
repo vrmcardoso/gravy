@@ -124,6 +124,15 @@
   margin-top: 3px;
 }
 
+.restaurant-card-rank {
+  position: absolute;
+  font-size: 18px;
+  font-weight: 300;
+  top: 90px;
+  right: 20px;
+  margin-top: 3px;
+}
+
 .card-restaurant {
   position: absolute;
   font-size: 16px;
@@ -157,7 +166,16 @@
   border-radius: 20px;
   background: rgba(167, 167, 167, 0.5);
   text-align: center;
+}
 
+.card-cat {
+  font-size: 20px;
+  font-weight: 300;
+  background-color: rgb(186, 186, 186);
+  padding: 3px 10px 1px 10px;
+  border-radius: 20px;
+  background: rgba(167, 167, 167, 0.5);
+  text-align: center;
 }
 
 .cuisines-container {
