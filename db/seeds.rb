@@ -151,6 +151,16 @@ file = URI.open(photo_url)
 category10.photo.attach(io: file, filename: "food", content_type: "image/jpg")
 category10.save
 
+category11 = Category.create(
+  name: "Bifana",
+  cuisine: "Portuguese",
+  food_type: "Bifana"
+)
+photo_url = 'https://www.mundoportugues.pt/wp-content/uploads/sites/3/2019/06/1-bifanas-a-portuguesa.jpg'
+file = URI.open(photo_url)
+category11.photo.attach(io: file, filename: "food", content_type: "image/jpg")
+category11.save
+
 
 
 puts "Creating restaurants..."
@@ -174,6 +184,7 @@ dish_margarita = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: zerozero.id,
   category_id: category4.id,
 )
@@ -191,6 +202,7 @@ carbonara = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: zerozero.id,
   category_id: category2.id,
 )
@@ -208,6 +220,7 @@ bolonhesa = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: zerozero.id,
   category_id: category1.id,
 )
@@ -225,6 +238,7 @@ dish_diavola = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: zerozero.id,
   category_id: category5.id,
 )
@@ -286,6 +300,7 @@ dish_margarita = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: james_oliver.id,
   category_id: category4.id,
 )
@@ -303,6 +318,7 @@ carbonara = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: james_oliver.id,
   category_id: category2.id,
 )
@@ -320,6 +336,7 @@ bolonhesa = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: james_oliver.id,
   category_id: category1.id,
 )
@@ -337,6 +354,7 @@ dish_diavola = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: james_oliver.id,
   category_id: category5.id,
 )
@@ -399,6 +417,7 @@ dish_margarita = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: capricciosa.id,
   category_id: category4.id,
 )
@@ -416,6 +435,7 @@ carbonara = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: capricciosa.id,
   category_id: category2.id,
 )
@@ -433,6 +453,7 @@ bolonhesa = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: capricciosa.id,
   category_id: category1.id,
 )
@@ -450,6 +471,7 @@ dish_diavola = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: capricciosa.id,
   category_id: category5.id,
 )
@@ -513,6 +535,7 @@ francesinha = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: marco.id,
   category_id: category6.id,
 )
@@ -530,8 +553,9 @@ bifana = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: marco.id,
-  category_id: category6.id,
+  category_id: category11.id,
 )
 photo_url = 'https://media-cdn.tripadvisor.com/media/photo-s/1a/90/b0/69/20200110-134958-largejpg.jpg'
 file = URI.open(photo_url)
@@ -541,6 +565,12 @@ bifana.save
 restaurant_category4 = RestaurantCategory.create(
   restaurant_id: marco.id,
   category_id: category6.id,
+  points: 0
+)
+
+restaurant_category4 = RestaurantCategory.create(
+  restaurant_id: marco.id,
+  category_id: category11.id,
   points: 0
 )
 
@@ -574,6 +604,7 @@ francesinha = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: taberna_londrina.id,
   category_id: category6.id,
 )
@@ -591,8 +622,9 @@ bifana = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: taberna_londrina.id,
-  category_id: category6.id,
+  category_id: category11.id,
 )
 photo_url = 'https://www.airtransat.com/experiencetransat/wp-content/uploads/2018/01/bifana-sandwich-portugal-food.jpg'
 file = URI.open(photo_url)
@@ -602,6 +634,12 @@ bifana.save
 restaurant_category5 = RestaurantCategory.create(
   restaurant_id: taberna_londrina.id,
   category_id: category6.id,
+  points: 0
+)
+
+restaurant_category5 = RestaurantCategory.create(
+  restaurant_id: taberna_londrina.id,
+  category_id: category11.id,
   points: 0
 )
 
@@ -631,6 +669,7 @@ francesinha = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: puro.id,
   category_id: category6.id,
 )
@@ -648,8 +687,9 @@ bifana = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: puro.id,
-  category_id: category6.id,
+  category_id: category11.id,
 )
 photo_url = 'https://www.portugalist.com/wp-content/uploads/bifana.jpg'
 file = URI.open(photo_url)
@@ -662,6 +702,16 @@ restaurant_category6 = RestaurantCategory.create(
   category_id: category6.id,
   points: 0
 )
+
+restaurant_category6 = RestaurantCategory.create(
+  restaurant_id: taberna_londrina.id,
+  category_id: category11.id,
+  points: 0
+)
+
+
+
+
 
 puts "Creating arroz de marisco..."
 a_marisqueira_do_lis = Restaurant.create(
@@ -684,6 +734,7 @@ arroz_marisco = Dish.create(
   shellfish: true,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: a_marisqueira_do_lis.id,
   category_id: category7.id,
 )
@@ -721,6 +772,7 @@ arroz_marisco = Dish.create(
   shellfish: true,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: ramiro.id,
   category_id: category7.id,
 )
@@ -760,6 +812,7 @@ arroz_marisco = Dish.create(
   shellfish: true,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: oceanos5.id,
   category_id: category7.id,
 )
@@ -804,6 +857,7 @@ frango = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: frangasqueira.id,
   category_id: category8.id,
 )
@@ -843,6 +897,7 @@ frango = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: vira_frangos.id,
   category_id: category8.id,
 )
@@ -881,6 +936,7 @@ frango = Dish.create(
   shellfish: false,
   wheat: false,
   soy: false,
+  price: rand(10..20),
   restaurant_id: valenciana.id,
   category_id: category8.id,
 )
@@ -921,6 +977,7 @@ sushi = Dish.create(
   shellfish: true,
   wheat: false,
   soy: true,
+  price: rand(10..20),
   restaurant_id: confraria.id,
   category_id: category9.id,
 )
@@ -960,6 +1017,7 @@ sushi = Dish.create(
   shellfish: true,
   wheat: false,
   soy: true,
+  price: rand(10..20),
   restaurant_id: sakura.id,
   category_id: category9.id,
 )
@@ -1000,6 +1058,7 @@ sushi = Dish.create(
   shellfish: true,
   wheat: false,
   soy: true,
+  price: rand(10..20),
   restaurant_id: sushicome.id,
   category_id: category9.id,
 )
@@ -1037,6 +1096,7 @@ ramen = Dish.create(
   shellfish: true,
   wheat: false,
   soy: true,
+  price: rand(10..20),
   restaurant_id: panda.id,
   category_id: category10.id,
 )
@@ -1074,6 +1134,7 @@ ramen = Dish.create(
   shellfish: true,
   wheat: false,
   soy: true,
+  price: rand(10..20),
   restaurant_id: ajitama.id,
   category_id: category10.id,
 )
@@ -1108,6 +1169,7 @@ ramen = Dish.create(
   shellfish: true,
   wheat: false,
   soy: true,
+  price: rand(10..20),
   restaurant_id: honda.id,
   category_id: category10.id,
 )
@@ -1122,7 +1184,7 @@ restaurant_category18 = RestaurantCategory.create(
 )
 
 
-puts "done!..."
+puts "done!"
 #change the rank
 
 
