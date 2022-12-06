@@ -1,7 +1,7 @@
 class Dish < ApplicationRecord
   belongs_to :restaurant
   belongs_to :category
-  has_many :ranks
+  has_many :ranks, dependent: :destroy
   has_one_attached :photo
 
   include PgSearch::Model
