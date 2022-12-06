@@ -6,98 +6,94 @@
           <div class="dish-banner-cats">
               <h4 class="card-cat">#<%= @dish_rank %> in <%= @dish_category.name %></h4>
           </div>
-          <h5>Price: $$</h5>
+          <h5>Price: $<%= @dish.price %></h5>
       </div>
     </div>
-    <div class="dish-info">
-      <div class="dish-copy">
-        <h4><%= @dish.recipe %></h4>
-        <%= simple_form_for [@dish,@rank] do |f| %>
-          <%= f.input :ranking, collection: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
-          <%= f.button :submit %>
-        <% end %>
+    <center>
+      <div class="dish-info">
+        <div class="dish-copy">
+          <div class="description">
+            <h4><%= @dish.recipe %></h4>
+          </div>
+          <div class="rank-button">
+            <%= simple_form_for [@dish,@rank] do |f| %>
+              <%= f.input :ranking, input_html: { class: "rank-dropdown" }, collection: 1..(@sorted_dishes.size + 1) %>
+              <%= f.button :submit, input_html: { class: "rank-submit"} %>
+            <% end %>
+          </div>
+        </div>
+        <div class="categories-container mb-5">
+          <h4 class="mb-3">Allergens:</h4>
+            <div class="alergy-cards-container">
+              <% if @dish.milk? %>
+                <div class="category-card">
+                  <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1670341672/development/milk_kbpgag.png" alt="icon of milk">
+                  <p>milk</p>
+                </div>
+              <% end %>
+              <% if @dish.peanuts? %>
+                <div class="category-card">
+                  <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1670341655/development/peanuts_qiso2i.png" alt="icon of milk">
+                  <p>peanuts</p>
+                </div>
+              <% end %>
+              <% if @dish.eggs? %>
+                <div class="category-card">
+                  <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1670341658/development/eggs_fkvojb.png" alt="icon of milk">
+                  <p>eggs</p>
+                </div>
+              <% end %>
+              <% if @dish.shellfish? %>
+                <div class="category-card">
+                  <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1670341662/development/shellfish_a91mec.png" alt="icon of milk">
+                  <p>shellfish</p>
+                </div>
+              <% end %>
+              <% if @dish.wheat? %>
+                <div class="category-card-alerg">
+                  <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1670341665/development/wheat_aqaagn.png" alt="icon of milk">
+                  <p>wheat</p>
+                </div>
+              <% end %>
+              <% if @dish.soy? %>
+                <div class="category-card">
+                  <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1670341668/development/soy_k61seq.png" alt="icon of milk">
+                  <p>soy</p>
+                </div>
+              <% end %>
+            </div>
+        </div>
       </div>
-      <div class="categories-container-alerg">
-                  <div class="category-cards-container-alerg">
-                      <div class="category-card-alerg">
-                              <% if @dish.milk? %>
-                                <span><i class="fa-solid fa-cow" title="milk"></i></span>
-                                <p>milk</p>
-                              <% else %>
-                                <span><i class="fa-solid fa-cow text-secondary" title="milk"></i></span>
-                                <p class="text-secondary">milk</p>
-                              <% end %>
-                      </div>
-                      <div class="category-card-alerg">
-                                <% if @dish.peanuts? %>
-                                <span><i class="fa-solid fa-brain" title="peanuts"></i></span>
-                                <p>peanuts</p>
-                              <% else %>
-                                <span><i class="fa-solid fa-brain text-secondary" title="peanuts"></i></span>
-                                <p class="text-secondary">peanuts</p>
-                              <% end %>
-                      </div>
-                      <div class="category-card-alerg">
-                              <% if @dish.eggs? %>
-                                <span><i class="fa-solid fa-egg" title="eggs"></i></span>
-                                <p>eggs</p>
-                              <% else %>
-                                <span><i class="fa-solid fa-egg text-secondary" title="eggs"></i></span>
-                                <p class="text-secondary">eggs</p>
-                              <% end %>
-                      </div>
-                      <div class="category-card-alerg">
-                              <% if @dish.shellfish? %>
-                                <span><i class="fa-solid fa-shrimp" title="shellfish"></i></span>
-                                <p>shellfish</p>
-                              <% else %>
-                                <span><i class="fa-solid fa-shrimp text-secondary" title="shellfish"></i></span>
-                                <p class="text-secondary">shellfish</p>
-                              <% end %>
-                      </div>
-                      <div class="category-card-alerg">
-                            <% if @dish.wheat? %>
-                                <span><i class="fa-solid fa-wheat-awn" title="wheat"></i></span>
-                                <p>wheat</p>
-                              <% else %>
-                                <span><i class="fa-solid fa-wheat-awn text-secondary" title="wheat"></i></span>
-                                <p class="text-secondary">wheat</p>
-                              <% end %>
-                      </div>
-                      <div class="category-card-alerg">
-                              <% if @dish.soy? %>
-                                <span><i class="fa-solid fa-bowl-rice" title="soy"></i></span>
-                                <p>soy</p>
-                              <% else %>
-                                <span><i class="fa-solid fa-bowl-rice text-secondary" title="soy"></i></span>
-                                <p class="text-secondary">soy</p>
-                              <% end %>
-                      </div>
-                  </div>
-              </div>
-    </div>
+    </center>
   </div>
 
   <div class="profile-sidebar-2">
-    <%= link_to restaurant_path(@restaurant) do %>
-      <div class="restaurant-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path @dish.photo.key %>')">
-        <div class="card-cuisine-list">
-          <% @cuisines.each do |cuisine| %>
-            <p class="card-type-list"><%= cuisine %> </p>
-          <% end %>
-        </div>
-        <h2 class="card-name"><%= @restaurant.name %></h2>
-        <div class="restaurant-card-rank">
-          <% @position.each do |rank| %>
-            <p>#<%= rank[:position] %> <%= Category.find(rank[:category]).name %></p>
+      <h3 style="text-align:start;" class="ms-3">Find it at:</h3>
+      <%= link_to restaurant_path(@restaurant) do %>
+        <div class="restaurant-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path @restaurant.photo.key %>')">
+          <div class="card-cuisine-list">
+            <% @cuisines.each do |cuisine| %>
+              <p class="card-type-list"><%= cuisine %> </p>
             <% end %>
+          </div>
+          <h2 class="card-name" style="font-size:28px;"><%= @restaurant.name %></h2>
+          <div class="card-rank-list">
+            <% @position.each do |rank| %>
+              <div class="restaurant-card-rank">
+                <p>#<%= rank[:position] %> <%= Category.find(rank[:category]).name %></p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <div class="location">
+        <h5 style="text-align:start;" class="ms-3">Address:</h5>
+        <p style="text-align:start;" class="ms-3"><%= @restaurant.address %></p>
+        <div class="map-border"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
       </div>
-    <% end %>
-    <div class="map-border"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-  </div>
 </div>

@@ -73,6 +73,11 @@
   justify-items: center;
 }
 
+.alergy-cards-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .category-card {
   width: 122px;
   height: 100px;

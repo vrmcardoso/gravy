@@ -43,7 +43,6 @@ class RanksController < ApplicationController
       @target_restaurant_sort = target_restaurant_sort.map { |result| Restaurant.find(result[:restaurant]) }
       @position << { category: category[:category], position: (@target_restaurant_sort.find_index(Restaurant.find(4)) + 1) }
     end
-    raise
 
   end
 
