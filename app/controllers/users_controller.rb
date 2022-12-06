@@ -67,19 +67,17 @@ class UsersController < ApplicationController
 
     if params[:query].present?
       @target_category = @categories.find(params[:query])
-      @user_target_category_dishes = @user_ranked_dishes.filter { |user_ranked_dish| @all_user_categories_id.include?(user_ranked_dish.category.id) }
-
+      @user_target_category_dishes = @user_ranked_dishes.filter { |user_ranked_dish| user_ranked_dish.category.id == @target_category.id}
       @user_target_category_dishes.each do |dish|
         @id = dish.id
         @rank = @user_ranks.find { |user_rank| user_rank.dish_id == @id }
         @rank_ranking = @rank.ranking
         @results << { id: @id, rank: @rank_ranking }
       end
-
       @result = @results.sort_by { |result| result[:rank] }.reverse
       @dishes_sorted = @result.map { |result| Dish.find(result[:id]) }
 
-      
+
     else
       @dishes_sorted = []
     end
