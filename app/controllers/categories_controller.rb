@@ -15,21 +15,59 @@ class CategoriesController < ApplicationController
       cuisine
       food_type
       name
+      restaurant
       if @type == "Dish"
-        if @names.include? "#{result}"
+        if @restaurants_name.include? params[:query]
+          restaurant_id = @restaurants.find { |restaurant| restaurant.name == params[:query] }.id
+          rest_dishes = dishes.select { |dish| dish.restaurant_id == restaurant_id }
+          @results = rest_dishes.sort_by { |dish| dish.sum_points}.reverse
+        elsif @names.include? "#{result}"
           name_dishes = dishes.select { |dish| dish.category.name == result }
           @results = name_dishes.sort_by { |dish| dish.sum_points}.reverse
         elsif @food_types.include? "#{result}"
           food_type_dishes = dishes.select { |dish| dish.category.food_type == result }
           @results = food_type_dishes.sort_by { |dish| dish.sum_points}.reverse
         elsif @cuisines.include? "#{result}"
-          cuisine_dishes = dishes.select { |dish| dish.category.cuisine == result }
+          @cuisine_dishes = dishes.select { |dish| dish.category.cuisine == result }
           @results = cuisine_dishes.sort_by { |dish| dish.sum_points}.reverse
         else
-          "Wrong input"
+          # @results = Restaurant.where("name ILIKE ?", "%#{params[:query]}%")
         end
       else # type == "Restaurant"
-        if @names.include? "#{result}"
+        if @restaurants_name.include? params[:query]
+          restaurant_id = @restaurants.find { |restaurant| restaurant.name == params[:query] }.id
+          rest_dishes = dishes.select { |dish| dish.restaurant_id == restaurant_id }
+          rest_dishes_sort = rest_dishes.sort_by { |dish| dish.sum_points}.reverse
+          category_of_first_dish = rest_dishes_sort[0].category.cuisine
+          rel_categories = @categories.select { |category| category.cuisine == category_of_first_dish }
+          rel_categories_id = []
+          rel_categories.each do |rel_cat|
+            rel_categories_id << rel_cat.id
+          end
+
+          rest_cat = []
+           rel_categories_id.each do |rel_cat_id|
+             rest_cat << @restaurants_categories.filter { |res_cat| res_cat.category_id == rel_cat_id }
+          end
+
+          @final_result = @restaurants.find { |restaurant| restaurant.name == params[:query] }.id
+          rest_ids = []
+          rest_ids << @final_result
+          rest_cat.each do |res_cat_one|
+            res_cat_one.each do |res_cat_two|
+              rest_ids << res_cat_two.restaurant_id
+            end
+          end
+          rest_ids = rest_ids.uniq
+
+          final_restaut = []
+
+          rest_ids.each do |id|
+            final_restaut << @restaurants.select { |restaurant| restaurant.id == id }
+          end
+          @results = final_restaut.flatten
+  
+        elsif @names.include? "#{result}"
           @target_id = @categories.find { |category| category.name == result }.id
           all_target_category_restaurants = @restaurants_categories.select { |res_cat| res_cat.category_id == @target_id }
           target_restaurants = []
@@ -57,7 +95,7 @@ class CategoriesController < ApplicationController
           results = target_restaurants.sort_by { |result| result[:points] }.reverse
           @results = results.map { |result| Restaurant.find(result[:restaurant]) }
         else
-          "Wrong input"
+          # @results = Restaurant.where("name ILIKE ?", "%#{params[:query]}%")
         end
       end
     end
@@ -95,6 +133,14 @@ class CategoriesController < ApplicationController
     end
     @names = @names.uniq
     return @names
+  end
+
+  def restaurant
+    @restaurants_name = []
+    @restaurants = Restaurant.all
+    @restaurants.each do |restaurant|
+      @restaurants_name << restaurant.name
+    end
   end
 
 end

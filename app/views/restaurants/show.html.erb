@@ -41,7 +41,7 @@
         <div class="card-container-rest">
             <% @restaurant.dishes.each do |dish|%>
               <%= link_to dish_path(dish) do %>
-                  <div class="card-category-rest m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+                  <div class="card-category-rest m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path dish.photo.key %>')">
                       <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
                       <h2 class="card-name"><%= dish.name %></h2>
                       <h2 class="card-rank">Rank</h2>
