@@ -1,18 +1,19 @@
 <div class="banner-container">
   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dmndhddgf/image/upload/v1669735258/development/pablo-merchan-montes-Orz90t6o0e4-unsplash_fclsur.jpg);">
     <div class="container">
-      <h1>Find the best dishes in your town</h1>
-      <p>Pick a dish or a cuisine</p>
+      <div class="animation-text">
+        Find the best<div class="flip"><div><div>Pizza</div></div><div><div>Pastel de nata</div></div><div><div>Gravy</div></div></div>in your town
+      </div>
       <center>
-        <div class="search-bar" style="">
-          <%= form_with url: top_path, method: :get, class: "d-flex my-3 form_style" do  |f| %>
-            <%= text_field_tag :query,
-                params[:query],
-                class: "form-control",
-                style: "background-color: white; margin-left: 5%; margin-right: -7%; border: none; width: 167px; border-radius: 10px; height: 42px",
-                placeholder: "Find a dish"
-                %>
-            <%= f.select(:type, ["Dish", "Restaurant"], {}, { class: "form_style_select" }) %>
+        <div class="search-bar" data-controller="typed-js">
+            <%= form_with url: top_path, method: :get, class: "d-flex my-3 form_style" do  |f| %>
+              <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  data: { typed_js_target: "input"},
+                  style: "background-color: white; margin-left: 5%; margin-right: -7%; border: none; width: 167px; border-radius: 10px; height: 42px"
+                  %>
+              <%= f.select(:type, ["Dish", "Restaurant"], {}, { class: "form_style_select mr-3" }) %>
             <button class= "button-search" >
               <i class="fa-solid fa-magnifying-glass mt-2"></i>
             </button>
@@ -23,54 +24,53 @@
   </div>
 </div>
 
-
 <div class="categories-container">
   <h2 class="index-title">Most Popular Categories</h1>
   <div class="category-cards-container">
     <%= link_to top_path(query: "Italian") do %>
-    <div class="category-card">
+    <div class="category-card grow-rotate">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810099/development/italian_food_hec9ov.png" alt="icon of spaghetti">
-      <p>Italian cuisine</p>
+      <p>Italian</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Asian") do %>
-    <div class="category-card">
+    <div class="category-card grow-rotate-2">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810475/development/asian_food_zn3hoi.png" alt="icon of spaghetti">
-      <p>Asian cuisine</p>
+      <p>Asian</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Christmas") do %>
-    <div class="category-card">
+    <div class="category-card grow-rotate">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810468/development/fireplace_vqj1pm.png" alt="icon of spaghetti">
-      <p>Christmas cuisine</p>
+      <p>Christmas</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Norwegian") do %>
-    <div class="category-card">
+    <div class="category-card grow-rotate-2">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810462/development/lefse_l3o5it.png" alt="icon of spaghetti">
-      <p>Norwegian cuisine</p>
+      <p>Norwegian</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Portuguese") do %>
-    <div class="category-card">
+    <div class="category-card grow-rotate">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810453/development/pastel-de-nata_uz2tnz.png" alt="icon of spaghetti">
-      <p>Portuguese cuisine</p>
+      <p>Portuguese</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Sushi") do %>
-    <div class="category-card">
+    <div class="category-card grow-rotate-2">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810446/development/sushi_neytlg.png" alt="icon of spaghetti">
       <p>Sushi</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Pasta") do %>
-    <div class="category-card">
+    <div class="category-card grow-rotate">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810417/development/spaghetti_ethggz.png" alt="icon of spaghetti">
       <p>Pasta</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Pizza") do %>
-    <div class="category-card">
+    <div class="category-card grow-rotate-2">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810438/development/pizza_sxdpza.png" alt="icon of spaghetti">
       <p>Pizza</p>
     </div>
@@ -82,19 +82,17 @@
   <div class="categories-container">
     <h2 Class="index-title">Best Pizzas in your area</h1>
     <div class="card-container">
-      <% @dishes.each do |dish| %>
+      <% @sorted_pizzas.each_with_index do |dish, rank| %>
         <%=link_to "dishes/#{dish.id}" do%>
-          <% if dish.category.food_type == "Pizza" %>
-          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path dish.photo.key %>')">
             <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
             <h2 class="card-name"><%= dish.name %></h2>
-            <h2 class="card-rank">Rank</h2>
+            <h2 class="card-rank">Rank: <%= rank + 1 %></h2>
             <p class="card-restaurant"><%= dish.restaurant.name %></p>
             <% if dish.category.food_type %>
               <p class="card-type"><%= dish.category.food_type %></p>
             <% end %>
           </div>
-          <% end %>
         <% end %>
       <% end %>
     </div>
@@ -102,13 +100,13 @@
   <div class="categories-container">
     <h2 Class="index-title">Best Sushi in your area</h1>
     <div class="card-container">
-      <% @dishes.each do |dish| %>
+      <% @sorted_sushi.each_with_index do |dish, rank| %>
         <%=link_to "dishes/#{dish.id}" do%>
           <% if dish.category.cuisine == "Asian" %>
-          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path dish.photo.key %>')">
             <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
             <h2 class="card-name"><%= dish.name %></h2>
-            <h2 class="card-rank">Rank</h2>
+            <h2 class="card-rank">Rank: <%= rank + 1 %></h2>
             <p class="card-restaurant"><%= dish.restaurant.name %></p>
             <% if dish.category.food_type %>
               <p class="card-type"><%= dish.category.food_type %></p>
@@ -122,13 +120,13 @@
   <div class="categories-container">
     <h2 Class="index-title">Best Francesinhas in your area</h1>
     <div class="card-container">
-      <% @dishes.each do |dish| %>
+      <% @sorted_francesinhas.each_with_index do |dish, rank| %>
         <%=link_to "dishes/#{dish.id}" do%>
           <% if dish.category.name == "Francesinha" %>
-          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path dish.photo.key %>')">
             <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
             <h2 class="card-name"><%= dish.name %></h2>
-            <h2 class="card-rank">Rank</h2>
+            <h2 class="card-rank">Rank: <%= rank + 1 %></h2>
             <p class="card-restaurant"><%= dish.restaurant.name %></p>
             <% if dish.category.food_type %>
               <p class="card-type"><%= dish.category.food_type %></p>

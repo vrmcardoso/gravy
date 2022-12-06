@@ -1,7 +1,6 @@
 .card-container {
   display: grid;
   grid-auto-flow: column;
-  // justify-content: center;
   height: 220px;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -23,6 +22,41 @@
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   position: relative;
+}
+
+.restaurant-card-category {
+  background-size: cover;
+  background-position: center;
+  height: 220px;
+  width: 90%;
+  justify-content: right;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+  margin: auto;
+}
+
+.restaurant-card-category-2 {
+  background-size: cover;
+  background-position: center;
+  height: 220px;
+  width: 90%;
+  justify-content: right;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+  margin: auto;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(asset_path('Restaurant.jpeg'));
 }
 
 .card-tops-category {
@@ -53,6 +87,17 @@
   font-weight: 200;
   top: 25px;
   right: 20px;
+}
+
+.card-cuisine-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: absolute;
+  font-size: 15px;
+  font-weight: 100;
+  top: 135px;
+  right: 20px;
+  grid-gap: 10px;
 }
 
 .card-name {
@@ -102,6 +147,17 @@
   padding: 3px 10px 1px 10px;
   border-radius: 20px;
   background: rgba(167, 167, 167, 0.5)
+}
+
+.card-type-list {
+  font-size: 15px;
+  margin-top: 3px;
+  background-color: rgb(186, 186, 186);
+  padding: 3px 10px 1px 10px;
+  border-radius: 20px;
+  background: rgba(167, 167, 167, 0.5);
+  text-align: center;
+
 }
 
 .cuisines-container {

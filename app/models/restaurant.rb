@@ -1,6 +1,7 @@
 class Restaurant < ApplicationRecord
   has_many :dishes, dependent: :destroy
   has_many :categories, through: :dishes
+  has_many :restaurant_categories
   has_one_attached :photo
 
   validates :name, presence: true

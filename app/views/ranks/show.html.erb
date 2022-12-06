@@ -13,12 +13,3 @@
 
 @dishes_category_zero = @user_ranked_dishes.filter { |user_ranked_dish| @all_user_categories_id[0] == user_ranked_dish.category.id }
 
-
- <ul> <% @relevant_categories.each do |relevant_categorie| %>
-  <li> Name: <%= relevant_categorie %> </li>
-      <ul>
-      <li>
-      </li>
-      </ul>
- <% end %>
- </ul>

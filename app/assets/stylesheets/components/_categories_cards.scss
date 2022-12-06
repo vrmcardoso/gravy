@@ -9,6 +9,63 @@
   font-weight: 300;
 }
 
+@mixin hideTapHighlightColor() {
+	//Prevent highlight colour when element is tapped
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+@mixin hardwareAccel() {
+	//Improve performance on mobile/tablet devices
+	transform: translateZ(0);
+}
+
+@mixin improveAntiAlias() {
+	//Improve aliasing on mobile/tablet devices
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.grow-rotate {
+  display: inline-block;
+	transition-duration: .3s;
+	transition-property: transform;
+
+	@include hideTapHighlightColor();
+	@include hardwareAccel();
+	@include improveAntiAlias();
+
+	&:hover {
+		transform: scale(1.1) rotate(4deg);
+	}
+}
+
+.grow-rotate-2 {
+  display: inline-block;
+	transition-duration: .3s;
+	transition-property: transform;
+
+	@include hideTapHighlightColor();
+	@include hardwareAccel();
+	@include improveAntiAlias();
+
+	&:hover {
+		transform: scale(1.1) rotate(-4deg);
+	}
+}
+
+.grow {
+	display: inline-block;
+	transition-duration: .3s;
+	transition-property: transform;
+
+	@include hideTapHighlightColor();
+	@include hardwareAccel();
+	@include improveAntiAlias();
+
+	&:hover {
+		transform: scale(1.1);
+	}
+}
+
 .category-cards-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -17,26 +74,29 @@
 }
 
 .category-card {
-  width: 110px;
-  height: 90px;
-  border: 1px solid;
+  width: 122px;
+  height: 100px;
+  border: 0px solid;
   border-radius: 15px;
   border-color: rgb(187, 187, 187);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  box-shadow: 2px 2px 4px 1px rgba(54, 54, 54, 0.324);
 }
 
 .category-card img {
   width: 40px;
-  margin-top: 15px;
+  margin-top: 12px;
 }
 
 .category-card p {
-  color: #FFBB2E;
-  margin-top: 5px;
-  font-size: 12px;
+  color: #323232;
+  margin-top: 9px;
+  font-size: 16px;
+  font-weight: bold;
+
 }
 
 .categories-container-alerg {

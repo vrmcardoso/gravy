@@ -13,6 +13,10 @@
                 <div class="card-category-alerg">
                     <p><%= @restaurant.description %></p>
                     <p><%= @restaurant.address %></p>
+                    <h4>Points:</h4>
+                    <% @categories_ranks.each do |category| %>
+                      <p><%= category[:name] %>: <%= category[:points] %></p>
+                      <% end %>
                 </div>
             </div>
         </div>
@@ -28,7 +32,7 @@
                     data-map-markers-value="<%= @markers.to_json %>"
                     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
             </div>
-            
+
         </div>
     </div>
 

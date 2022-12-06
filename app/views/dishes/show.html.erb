@@ -1,35 +1,23 @@
-<div class="width-container-rest">
-    <div class="row justify-content-center mt-3 mb-3">
-        <div class="col-9">
-            <div>
-                <h1><%= @dish.name %></h1>
-                <%= cl_image_tag @dish.photo.key, class: "border-card" %>
-            </div>
+<div class="profile-container">
+  <div class="profile-main-container">
+    <div class="banner-container">
+      <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @dish.photo.key %>');">
+        <div class="container">
+          <h1><%= @dish.name %></h1>
         </div>
-        <div class="col-3 d-flex justify-content-between flex-column">
-            <div class="border-card card" style="height: 48%">
-                <div class="border-card p-1">
-                <h3><%= @dish.restaurant.name %></h3>
-
-                <%= link_to restaurant_path(@dish.restaurant) do %>
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                <% end %>
-            </div>
-            <div class="border-card-map card">
-                <div class="map-border"
-                    data-controller="map"
-                    data-map-markers-value="<%= @markers.to_json %>"
-                    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-            </div>
-        </div>
+      </div>
     </div>
-
-
-    <div class="row m-0 mb-3">
-      <div class="col-9">
-          <div class="mt-4">
-                <p><%= @dish.recipe %></p>
-              <div class="categories-container-alerg">
+    <div class="dish-info">
+      <div class="dish-copy">
+        <h4><%= @dish.recipe %></h4>
+        <h5>Price: $$</h5>
+        <h4>sum_points: <%= @dish.sum_points %></h4>
+        <%= simple_form_for [@dish,@rank] do |f| %>
+          <%= f.input :ranking, collection: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+      <div class="categories-container-alerg">
                   <div class="category-cards-container-alerg">
                       <div class="category-card-alerg">
                               <% if @dish.milk? %>
@@ -87,7 +75,25 @@
                       </div>
                   </div>
               </div>
-          </div>
-      </div>
     </div>
+  </div>
+
+  <div class="profile-sidebar-2">
+    <%= link_to restaurant_path(@restaurant) do %>
+      <div class="restaurant-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path @dish.photo.key %>')">
+        <div class="card-cuisine-list">
+          <% @cuisines.each do |cuisine| %>
+            <p class="card-type-list"><%= cuisine %> </p>
+          <% end %>
+        </div>
+        <h2 class="card-name"><%= @restaurant.name %></h2>
+        <h2 class="card-rank">Rank</h2>
+      </div>
+    <% end %>
+    <div class="map-border"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 </div>

@@ -7,6 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "Cleaning database..."
+Rank.destroy_all
 Restaurant.destroy_all
 Category.destroy_all
 User.destroy_all
@@ -14,11 +15,11 @@ User.destroy_all
 puts "Creating restaurants and dishes..."
 
 user1 = User.create(
-  email: "vasco@gmail.com",
-  password: "111111",
-  first_name: "Vasco",
-  last_name: "Cardoso",
-  address: "Le Wagon Lisboa"
+   email: "vasco@gmail.com",
+   password: "111111",
+   first_name: "Vasco",
+   last_name: "Cardoso",
+   address: "Le Wagon Lisboa"
 )
 
 user2 = User.create(
