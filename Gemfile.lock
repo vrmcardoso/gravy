@@ -302,7 +302,6 @@ DEPENDENCIES
   pg_search
   puma (~> 5.0)
   rails (~> 7.0.4)
-  rest-client
   sassc-rails
   selenium-webdriver
   simple_form!
