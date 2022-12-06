@@ -86,30 +86,3 @@
 </div>
 
 <% end  %>
-
-<!-- <% @results.first(10).each do |restaurant| %>
-    <%= link_to restaurant_path(restaurant) do %>
-      <% if restaurant.photo.attached? %>
-        <div class="restaurant-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url(‘<%= cl_image_path restaurant.photo.key %>’)">
-          <div class="card-cuisine-list">
-            <% @cuisines.each do |cuisine| %>
-              <p class="card-type-list"><%= cuisine %> </p>
-            <% end %>
-          </div>
-          <h2 class="card-name"><%= restaurant.name %></h2>
-          <h2 class="card-rank">Rank</h2>
-        </div>
-      <% else %>
-        <div class="restaurant-card-category-2">
-          <div class="card-cuisine-list">
-            <% @cuisines.each do |cuisine| %>
-              <p class="card-type-list"><%= cuisine %> </p>
-            <% end %>
-          </div>
-          <h2 class="card-name"><%= restaurant.name %></h2>
-          <h2 class="card-rank">Rank</h2>
-        </div>
-      <% end %>
-    <% end %>
-  <% end %>
- >
