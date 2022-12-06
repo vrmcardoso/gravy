@@ -6,17 +6,12 @@
           <div class="dish-banner-cats">
               <h4 class="card-cat">#<%= @dish_rank %> in <%= @dish_category.name %></h4>
           </div>
-          <h5>Price: $$</h5>
+          <h5><%= @dish.price %>€</h5>
       </div>
     </div>
     <div class="dish-info">
       <div class="dish-copy">
         <h4><%= @dish.recipe %></h4>
-        <%= simple_form_for [@dish,@rank] do |f| %>
-          <%= f.input :ranking, collection: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
-          <%= f.button :submit %>
-        <% end %>
-      </div>
       <div class="categories-container-alerg">
                   <div class="category-cards-container-alerg">
                       <div class="category-card-alerg">
@@ -75,15 +70,20 @@
                       </div>
                   </div>
               </div>
+        <%= simple_form_for [@dish,@rank] do |f| %>
+          <%= f.input :ranking, collection: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
     </div>
   </div>
 
   <div class="profile-sidebar-2">
     <%= link_to restaurant_path(@restaurant) do %>
-      <div class="restaurant-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path @dish.photo.key %>')">
+      <div class="restaurant-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path @restaurant.photo.key %>')">
         <div class="card-cuisine-list">
           <% @cuisines.each do |cuisine| %>
-            <p class="card-type-list"><%= cuisine %> </p>
+            <p class="card-type-list" style="margin-left:-55px;"><%= cuisine %> </p>
           <% end %>
         </div>
         <h2 class="card-name"><%= @restaurant.name %></h2>
