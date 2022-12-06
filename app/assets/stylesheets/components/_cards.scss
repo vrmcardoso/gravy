@@ -89,6 +89,31 @@
   right: 20px;
 }
 
+.card-name {
+  position: absolute;
+  font-size: 20px;
+  font-weight: 400;
+  top: 40px;
+  right: 20px;
+  margin-top: 3px;
+}
+
+.card-name-show1 {
+  position: absolute;
+  font-size: 20px;
+  font-weight: 400;
+  top: 40px;
+  right: 60px;
+  margin-top: 3px;
+}
+
+.card-cuisine-show-rest {
+  font-size: 16px;
+  font-weight: 200;
+  top: 25px;
+  right: 20px;
+}
+
 .card-cuisine-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -100,8 +125,7 @@
   grid-gap: 10px;
 }
 
-.card-name {
-  position: absolute;
+.card-name-show-rest {
   font-size: 20px;
   font-weight: 400;
   top: 40px;
@@ -214,7 +238,6 @@
   font-size: 24px;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  position: relative;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
 }
@@ -329,4 +352,42 @@
   overflow-y: hidden;
   white-space: nowrap;
   max-width: 100%;
+}
+
+.card-name-show-dish {
+  font-size: 20px;
+  font-weight: 400;
+  top: 40px;
+  right: 20px;
+  margin-top: 3px;
+}
+
+.card-cuisine-show-dish {
+  font-size: 16px;
+  font-weight: 200;
+  top: 25px;
+  right: 20px;
+}
+
+.card-restaurant-show-dish {
+  font-size: 16px;
+  font-weight: 100;
+  top: 105px;
+  right: 20px;
+  margin-top: 3px;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-type-show-dish {
+  font-size: 15px;
+  font-weight: 100;
+  top: 135px;
+  right: 20px;
+  margin-top: 3px;
+  background-color: rgb(186, 186, 186);
+  padding: 3px 10px 1px 10px;
+  border-radius: 20px;
+  background: rgba(167, 167, 167, 0.5);
+  width: 66px;
 }
