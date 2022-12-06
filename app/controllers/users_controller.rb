@@ -74,10 +74,8 @@ class UsersController < ApplicationController
         @rank_ranking = @rank.ranking
         @results << { id: @id, rank: @rank_ranking }
       end
-      @result = @results.sort_by { |result| result[:rank] }.reverse
+      @result = @results.sort_by { |result| result[:rank] }
       @dishes_sorted = @result.map { |result| Dish.find(result[:id]) }
-
-
     else
       @dishes_sorted = []
     end
