@@ -4,7 +4,7 @@
       <div class="animation-text">
         Find the best<div class="flip"><div><div>Pizza</div></div><div><div>Pastel de nata</div></div><div><div>Gravy</div></div></div>in your town
       </div>
-      <center>
+          <center>
         <div class="search-bar" data-controller="typed-js">
             <%= form_with url: top_path, method: :get, class: "d-flex my-3 form_style" do  |f| %>
               <%= text_field_tag :query,
@@ -17,9 +17,9 @@
             <button class= "button-search" >
               <i class="fa-solid fa-magnifying-glass mt-2"></i>
             </button>
-          <% end %>
+            <% end %>
         </div>
-      </center>
+          </center>
     </div>
   </div>
 </div>
