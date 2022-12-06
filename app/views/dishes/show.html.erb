@@ -81,13 +81,8 @@
   <div class="profile-sidebar-2">
     <%= link_to restaurant_path(@restaurant) do %>
       <div class="restaurant-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path @restaurant.photo.key %>')">
-        <div class="card-cuisine-list">
-          <% @cuisines.each do |cuisine| %>
-            <p class="card-type-list" style="margin-left:-55px;"><%= cuisine %> </p>
-          <% end %>
-        </div>
-        <h2 class="card-name"><%= @restaurant.name %></h2>
-        <div class="restaurant-card-rank">
+        <h2 class="card-name-show1"><%= @restaurant.name %></h2>
+        <div class="restaurant-card-rank" style="margin-right:30px;">
           <% @position.each do |rank| %>
             <p>#<%= rank[:position] %> <%= Category.find(rank[:category]).name %></p>
             <% end %>
