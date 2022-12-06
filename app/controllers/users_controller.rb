@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     end
 
     rank
+
   end
 
   def edit
@@ -61,7 +62,7 @@ class UsersController < ApplicationController
     end
 
     @total_user_categories = @total_user_categories.uniq
-    @user_ranked_dishes = @all_dishes.filter { |dish| @relevant_categories.include? dish.category.name }
+    @user_ranked_dishes = @all_dishes.filter { |dish| @relevant_categories.include? dish.category.name }.reverse
     @results = []
 
     if params[:query].present?
@@ -77,7 +78,7 @@ class UsersController < ApplicationController
 
       @result = @results.sort_by { |result| result[:rank] }.reverse
       @dishes_sorted = @result.map { |result| Dish.find(result[:id]) }
-
+      
 
     else
       @dishes_sorted = []
