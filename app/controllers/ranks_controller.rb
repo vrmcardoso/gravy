@@ -52,8 +52,8 @@ class RanksController < ApplicationController
     new_rank = rank_params["ranking"].to_i
     @rank.user = current_user
     @rank.dish = @dish
+    rank_rearrange(@dish, new_rank)
     if @rank.save
-      rank_rearrange(@dish, new_rank)
       @dish.update(sum_points: ranking_converter(@dish.sum_points, rank_params["ranking"].to_i))
       restaurant_points_update(Restaurant.find(@dish.restaurant_id))
       redirect_to @dish
