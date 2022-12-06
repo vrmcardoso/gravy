@@ -1,12 +1,12 @@
 <% if @type == "Dish" %>
-  <div class="">
+  <div>
     <% count = 0 %>
     <% @results.first(10).each do |dish| %>
       <%= link_to dish_path(dish) do %>
         <% count += 1 %>
         <div class="card-container-2">
           <div class="both-boxes mt-3">
-            <div class="card-category-3" style="background-image: linear-gradient(to right, rgba(10,10,10,0.5), rgba(10,10,10,1)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg);"></div>
+            <div class="card-category-3" style="background-image: linear-gradient(to right, rgba(1,1,1,0.5), rgba(1,1,1,1)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg);"></div>
               <% if count == 1 %>
                 <div class="rank-box">
                     <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669981076/development/Badges_1_cxbraw.png" alt="">
@@ -45,7 +45,7 @@
     <% end %>
   </div>
 <% else %>
-<div class="">
+<div>
   <% count = 0 %>
   <% @results.first(10).each do |restaurant| %>
     <%= link_to restaurant_path(restaurant) do %>
