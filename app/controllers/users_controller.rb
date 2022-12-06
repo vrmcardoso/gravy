@@ -62,12 +62,12 @@ class UsersController < ApplicationController
     end
 
     @total_user_categories = @total_user_categories.uniq
-    @user_ranked_dishes = @all_dishes.filter { |dish| @relevant_categories.include? dish.category.name }.reverse
+    @user_ranked_dishes = @all_dishes.filter { |dish| @relevant_categories.include? dish.category.name }
     @results = []
 
     if params[:query].present?
       @target_category = @categories.find(params[:query])
-      @user_target_category_dishes = @user_ranked_dishes.filter { |user_ranked_dish| @all_user_categories_id[@target_category.id] == user_ranked_dish.category.id }
+      @user_target_category_dishes = @user_ranked_dishes.filter { |user_ranked_dish| @all_user_categories_id.include?(user_ranked_dish.category.id) }
 
       @user_target_category_dishes.each do |dish|
         @id = dish.id
@@ -78,8 +78,8 @@ class UsersController < ApplicationController
 
       @result = @results.sort_by { |result| result[:rank] }.reverse
       @dishes_sorted = @result.map { |result| Dish.find(result[:id]) }
-      
 
+      
     else
       @dishes_sorted = []
     end
