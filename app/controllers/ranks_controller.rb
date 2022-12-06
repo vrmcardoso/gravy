@@ -122,10 +122,12 @@ class RanksController < ApplicationController
           end
         end
       else
-        rank_to_update = rank.ranking
-        rank.update(ranking: rank.ranking + 1)
-        dish = Dish.find(rank.dish_id)
-        dish.update(sum_points: ranking_converter(dish.sum_points, rank.ranking, rank_to_update))
+        if rank.ranking >= new_rank
+          rank_to_update = rank.ranking
+          rank.update(ranking: rank.ranking + 1)
+          dish = Dish.find(rank.dish_id)
+          dish.update(sum_points: ranking_converter(dish.sum_points, rank.ranking, rank_to_update))
+        end
       end
     end
   end
