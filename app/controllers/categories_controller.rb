@@ -73,6 +73,7 @@ class CategoriesController < ApplicationController
     @categories.each do |category|
       @cuisines << category.cuisine
     end
+    @cuisines = @cuisines.uniq
     return @cuisines
   end
 
@@ -82,6 +83,7 @@ class CategoriesController < ApplicationController
     @categories.each do |category|
       @food_types << category.food_type
     end
+    @food_types = @food_types.uniq
     return @food_types
   end
 
@@ -91,6 +93,7 @@ class CategoriesController < ApplicationController
     @categories.each do |category|
       @names << category.name
     end
+    @names = @names.uniq
     return @names
   end
 

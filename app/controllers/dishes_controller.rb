@@ -78,6 +78,7 @@ class DishesController < ApplicationController
     @restaurant_categories.each do |category|
       @categories << Category.find(category.category_id)
     end
+    @categories = @categories.uniq
     @cuisines = []
     @categories.each do |category|
       @cuisines << category.cuisine
@@ -95,9 +96,10 @@ class DishesController < ApplicationController
         image_url: helpers.asset_url("IconGrande.png")
       }]
 
-    @cuisines.each do |cuisine|
-      rank_restaurant(@restaurant, cuisine)
-    end
+    rank_restaurant(@restaurant)
+    @dish_category = Category.find(@dish.category_id)
+    rank_dish(@dish, @dish_category)
+
   end
 
   private
@@ -111,7 +113,7 @@ class DishesController < ApplicationController
           @sorted_dishes << dish
         end
     end
-    @sorted_dishes.sort_by { |dish| dish.sum_points }
+    @sorted_dishes.sort_by { |dish| dish.sum_points }.reverse
   end
 
   def sort_dishes_by_cuisine(cuisine)
@@ -123,7 +125,7 @@ class DishesController < ApplicationController
           @sorted_dishes << dish
         end
     end
-    @sorted_dishes.sort_by { |dish| dish.sum_points }
+    @sorted_dishes.sort_by { |dish| dish.sum_points }.reverse
   end
 
   def sort_dishes_by_name(name)
@@ -135,17 +137,34 @@ class DishesController < ApplicationController
           @sorted_dishes << dish
         end
     end
-    @sorted_dishes.sort_by { |dish| dish.sum_points }
+    @sorted_dishes.sort_by { |dish| dish.sum_points }.reverse
   end
 
-  def rank_restaurant(restaurant, cuisine)
-    all_restaurants = Restaurant.all
-    target_restaurants = all_restaurants.select { |rest| rest.categories.each { |cat| cat.cuisine == cuisine }}
-    all_restaurant_categories = RestaurantCategory.all
-    target_categories = Category.where("cuisine = ?", cuisine)
-    target_restaurant_categories = all_restaurant_categories.select { |rest_cat| target_categories.include?(rest_cat.category) }
-    
+  def rank_restaurant(restaurant)
+    restaurant_categories = RestaurantCategory.all
+    target_restaurant_categories = restaurant_categories.select { |res_cat| res_cat.restaurant_id == restaurant.id }
+    target_categories = []
+    target_restaurant_categories.each do |res_cat|
+      target_categories << { category: res_cat.category_id, points: res_cat.points }
+    end
+    target_categories = target_categories.uniq
+    @position = []
+    target_categories.each do |category|
+      all_target_category_restaurants = restaurant_categories.select { |res_cat| res_cat.category_id == category[:category] }
+      target_restaurants = []
+      all_target_category_restaurants.each do |res_cat|
+        target_restaurants << { restaurant: res_cat.restaurant_id, points: res_cat.points }
+      end
+      target_restaurant_sort = target_restaurants.sort_by { |result| result[:points] }.reverse
+      target_restaurant_sort = target_restaurant_sort.map { |result| Restaurant.find(result[:restaurant]) }
+      @position << { category: category[:category], position: (target_restaurant_sort.find_index(Restaurant.find(restaurant.id)) + 1) }
+      @position = @position.uniq
+    end
+  end
 
+  def rank_dish(dish, category)
+    sorted_dishes = sort_dishes_by_name(category.name)
+    @dish_rank = (sorted_dishes.find_index(Dish.find(dish.id)) + 1)
   end
   # def cuisine
   #   @dishes = = Dish.global_search(params[:query])

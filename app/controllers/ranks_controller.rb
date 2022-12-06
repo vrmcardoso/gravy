@@ -119,7 +119,7 @@ class RanksController < ApplicationController
     @restaurant_categories = RestaurantCategory.where("restaurant_id = ?", restaurant.id)
     sum = 0
     @restaurant_categories.each do |rest_category|
-      @restaurant.dishes.each do |dish|
+      restaurant.dishes.each do |dish|
         sum += dish.sum_points
       end
       rest_category.update(points: sum)

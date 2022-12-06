@@ -1,17 +1,17 @@
 <div class="profile-container">
   <div class="profile-main-container">
     <div class="banner-container">
-      <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @dish.photo.key %>');">
-        <div class="container">
+      <div class="dish-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @dish.photo.key %>');">
           <h1><%= @dish.name %></h1>
-        </div>
+          <div class="dish-banner-cats">
+              <h4 class="card-cat">#<%= @dish_rank %> in <%= @dish_category.name %></h4>
+          </div>
+          <h5>Price: $$</h5>
       </div>
     </div>
     <div class="dish-info">
       <div class="dish-copy">
         <h4><%= @dish.recipe %></h4>
-        <h5>Price: $$</h5>
-        <h4>sum_points: <%= @dish.sum_points %></h4>
         <%= simple_form_for [@dish,@rank] do |f| %>
           <%= f.input :ranking, collection: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
           <%= f.button :submit %>
@@ -87,7 +87,11 @@
           <% end %>
         </div>
         <h2 class="card-name"><%= @restaurant.name %></h2>
-        <h2 class="card-rank">Rank</h2>
+        <div class="restaurant-card-rank">
+          <% @position.each do |rank| %>
+            <p>#<%= rank[:position] %> <%= Category.find(rank[:category]).name %></p>
+            <% end %>
+        </div>
       </div>
     <% end %>
     <div class="map-border"

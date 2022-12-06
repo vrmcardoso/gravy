@@ -42,3 +42,77 @@
 .switch-field label:last-of-type {
 	border-radius: 0 4px 4px 0;
 }
+
+
+.toggle-dish-checked {
+  background-color: #FFBB2E;
+	box-shadow: none;
+  color: rgba(0, 0, 0, 0.6);
+	font-size: 14px;
+	line-height: 1;
+	text-align: center;
+	padding: 8px 16px;
+	margin-right: -1px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	transition: all 0.1s ease-in-out;
+  border-radius: 4px 0 0 4px;
+
+}
+
+.toggle-dish-checked:hover {
+	cursor: pointer;
+}
+
+.toggle-dish {
+  background-color: #e4e4e4;
+	color: rgba(0, 0, 0, 0.6);
+	font-size: 14px;
+	line-height: 1;
+	text-align: center;
+	padding: 8px 16px;
+	margin-right: -1px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+	transition: all 0.1s ease-in-out;
+  border-radius: 4px 0 0 4px;
+}
+
+.toggle-dish:hover {
+	cursor: pointer;
+}
+
+.toggle-res-checked {
+  background-color: #FFBB2E;
+	box-shadow: none;
+  color: rgba(0, 0, 0, 0.6);
+	font-size: 14px;
+	line-height: 1;
+	text-align: center;
+	padding: 8px 16px;
+	margin-right: -1px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	transition: all 0.1s ease-in-out;
+  border-radius: 0 4px 4px 0;
+}
+
+.toggle-res-checked:hover {
+	cursor: pointer;
+}
+
+.toggle-res {
+  background-color: #e4e4e4;
+	color: rgba(0, 0, 0, 0.6);
+	font-size: 14px;
+	line-height: 1;
+	text-align: center;
+	padding: 8px 16px;
+	margin-right: -1px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+	transition: all 0.1s ease-in-out;
+  border-radius: 0 4px 4px 0;
+}
+
+.toggle-res:hover {
+	cursor: pointer;
+}
