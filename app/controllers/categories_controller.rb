@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
           cuisine_dishes = dishes.select { |dish| dish.category.cuisine == result }
           @results = cuisine_dishes.sort_by { |dish| dish.sum_points}.reverse
         else
-          "Wrong input"
+          
         end
       else # type == "Restaurant"
         if @names.include? "#{result}"
