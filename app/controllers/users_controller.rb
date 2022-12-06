@@ -79,7 +79,6 @@ class UsersController < ApplicationController
       @dishes_sorted = @result.map { |result| Dish.find(result[:id]) }
 
 
-      
     else
       @dishes_sorted = []
     end
