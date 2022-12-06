@@ -67,7 +67,7 @@ class RanksController < ApplicationController
     @rank = current_user.ranks.find_by(dish: @dish)
     old_rank = @rank.ranking.to_i
     new_rank = rank_params["ranking"].to_i
-    rank_rearrange(@dish, new_rank)
+    rank_rearrange(@dish, new_rank, old_rank)
     @rank.update(ranking: new_rank)
     @dish.update(sum_points: ranking_converter(@dish.sum_points, new_rank, old_rank))
     restaurant_points_update(Restaurant.find(@dish.restaurant_id))
@@ -95,7 +95,7 @@ class RanksController < ApplicationController
     return output
   end
 
-  def rank_rearrange(dish, new_rank)
+  def rank_rearrange(dish, new_rank, old_rank=nil)
     @category = Category.find(dish.category_id)
     @dishes = Dish.where("category_id = ?", @category.id)
     @ranks = []
@@ -105,11 +105,27 @@ class RanksController < ApplicationController
       end
     end
     @ranks.each do |rank|
-      if rank.ranking >= new_rank
-        old_rank = rank.ranking
+      if old_rank
+        if new_rank < old_rank
+          if rank.ranking < old_rank && rank.ranking >= new_rank
+            rank_to_update = rank.ranking
+            rank.update(ranking: rank.ranking + 1)
+            dish = Dish.find(rank.dish_id)
+            dish.update(sum_points: ranking_converter(dish.sum_points, rank.ranking, rank_to_update))
+          end
+        else
+          if rank.ranking > old_rank && rank.ranking <= new_rank
+            rank_to_update = rank.ranking
+            rank.update(ranking: rank.ranking - 1)
+            dish = Dish.find(rank.dish_id)
+            dish.update(sum_points: ranking_converter(dish.sum_points, rank.ranking, rank_to_update))
+          end
+        end
+      else
+        rank_to_update = rank.ranking
         rank.update(ranking: rank.ranking + 1)
         dish = Dish.find(rank.dish_id)
-        dish.update(sum_points: ranking_converter(dish.sum_points, rank.ranking, old_rank))
+        dish.update(sum_points: ranking_converter(dish.sum_points, rank.ranking, rank_to_update))
       end
     end
   end
