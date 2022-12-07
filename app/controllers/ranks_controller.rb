@@ -54,7 +54,7 @@ class RanksController < ApplicationController
     rank_rearrange(@dish, new_rank)
     if @rank.save
       @dish.update(sum_points: ranking_converter(@dish.sum_points, rank_params["ranking"].to_i))
-      restaurant_points_update(Restaurant.find(@dish.restaurant_id))
+      restaurant_points_update(@dish.restaurant, @dish.category)
       redirect_to @dish
     else
       render "dishes/show", status: :unprocessable_entity
@@ -73,7 +73,7 @@ class RanksController < ApplicationController
     redirect_to @dish
   end
 
-  
+
   def move
     @rank = Rank.find(params[:id])
     new_position = params[:position].to_i
@@ -83,7 +83,7 @@ class RanksController < ApplicationController
     @rank.update(ranking: new_position)
     @dish.update(sum_points: ranking_converter(@dish.sum_points, new_position, old_position))
     restaurant_points_update(@dish.restaurant)
-    
+
     redirect_to user_path(current_user, query: @dish.category.id)
   end
 
