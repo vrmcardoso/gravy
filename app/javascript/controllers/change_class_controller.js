@@ -8,6 +8,5 @@ export default class extends Controller {
     const urlParams = new URLSearchParams(queryString);
     let selected = urlParams.get("query")
     document.getElementById(selected).classList.add("icon-card-active")
-    document.getElementById(selected)
   }
 }
