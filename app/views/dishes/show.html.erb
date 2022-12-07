@@ -25,53 +25,41 @@
         <div class="categories-container mb-5">
           <h4 class="mb-3">Allergens:</h4>
             <div class="alergy-cards-container">
-              <% if @dish.milk? %>
+              <% if @dish.milk %>
                 <div class="category-card">
                   <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1670341672/development/milk_kbpgag.png" alt="icon of milk">
                   <p>Milk</p>
                 </div>
-                <% else %>
-                <div></div>
               <% end %>
-              <% if @dish.peanuts? %>
+              <% if @dish.peanuts %>
                 <div class="category-card">
                   <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1670341655/development/peanuts_qiso2i.png" alt="icon of milk">
                   <p>Peanuts</p>
                 </div>
-                <% else %>
-                <div></div>
               <% end %>
-              <% if @dish.eggs? %>
+              <% if @dish.eggs %>
                 <div class="category-card">
                   <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1670341658/development/eggs_fkvojb.png" alt="icon of milk">
                   <p>Eggs</p>
                 </div>
-                <% else %>
-                <div></div>
               <% end %>
-              <% if @dish.shellfish? %>
+              <% if @dish.shellfish %>
                 <div class="category-card">
                   <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1670341662/development/shellfish_a91mec.png" alt="icon of milk">
                   <p>Shellfish</p>
                 </div>
-                <% else %>
-                <div></div>
               <% end %>
-              <% if @dish.wheat? %>
+              <% if @dish.wheat %>
                 <div class="category-card-alerg">
                   <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1670341665/development/wheat_aqaagn.png" alt="icon of milk">
                   <p>Wheat</p>
                 </div>
-                <% else %>
-                <div></div>
               <% end %>
-              <% if @dish.soy? %>
+              <% if @dish.soy %>
                 <div class="category-card">
                   <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1670341668/development/soy_k61seq.png" alt="icon of milk">
                   <p>Soy</p>
                 </div>
-                <% else %>
-                <div></div>
               <% end %>
             </div>
         </div>
