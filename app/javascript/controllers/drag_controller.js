@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import Sortable from "sortablejs"
-import Rails from "@rails/ujs"; 
+import Rails from "@rails/ujs";
 
 export default class extends Controller {
 
@@ -11,8 +11,8 @@ export default class extends Controller {
     })
   }
 
-  end(event) {   
-    // console.log(event)  
+  end(event) {
+    // console.log(event)
     // console.log(event.newDraggableIndex)
     // console.log(event.oldDraggableIndex)
     const allCards = document.querySelectorAll(".rank-box-2");
@@ -20,15 +20,15 @@ export default class extends Controller {
     `<img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669981082/development/Badges_3_pjuj8b.png" alt=""></img>`,`<img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669981192/development/Badges_last_kdbz6c.png" alt=""></img>`]
     let count = 1
     console.log(images[count-1])
-    allCards.forEach((card) => { 
+    allCards.forEach((card) => {
       if ( count >= 4) {
         let number = `<p>${count}</p>`;
-        card.innerHTML = "";      
+        card.innerHTML = "";
         card.insertAdjacentHTML("beforeend", images[3]);
         card.insertAdjacentHTML("beforeend", number);
       } else {
         let number = `<p>${count}</p>`;
-        card.innerHTML = "";      
+        card.innerHTML = "";
         card.insertAdjacentHTML("beforeend", images[count-1]);
         card.insertAdjacentHTML("beforeend", number);
       }
