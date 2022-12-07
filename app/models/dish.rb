@@ -14,4 +14,8 @@ class Dish < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
+
+  def rank(user)
+    Rank.find_by(user: user, dish: self)
+  end
 end
