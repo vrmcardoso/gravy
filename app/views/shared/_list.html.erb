@@ -1,12 +1,14 @@
 <% if @type == "Dish" %>
-  <div class="">
+  <div>
     <% count = 0 %>
     <% @results.first(10).each do |dish| %>
       <%= link_to dish_path(dish) do %>
         <% count += 1 %>
         <div class="card-container-2">
           <div class="both-boxes mt-3">
-            <div class="card-category-3" style="background-image: linear-gradient(to right, rgba(10,10,10,0.2), rgba(10,10,10,1)), url('<%= cl_image_path dish.photo.key %>');"></div>
+            
+            <div class="card-category-3" style="background-image: linear-gradient(to right, rgba(1,1,1,0.5), rgba(1,1,1,1)), url('<%= cl_image_path dish.photo.key %>');"></div>
+
               <% if count == 1 %>
                 <div class="rank-box">
                     <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669981076/development/Badges_1_cxbraw.png" alt="">
@@ -45,16 +47,26 @@
     <% end %>
   </div>
 <% else %>
-  <% if   %>
-  <div class="">
-    <% count = 0 %>
-    <% @results.first(10).each do |restaurant| %>
-      <%= link_to restaurant_path(restaurant) do %>
-        <% count += 1 %>
-        <div class="card-container-2">
-          <div class="both-boxes mt-3">
-            <div class="card-category-3" style="background-image: linear-gradient(to right, rgba(10,10,10,0.2), rgba(10,10,10,1)), url('<%= cl_image_path restaurant.photo.key %>');"></div>
-            <% if count == 1 %>
+
+<div>
+  <% count = 0 %>
+  <% @results.first(10).each do |restaurant| %>
+    <%= link_to restaurant_path(restaurant) do %>
+      <% count += 1 %>
+      <div class="card-container-2">
+        <div class="both-boxes mt-3">
+          <div class="card-category-3" style="background-image: linear-gradient(to right, rgba(10,10,10,0.2), rgba(10,10,10,1)), url('<%= cl_image_path restaurant.photo.key %>');"></div>
+          <% if count == 1 %>
+            <div class="rank-box">
+                <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669981076/development/Badges_1_cxbraw.png" alt="">
+                <p><%= count %></p>
+            </div>
+          <% elsif count == 2 %>
+              <div class="rank-box">
+                <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669981079/development/Badges_2_rrxvil.png" alt="">
+                <p><%= count %></p>
+              </div>
+          <% elsif count == 3 %>
               <div class="rank-box">
                   <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669981076/development/Badges_1_cxbraw.png" alt="">
                   <p><%= count %></p>

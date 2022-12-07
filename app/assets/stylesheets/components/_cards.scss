@@ -115,14 +115,22 @@
 }
 
 .card-cuisine-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   position: absolute;
   font-size: 15px;
   font-weight: 100;
   top: 135px;
   right: 20px;
   grid-gap: 10px;
+}
+
+.card-rank-list {
+  display: flex;
+  gap: 5px;
+  position: absolute;
+  top: 90px;
+  right: 20px;
+  margin-top: 3px;
 }
 
 .card-name-show-rest {
@@ -149,12 +157,9 @@
 }
 
 .restaurant-card-rank {
-  position: absolute;
   font-size: 18px;
   font-weight: 300;
-  top: 90px;
-  right: 20px;
-  margin-top: 3px;
+
 }
 
 .card-restaurant {
@@ -243,7 +248,7 @@
 }
 
 .rank-box {
-  background-color: rgb(10, 10, 10);
+  background-color: rgb(1, 1, 1);
   width:20%;
   position: relative;
   height: 180px;
@@ -254,7 +259,7 @@
 }
 
 .rank-box-2 {
-  background-color: rgb(10, 10, 10);
+  background-color: rgb(1, 1, 1);
   width:30%;
   position: relative;
   height: 180px;

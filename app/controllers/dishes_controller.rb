@@ -99,6 +99,8 @@ class DishesController < ApplicationController
     rank_restaurant(@restaurant)
     @dish_category = Category.find(@dish.category_id)
     rank_dish(@dish, @dish_category)
+    sort_dishes_by_name(@dish.category.name)
+    @dropdown_size = @sorted_dishes.size
 
   end
 

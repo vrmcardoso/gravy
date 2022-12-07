@@ -29,7 +29,7 @@ class CategoriesController < ApplicationController
           @results = food_type_dishes.sort_by { |dish| dish.sum_points}.reverse
         elsif @cuisines.include? "#{result}"
           @cuisine_dishes = dishes.select { |dish| dish.category.cuisine == result }
-          @results = cuisine_dishes.sort_by { |dish| dish.sum_points}.reverse
+          @results = @cuisine_dishes.sort_by { |dish| dish.sum_points}.reverse
         else
           # @results = Restaurant.where("name ILIKE ?", "%#{params[:query]}%")
         end
@@ -66,7 +66,7 @@ class CategoriesController < ApplicationController
             final_restaut << @restaurants.select { |restaurant| restaurant.id == id }
           end
           @results = final_restaut.flatten
-  
+
         elsif @names.include? "#{result}"
           @target_id = @categories.find { |category| category.name == result }.id
           all_target_category_restaurants = @restaurants_categories.select { |res_cat| res_cat.category_id == @target_id }

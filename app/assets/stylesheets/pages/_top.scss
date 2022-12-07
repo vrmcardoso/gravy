@@ -50,6 +50,8 @@ text-decoration: none;
   background-color: rgb(255, 255, 255);
   display: flex;
   justify-content: center;
+  border-top: 1px solid rgba(128, 128, 128, 0.112);
+
 }
 
 .icon-card {
@@ -59,22 +61,36 @@ text-decoration: none;
   flex-direction: column;
   margin-left: 25px;
   margin-right: 25px;
-  padding-top: 10px;
+  padding-top: 15px;
   padding-bottom: 10px;;
-  opacity: 0.7;
+  opacity: 0.6;
 
   &:hover {
     opacity: 1;
-    border-bottom: 2px solid rgba(128, 128, 128, 0.258);
+    border-bottom: 3px solid rgba(36, 36, 36, 0.258);
   }
+}
+
+.icon-card-active {
+  opacity: 1 !important;
+  border-bottom: 3px solid rgb(36, 36, 36) !important;
 }
 
 .icon-card p{
   margin-bottom: 2px;
 }
 
-.buttons:hover {
-border-color: rgb(27, 27, 27);
+.text-toggle-box {
+  display: flex;
+  align-items: flex-start;
+  width: 50%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+
+  h2 {
+    opacity: 0.8;
+  }
 }
 
 .symbols {
