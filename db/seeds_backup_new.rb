@@ -264,6 +264,7 @@ restaurant_category1 = RestaurantCategory.create(
 )
 
 
+
 james_oliver = Restaurant.create(
   name: "Jamie Oliver",
   address: "Praça Luís de Camões, Lisboa",
@@ -580,7 +581,7 @@ francesinha = Dish.create(
   wheat: false,
   soy: false,
   price: rand(10..20),
-  restaurant_id: marco.id,
+  restaurant_id: cervejaria_moderna.id,
   category_id: category6.id,
 )
 photo_url = 'https://media-cdn.tripadvisor.com/media/photo-s/09/6b/85/a8/dote-cervejaria-moderna.jpg'
