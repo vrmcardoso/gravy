@@ -105,6 +105,15 @@
   margin-top: 3px;
 }
 
+.card-name-restaurant {
+  position: absolute;
+  font-size: 20px;
+  font-weight: 400;
+  top: 20px;
+  right: 20px;
+  margin-top: 3px;
+}
+
 .card-name-show-profile {
   font-size: 20px;
   font-weight: 400;
@@ -134,7 +143,7 @@
   position: absolute;
   font-size: 15px;
   font-weight: 100;
-  top: 135px;
+  bottom: 20px;
   right: 20px;
   grid-gap: 10px;
 }

@@ -17,7 +17,7 @@
           </div>
           <div class="rank-button">
             <%= simple_form_for [@dish,@rank] do |f| %>
-              <%= f.input :ranking, input_html: { class: "rank-dropdown" }, collection: 1..(@sorted_dishes.size + 1) %>
+              <%= f.input :ranking, input_html: { class: "rank-dropdown" }, collection: 1..@dropdown_size %>
               <%= f.button :submit, input_html: { class: "rank-submit"} %>
             <% end %>
           </div>
@@ -88,7 +88,7 @@
               <p class="card-type-list"><%= cuisine %> </p>
             <% end %>
           </div>
-          <h2 class="card-name" style="font-size:28px;"><%= @restaurant.name %></h2>
+          <h2 class="card-name-restaurant" style="font-size:28px;"><%= @restaurant.name %></h2>
           <div class="card-rank-list">
             <% @position.each do |rank| %>
               <div class="restaurant-card-rank">
