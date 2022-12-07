@@ -21,17 +21,17 @@ class CategoriesController < ApplicationController
           restaurant_id = @restaurants.find { |restaurant| restaurant.name == params[:query] }.id
           rest_dishes = dishes.select { |dish| dish.restaurant_id == restaurant_id }
           @results = rest_dishes.sort_by { |dish| dish.sum_points}.reverse
-        elsif @names.include? "#{result}"
-          name_dishes = dishes.select { |dish| dish.category.name == result }
+        elsif @names.include? params[:query]
+          name_dishes = dishes.select { |dish| dish.category.name == params[:query] }
           @results = name_dishes.sort_by { |dish| dish.sum_points}.reverse
-        elsif @food_types.include? "#{result}"
+        elsif @food_types.include? result
           food_type_dishes = dishes.select { |dish| dish.category.food_type == result }
           @results = food_type_dishes.sort_by { |dish| dish.sum_points}.reverse
-        elsif @cuisines.include? "#{result}"
+        elsif @cuisines.include? result
           @cuisine_dishes = dishes.select { |dish| dish.category.cuisine == result }
           @results = @cuisine_dishes.sort_by { |dish| dish.sum_points}.reverse
         else
-          # @results = Restaurant.where("name ILIKE ?", "%#{params[:query]}%")
+          redirect_back_or_to root_path, notice: "No results for your input"
         end
       else # type == "Restaurant"
         if @restaurants_name.include? params[:query]
@@ -67,8 +67,8 @@ class CategoriesController < ApplicationController
           end
           @results = final_restaut.flatten
 
-        elsif @names.include? "#{result}"
-          @target_id = @categories.find { |category| category.name == result }.id
+        elsif @names.include? params[:query]
+          @target_id = @categories.find { |category| category.name == params[:query] }.id
           all_target_category_restaurants = @restaurants_categories.select { |res_cat| res_cat.category_id == @target_id }
           target_restaurants = []
           all_target_category_restaurants.each do |res_cat|
@@ -95,7 +95,7 @@ class CategoriesController < ApplicationController
           results = target_restaurants.sort_by { |result| result[:points] }.reverse
           @results = results.map { |result| Restaurant.find(result[:restaurant]) }
         else
-          # @results = Restaurant.where("name ILIKE ?", "%#{params[:query]}%")
+          redirect_back_or_to root_path, notice: "No results for your input"
         end
       end
     end
@@ -133,6 +133,7 @@ class CategoriesController < ApplicationController
     end
     @names = @names.uniq
     return @names
+
   end
 
   def restaurant
