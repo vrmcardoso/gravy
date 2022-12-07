@@ -8,6 +8,16 @@
 
 require 'faker'
 puts "Starting..."
+
+
+
+
+
+
+
+
+Rank.destroy_all
+
 dishes = Dish.all
 restaurants = Restaurant.all
 puts "writing dish recipes"
@@ -20,4 +30,5 @@ restaurants.each do |restaurant|
   restaurant.description = Faker::Restaurant.description
   restaurant.save
 end
+
 puts "completed"
