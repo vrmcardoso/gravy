@@ -41,7 +41,7 @@
     <div class="fav-dishes-container">
       <h5>Your favorite dishes</h5>
       <div class="card-container">
-        <% @dishes.each do |dish| %>
+        <% @best_ranked_dishes.each do |dish| %>
           <%= link_to dish_path(dish) do %>
             <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path dish.category.photo.key %>')">
               <h2 class="card-name"><%= dish.name %></h2>

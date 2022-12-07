@@ -5,4 +5,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :ranks
+
+  def ranked_dishes
+    ranks.map(&:dish)
+  end
+
+  def ranked_categories
+    ranked_dishes.map(&:category).uniq
+  end
 end
