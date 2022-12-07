@@ -45,7 +45,7 @@
     transform: rotate(-3600deg) !important;
 }
 
-html, body{
+.weird-stuff-404{
     margin: 0;
     width: 100%;
     height: 100%;
@@ -55,6 +55,19 @@ html, body{
     -moz-user-select: none; /* Firefox 2+ */
     -ms-user-select: none; /* IE 10+ */
     user-select: none; /* Standard syntax */
+}
+
+.weird-stuff-404 h1 {
+
+  color: white;
+  font-size: 5cm;
+  font-weight: 800;
+  margin-bottom: 50px;
+}
+
+.weird-stuff-404 h2 {
+  color: white;
+
 }
 
 .bg-purple{
@@ -218,6 +231,7 @@ li a:hover {
     position: relative;
     z-index: 100;
     pointer-events: none;
+    margin-bottom: 150px;
 }
 
 .stars{
