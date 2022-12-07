@@ -55,7 +55,7 @@
       </div>
     </div>
 
-    <div class="fav-lists-container mt-5" data-controller="drag" data-drag-url="/todos/:id/move">
+    <div class="fav-lists-container mt-5" data-controller="drag" data-drag-url="/ranks/:id/move">
       <% if @target_category %>
         <h2 class="mb-4">Your rank for: <%= @target_category.name %></h2>
         <% else %>
@@ -63,39 +63,40 @@
       <% end %>
         <% count = 0 %>
         <% @dishes_sorted.first(10).each_with_index do |dish| %>
-        <div class="card-container-2 mt-3 mb-3">
+
+        <div class="card-container-2 mt-3 mb-3" data-id="<%= dish.rank(current_user).id %>">
             <%= link_to dish_path(dish) do %>
               <% count += 1 %>
-              <div data-id="<%= dish.id %>" class="both-boxes">
-                <div class="card-category-4" style="background-image: linear-gradient(to right, rgba(10,10,10,0.5), rgba(10,10,10,1)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg);"></div>
+              <div class="both-boxes">
+                <div class="card-category-4" style="background-image: linear-gradient(to right, rgba(10,10,10,0.5), rgba(10,10,10,1)), url('<%= cl_image_path dish.photo.key %>');"></div>
                   <% if count == 1 %>
-                    <div class="rank-box-2">
+                    <div class="rank-box-2" id="<%= count %>">
                       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669981076/development/Badges_1_cxbraw.png" alt="">
                       <p><%= count %></p>
                     </div>
                   <% elsif count == 2 %>
-                    <div class="rank-box-2">
+                    <div class="rank-box-2" id="<%= count %>">
                       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669981079/development/Badges_2_rrxvil.png" alt="">
                       <p><%= count %></p>
                     </div>
                   <% elsif count == 3 %>
-                    <div class="rank-box-2">
+                    <div class="rank-box-2" id="<%= count %>">
                       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669981082/development/Badges_3_pjuj8b.png" alt="">
                       <p><%= count %></p>
                     </div>
                   <% else %>
-                    <div class="rank-box-2">
+                    <div class="rank-box-2" id="<%= count %>">
                       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669981192/development/Badges_last_kdbz6c.png" alt="">
                       <p><%= count %></p>
                     </div>
                   <% end %>
                   <div class="card-category-2" style="background-color: black">
-                    <h4 class="card-cuisine"><%= dish.category.cuisine %></h4><br>
-                    <h2 class="card-name"><%= dish.name %></h2>
-                    <h2 class="card-rank">Rank</h2>
-                    <p class="card-restaurant"><%= dish.restaurant.name %></p>
+                    <h4 class="card-cuisine-show-profile"><%= dish.category.cuisine %></h4><br>
+                    <h2 class="card-name-show-profile"><%= dish.name %></h2>
+                    <h2 class="card-rank-show-profile">Rank</h2>
+                    <p class="card-restaurant-show-profile"><%= dish.restaurant.name %></p>
                     <% if dish.category.food_type %>
-                      <p class="card-type"><%= dish.category.food_type %></p>
+                      <p class="card-type-show-profile"><%= dish.category.food_type %></p>
                     <% end %>
                   </div>
                 </div>

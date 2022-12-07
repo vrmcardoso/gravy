@@ -12,7 +12,12 @@ Rails.application.routes.draw do
   root to: "dishes#index"
 
   resources :dishes, only: [:index, :show] do
-    resources :ranks, only: [:create, :update]
+    resources :ranks, only: [:create, :update] 
+  end
+  resources :ranks, only: [] do
+    member do
+      patch :move
+    end
   end
   resources :restaurants, only: [:show]
   get "top", to: "categories#top"

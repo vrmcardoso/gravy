@@ -1,5 +1,4 @@
 class RanksController < ApplicationController
-
   def show
     @dishes = Dish.all
     @categories = Category.all
@@ -72,6 +71,20 @@ class RanksController < ApplicationController
     @dish.update(sum_points: ranking_converter(@dish.sum_points, new_rank, old_rank))
     restaurant_points_update(Restaurant.find(@dish.restaurant_id))
     redirect_to @dish
+  end
+
+  
+  def move
+    @rank = Rank.find(params[:id])
+    new_position = params[:position].to_i
+    old_position = @rank.ranking
+    @dish = @rank.dish
+    rank_rearrange(@dish, new_position, old_position)
+    @rank.update(ranking: new_position)
+    @dish.update(sum_points: ranking_converter(@dish.sum_points, new_position, old_position))
+    restaurant_points_update(@dish.restaurant)
+    
+    redirect_to user_path(current_user, query: @dish.category.id)
   end
 
   private

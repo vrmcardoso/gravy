@@ -89,6 +89,13 @@
   right: 20px;
 }
 
+.card-cuisine-show-profile {
+  font-size: 16px;
+  font-weight: 200;
+  top: 25px;
+  right: 20px;
+}
+
 .card-name {
   position: absolute;
   font-size: 20px;
@@ -96,6 +103,14 @@
   top: 40px;
   right: 20px;
   margin-top: 3px;
+}
+
+.card-name-show-profile {
+  font-size: 20px;
+  font-weight: 400;
+  top: 40px;
+  right: 20px;
+  margin-top: -20px;
 }
 
 .card-name-show1 {
@@ -156,6 +171,14 @@
   margin-top: 3px;
 }
 
+.card-rank-show-profile {
+  font-size: 18px;
+  font-weight: 300;
+  top: 90px;
+  right: 20px;
+  margin-top: 3px;
+}
+
 .restaurant-card-rank {
   font-size: 18px;
   font-weight: 300;
@@ -174,8 +197,31 @@
   justify-content: center;
 }
 
+.card-restaurant-show-profile {
+  font-size: 16px;
+  font-weight: 100;
+  top: 105px;
+  right: 20px;
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .card-type {
   position: absolute;
+  font-size: 15px;
+  font-weight: 100;
+  top: 135px;
+  right: 20px;
+  margin-top: 3px;
+  background-color: rgb(186, 186, 186);
+  padding: 3px 10px 1px 10px;
+  border-radius: 20px;
+  background: rgba(167, 167, 167, 0.5)
+}
+
+.card-type-show-profile {
   font-size: 15px;
   font-weight: 100;
   top: 135px;
