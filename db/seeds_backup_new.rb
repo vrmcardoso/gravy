@@ -264,14 +264,6 @@ restaurant_category1 = RestaurantCategory.create(
 )
 
 
-
-
-
-
-
-
-
-
 james_oliver = Restaurant.create(
   name: "Jamie Oliver",
   address: "Praça Luís de Camões, Lisboa",

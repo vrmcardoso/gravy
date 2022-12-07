@@ -90,10 +90,8 @@
                       <p><%= count %></p>
                     </div>
                   <% end %>
-                  <div class="card-category-2" style="background-color: black">
-                    <h4 class="card-cuisine-show-profile"><%= dish.category.cuisine %></h4><br>
+                  <div class="card-category-2" style="background-color: black; padding-right: 20px;">
                     <h2 class="card-name-show-profile"><%= dish.name %></h2>
-                    <h2 class="card-rank-show-profile">Rank</h2>
                     <p class="card-restaurant-show-profile"><%= dish.restaurant.name %></p>
                     <% if dish.category.food_type %>
                       <p class="card-type-show-profile"><%= dish.category.food_type %></p>
