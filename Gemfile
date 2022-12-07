@@ -86,5 +86,5 @@ gem "pg_search"
 
 gem "geocoder"
 
-
+gem 'rails_12factor'
 gem "acts_as_list", "~> 1.0"
