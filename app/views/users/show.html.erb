@@ -45,7 +45,7 @@
           <%= link_to dish_path(dish) do %>
             <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path dish.category.photo.key %>')">
               <h2 class="card-name"><%= dish.name %></h2>
-              <h2 class="card-rank">Rank</h2>
+              <h4 class="card-rank"> by <%= dish.restaurant.name %></h4>
               <div class="cuisines-container">
                 <p class="card-cuisines"><%= dish.category.cuisine %></p>
               </div>
