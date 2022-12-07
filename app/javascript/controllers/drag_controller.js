@@ -19,7 +19,6 @@ export default class extends Controller {
     const images = [`<img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669981076/development/Badges_1_cxbraw.png" alt=""></img>`,`<img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669981079/development/Badges_2_rrxvil.png" alt=""></img>`,
     `<img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669981082/development/Badges_3_pjuj8b.png" alt=""></img>`,`<img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669981192/development/Badges_last_kdbz6c.png" alt=""></img>`]
     let count = 1
-    console.log(images[count-1])
     allCards.forEach((card) => {
       if ( count >= 4) {
         let number = `<p>${count}</p>`;
