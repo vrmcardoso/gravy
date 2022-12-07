@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'errors/not_found'
+  get 'errors/internal_server'
+  get 'errors/unprocessable'
   resources :todos do
     member do
       patch :move
@@ -29,4 +32,9 @@ Rails.application.routes.draw do
   # end
   resources :users, only: [:new, :edit, :update, :show]
   get "show", to: "ranks#show"
+
+  get '/404', to: 'errors#not_found'
+  get '/500', to: 'errors#internal_server'
+  get '/422', to: 'errors#unprocessable'
+  
 end
