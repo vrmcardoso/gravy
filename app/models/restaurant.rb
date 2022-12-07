@@ -24,4 +24,8 @@ class Restaurant < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
+  def category(category)
+    RestaurantCategory.find_by(restaurant: self, category: category)
+  end
+
 end

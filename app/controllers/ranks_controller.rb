@@ -69,7 +69,7 @@ class RanksController < ApplicationController
     rank_rearrange(@dish, new_rank, old_rank)
     @rank.update(ranking: new_rank)
     @dish.update(sum_points: ranking_converter(@dish.sum_points, new_rank, old_rank))
-    restaurant_points_update(Restaurant.find(@dish.restaurant_id))
+    restaurant_points_update(@dish.restaurant, @dish.category)
     redirect_to @dish
   end
 
@@ -145,14 +145,14 @@ class RanksController < ApplicationController
     end
   end
 
-  def restaurant_points_update(restaurant)
-    @restaurant_categories = RestaurantCategory.where("restaurant_id = ?", restaurant.id)
+  def restaurant_points_update(restaurant, category)
+    @target_restaurant_category = restaurant.category(category)
     sum = 0
-    @restaurant_categories.each do |rest_category|
-      restaurant.dishes.each do |dish|
+    restaurant.dishes.each do |dish|
+      if dish.category == category
         sum += dish.sum_points
       end
-      rest_category.update(points: sum)
+      @target_restaurant_category.update(points: sum)
     end
   end
 end

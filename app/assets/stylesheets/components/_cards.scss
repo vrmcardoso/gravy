@@ -141,11 +141,13 @@
 
 .card-rank-list {
   display: flex;
-  gap: 5px;
+  flex-direction: column;
+  
   position: absolute;
-  top: 90px;
-  right: 20px;
+  top: 50px;
+  left: 20px;
   margin-top: 3px;
+  text-align: start;
 }
 
 .card-name-show-rest {
@@ -180,8 +182,8 @@
 }
 
 .restaurant-card-rank {
-  font-size: 18px;
-  font-weight: 300;
+  font-size: 14px;
+  font-weight: 100;
 
 }
 

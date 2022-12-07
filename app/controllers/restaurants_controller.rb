@@ -12,6 +12,18 @@ class RestaurantsController < ApplicationController
       @categories_ranks << {name: Category.find(rest_cat.category_id).name, points: rest_cat.points}
     end
     rank_restaurant(@restaurant)
+    @cuisines = []
+    @categories = []
+    @restaurant_categories.each do |category|
+      @categories << Category.find(category.category_id)
+    end
+    @categories.each do |category|
+      @cuisines << category.cuisine
+    end
+    @cuisines = @cuisines.uniq
+    @top_dish = @restaurant.dishes.sort_by { |dish| dish.sum_points }.reverse[0]
+    rank_dish(@top_dish)
+    sorting
     @markers =
       [{
         lat: @restaurant.latitude,
@@ -52,6 +64,32 @@ class RestaurantsController < ApplicationController
       target_restaurant_sort = target_restaurant_sort.map { |result| Restaurant.find(result[:restaurant]) }
       @position << { category: category[:category], position: (target_restaurant_sort.find_index(Restaurant.find(restaurant.id)) + 1) }
       @position = @position.uniq
+    end
+  end
+
+  def sort_dishes_by_name(name)
+    @categories = Category.where("name = ?", name)
+    @sorted_dishes = []
+    @categories.each do |category|
+      cat_dishes = Dish.where("category_id = ?", category.id)
+        cat_dishes.each do |dish|
+          @sorted_dishes << dish
+        end
+    end
+    @sorted_dishes.sort_by { |dish| dish.sum_points }.reverse
+  end
+
+  def rank_dish(dish)
+    sorted_dishes = sort_dishes_by_name(dish.category.name)
+    @dish_rank = (sorted_dishes.find_index(Dish.find(dish.id)) + 1)
+  end
+
+  def sorting
+    dishes = @restaurant.dishes
+    @dish_ranks = []
+    dishes.each do |dish|
+      dish_rank = {dish: dish, rank: rank_dish(dish)}
+      @dish_ranks << dish_rank
     end
   end
 end
