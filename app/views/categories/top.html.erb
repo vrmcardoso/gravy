@@ -49,9 +49,17 @@
 <div class="text-toggle-box my-0">
   <div>
     <% if @type == "Dish" %>
-      <center> <h2 class="my-3" > Best Dishes for <%= params[:query] %> </h2> </center>
+      <% if @restaurants_name.include? params[:query] %>
+        <center> <h2 class="my-3" > Best Dishes of <%= params[:query] %> </h2> </center>
+      <% else %>
+        <center> <h2 class="my-3" > Best Dishes for <%= params[:query] %> </h2> </center>
+      <% end %>
     <% else %>
-      <center> <h2 class="my-3" > Best Restaurants for <%= params[:query] %> </h2> </center>
+      <% if @restaurants_name.include? params[:query] %>
+        <center> <h2 class="my-3" > Best Results for <%= params[:query] %> </h2> </center>
+      <% else %>
+        <center> <h2 class="my-3" > Best Restaurants for <%= params[:query] %> </h2> </center>
+      <% end %>
     <% end %>
   </div>
   <div>

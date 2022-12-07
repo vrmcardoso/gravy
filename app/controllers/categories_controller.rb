@@ -142,5 +142,4 @@ class CategoriesController < ApplicationController
       @restaurants_name << restaurant.name
     end
   end
-
 end
