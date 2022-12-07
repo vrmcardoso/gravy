@@ -9,6 +9,7 @@
 require 'faker'
 puts "Starting..."
 
+
 puts "Cleaning database..."
 Rank.destroy_all
 Restaurant.destroy_all
@@ -1321,6 +1322,7 @@ restaurant_category18 = RestaurantCategory.create(
 
 
 
+
 dishes = Dish.all
 restaurants = Restaurant.all
 puts "writing dish recipes"
@@ -1333,4 +1335,5 @@ restaurants.each do |restaurant|
   restaurant.description = Faker::Restaurant.description
   restaurant.save
 end
+
 puts "completed"
