@@ -1,51 +1,62 @@
-<div class="width-container-rest">
-    <div class="row justify-content-center mb-3">
-        <div class="col-9">
-            <div>
-                <h1><%= @restaurant.name %></h1>
-                <% if @restaurant.photo.attached? %>
-                    <%= cl_image_tag @restaurant.photo.key, class: "border-card-rest" %>
-                <% else %>
-                    <%= image_tag "comida1.webp", class: "border-card-rest card" %>
-                <% end %>
-            </div>
-            <div class="mt-3">
-                <div class="card-category-alerg">
-                    <p><%= @restaurant.description %></p>
-                    <p><%= @restaurant.address %></p>
-                    <h4>Ranks:</h4>
-                    <% @position.each do |category| %>
-                      <p>#<%= category[:position] %> in <%= Category.find(category[:category]).name %></p>
-
-                      <% end %>
-                </div>
-            </div>
+<div class="profile-container">
+  <div class="profile-main-container">
+    <div class="banner-container">
+      <div class="dish-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @restaurant.photo.key %>');">
+          <h1><%= @restaurant.name %></h1>
+          <div class="dish-banner-cats">
+            <% @position.each do |rank| %>
+              <h4 class="card-cat">#<%= rank[:position] %> in <%= Category.find(rank[:category]).name %></h4>
+            <% end %>
+          </div>
+      </div>
+    </div>
+    <center>
+      <div class="dish-info">
+        <div class="dish-copy">
+          <div class="description">
+            <h4><%= @restaurant.description %></h4>
+          </div>
         </div>
-        <div class="col-3">
+      </div>
+    </center>
+  </div>
 
-            <% #booking!%>
-            <div class="card mb-2">
-                <%= image_tag "ticket-booking-form.png" %>
-            </div>
-            <div class="border-card-map-rest card">
-                <div class="map-border"
-                    data-controller="map"
-                    data-map-markers-value="<%= @markers.to_json %>"
-                    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-            </div>
-
+  <div class="profile-sidebar-2">
+      <h3 style="text-align:start;" class="ms-3">Most popular dish:</h3>
+      <%= link_to dish_path(@top_dish) do %>
+        <div class="card-category-rest m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path @top_dish.photo.key %>')">
+                      <h4 class="card-cuisine"><%= @top_dish.category.cuisine %></h4>
+                      <h2 class="card-name"><%= @top_dish.name %></h2>
+                      <h2 class="card-rank">#<%= @dish_rank %> in <%= @top_dish.category.name %></h2>
+                      <p class="card-restaurant"><%= @top_dish.restaurant.name %></p>
         </div>
+      <% end %>
+      <div class="location">
+        <h5 style="text-align:start;" class="ms-3">Address:</h5>
+        <p style="text-align:start;" class="ms-3"><%= @restaurant.address %></p>
+        <div class="map-border"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
     </div>
 
-    <div class="row justify-content-center mb-3">
+
+</div>
+
+
+
+
+<div class="profile-container">
         <div class="card-container-rest">
-            <% @restaurant.dishes.each do |dish|%>
-              <%= link_to dish_path(dish) do %>
-                  <div class="card-category-rest m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path dish.photo.key %>')">
-                      <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
-                      <h2 class="card-name"><%= dish.name %></h2>
-                      <h2 class="card-rank">Rank</h2>
-                      <p class="card-restaurant"><%= dish.restaurant.name %></p>
+            <% @dish_ranks.each do |dish|%>
+              <%= link_to dish_path(dish[:dish]) do %>
+                  <div class="card-category-rest m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path dish[:dish].photo.key %>')">
+                      <h4 class="card-cuisine"><%= dish[:dish].category.cuisine %></h4>
+                      <h2 class="card-name"><%= dish[:dish].name %></h2>
+                      <h2 class="card-rank">#<%= dish[:rank] %> in <%= dish[:dish].category.name %></h2>
+                      <p class="card-restaurant"><%= dish[:dish].restaurant.name %></p>
                   </div>
               <% end %>
             <% end %>
