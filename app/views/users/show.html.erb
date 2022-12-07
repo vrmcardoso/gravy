@@ -68,7 +68,7 @@
             <%= link_to dish_path(dish) do %>
               <% count += 1 %>
               <div class="both-boxes">
-                <div class="card-category-4" style="background-image: linear-gradient(to right, rgba(10,10,10,0.5), rgba(10,10,10,1)), url('<%= cl_image_path dish.photo.key %>');"></div>
+                <div class="card-category-4" style="background-image: linear-gradient(to right, rgba(1,1,1,0), rgba(1,1,1,1)), url('<%= cl_image_path dish.photo.key %>');"></div>
                   <% if count == 1 %>
                     <div class="rank-box-2" id="<%= count %>">
                       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669981076/development/Badges_1_cxbraw.png" alt="">
