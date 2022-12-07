@@ -6,9 +6,7 @@
         <% count += 1 %>
         <div class="card-container-2">
           <div class="both-boxes mt-3">
-
-            <div class="card-category-3" style="background-image: linear-gradient(to right, rgba(1,1,1,0.5), rgba(1,1,1,1)), url('<%= cl_image_path dish.photo.key %>');"></div>
-
+            <div class="card-category-3" style="background-image: linear-gradient(to right, rgba(1,1,1,0), rgba(1,1,1,1)), url('<%= cl_image_path dish.photo.key %>');"></div>
               <% if count == 1 %>
                 <div class="rank-box">
                     <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669981076/development/Badges_1_cxbraw.png" alt="">
@@ -34,7 +32,6 @@
                 <h2 class="card-name-show-dish mt-2"><%= dish.name %></h2>
                 <p> </p>
                 <h4 class="card-cuisine-show-dish"> Cuisine - <%= dish.category.cuisine %></h4>
-
                 <p class="card-restaurant-show-dish"> Restaurant - <%= dish.restaurant.name %></p>
                 <% if dish.category.food_type %>
                   <p class="card-type-show-dish"><%= dish.category.food_type %></p>
@@ -53,7 +50,7 @@
         <%= link_to restaurant_path(restaurant) do %>
           <div class="card-container-2">
             <div class="both-boxes mt-3">
-              <div class="card-category-3" style="background-image: linear-gradient(to right, rgba(10,10,10,0.2), rgba(10,10,10,1)), url('<%= cl_image_path restaurant.photo.key %>');">
+              <div class="card-category-3" style="background-image: linear-gradient(to right, rgba(1,1,1,0), rgba(1,1,1,1)), url('<%= cl_image_path restaurant.photo.key %>');">
               </div>
               <div class="rank-box">
               </div>
@@ -77,7 +74,7 @@
           <% count += 1 %>
           <div class="card-container-2">
             <div class="both-boxes mt-3">
-              <div class="card-category-3" style="background-image: linear-gradient(to right, rgba(10,10,10,0.2), rgba(10,10,10,1)), url('<%= cl_image_path restaurant.photo.key %>');"></div>
+              <div class="card-category-3" style="background-image: linear-gradient(to right, rgba(1,1,1,0), rgba(1,1,1,1)), url('<%= cl_image_path restaurant.photo.key %>');"></div>
                 <% if count == 1 %>
                   <div class="rank-box">
                     <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669981076/development/Badges_1_cxbraw.png" alt="">
