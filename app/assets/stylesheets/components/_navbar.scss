@@ -2,7 +2,7 @@
   justify-content: space-between;
   background: white;
   width: 80%;
-  position: -webkit-sticky;
+  // position: -webkit-sticky;
   position: sticky;
   top: 0;
   align-self: flex-start;
@@ -16,19 +16,19 @@
   width: 150px;
 }
 
-.navbar-lewagon:hover {
-	cursor: pointer;
-}
+// .navbar-lewagon:hover {
+// 	cursor: pointer;
+// }
 
 .home-your-fav {
   background-color: #FFBB2E;
   border-radius: 5px;
 }
 
-.home-your-fav:hover {
-	cursor: pointer;
-}
+// .home-your-fav:hover {
+// 	cursor: pointer;
+// }
 
-.pointer {
-  cursor: pointer;
-}
+// .pointer {
+//   cursor: pointer;
+// }
