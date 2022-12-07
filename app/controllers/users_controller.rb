@@ -63,6 +63,38 @@ class UsersController < ApplicationController
 
     @total_user_categories = @total_user_categories.uniq
     @user_ranked_dishes = @all_dishes.filter { |dish| @relevant_categories.include? dish.category.name }
+    trying = []
+    @user_ranked_dishes.each do |user_ranked_dish|
+      rank = Rank.find_by(user: current_user, dish: user_ranked_dish)
+      trying << { dish_id: user_ranked_dish.id, category_id: user_ranked_dish.category_id, rank: rank.ranking }
+    end
+
+    # cate = []
+    # trying.each do |try|
+    #   cate << try.category_id
+    # end
+    # cate.uniq
+
+    # dish_rank = []
+    # dishes = []
+    # last= []
+    # trying.each do |try|
+    #   cate.each do |cat|
+    #     dishes << try.select { |try| try.category_id == cat }
+    #   end
+    # end
+
+
+
+
+    # news = trying.sort_by { |try| try.category_id }
+    # raise
+
+    @best_ranked_dishes =
+      current_user.ranked_categories.map do |category|
+        category.ranks.order(:ranking).first.dish
+      end
+
     @results = []
 
     if params[:query].present?
