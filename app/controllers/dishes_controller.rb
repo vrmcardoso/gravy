@@ -100,7 +100,12 @@ class DishesController < ApplicationController
     @dish_category = Category.find(@dish.category_id)
     rank_dish(@dish, @dish_category)
     sort_dishes_by_name(@dish.category.name)
-    @dropdown_size = @sorted_dishes.size
+    @dropdown_size = 1
+    @sorted_dishes.each do |dish|
+      if dish.rank(current_user)
+        @dropdown_size += 1
+      end
+    end
 
   end
 
