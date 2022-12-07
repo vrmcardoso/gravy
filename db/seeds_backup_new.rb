@@ -1011,11 +1011,6 @@ restaurant_category12 = RestaurantCategory.create(
 )
 
 
-
-
-
-
-
 puts "Creating sushi..."
 confraria = Restaurant.create(
   name: "Confraria",
@@ -1087,16 +1082,16 @@ restaurant_category22 = RestaurantCategory.create(
 )
 
 
-uniquesushi = Restaurant.create(
-  name: "Unique Sushi Lab",
-  address: "Travessa do Enviado de Inglaterra 9, 1200-161 Lisboa",
-  latitude: "38.7191198",
-  longitude: "-9.1413288"
+nuisushi = Restaurant.create(
+  name: "Nui Sushi & Thai bar",
+  address: "Rua Maria Andrade 64A, 1200-161 Lisboa",
+  latitude: "38.723171449999995",
+  longitude: "-9.13524275"
 )
-photo_url = 'https://foodandtravelportugal.pt/wp-content/uploads/2018/03/unique-sushi_0044.jpg'
+photo_url = 'https://res.cloudinary.com/tf-lab/image/upload/w_600,h_337,c_fill,q_auto,f_auto/restaurant/ee378b4f-fd10-4792-8c7d-bce5c6e6d948/9cd8981c-43b1-4137-b654-242565949772.jpg'
 file = URI.open(photo_url)
-uniquesushi.photo.attach(io: file, filename: "food", content_type: "image/jpg")
-uniquesushi.save
+nuisushi.photo.attach(io: file, filename: "food", content_type: "image/jpg")
+nuisushi.save
 sushi = Dish.create(
   name: "Sushi",
   sum_points: 1,
@@ -1107,16 +1102,16 @@ sushi = Dish.create(
   wheat: false,
   soy: true,
   price: rand(10..20),
-  restaurant_id: uniquesushi.id,
-  category_id: uniquesushi.id,
+  restaurant_id: nuisushi.id,
+  category_id: nuisushi.id,
 )
-photo_url = 'https://media-cdn.tripadvisor.com/media/photo-s/1c/e8/d3/8d/selecao-do-chef.jpg'
+photo_url = 'https://res.cloudinary.com/tf-lab/image/upload/f_auto,q_auto,g_auto:subject,w_488,h_488,c_fill/customer/ee378b4f-fd10-4792-8c7d-bce5c6e6d948/74ba33ff-3dc6-4d7c-917c-ffe951da025a.jpg'
 file = URI.open(photo_url)
 sushi.photo.attach(io: file, filename: "food", content_type: "image/jpg")
 sushi.save
 
-restaurant_category22 = RestaurantCategory.create(
-  restaurant_id: uniquesushi.id,
+restaurant_category23 = RestaurantCategory.create(
+  restaurant_id: nuisushi.id,
   category_id: category9.id,
   points: 0
 )
