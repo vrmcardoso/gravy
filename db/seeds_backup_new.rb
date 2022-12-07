@@ -567,12 +567,112 @@ restaurant_category4 = RestaurantCategory.create(
 )
 
 
+cervejaria_moderna = Restaurant.create(
+  name: "Dote Cervejaria Moderna",
+  address: "R.Barata Salgeuiro 37A, Lisbon, Portugal",
+  latitude: "38.7139559",
+  longitude: "-9.133939801739865"
+)
+photo_url = 'https://dote.pt/wp-content/uploads/2021/10/expo@2x.jpg'
+file = URI.open(photo_url)
+cervejaria_moderna.photo.attach(io: file, filename: "food", content_type: "image/jpg")
+cervejaria_moderna.save
+
+francesinha = Dish.create(
+  name: "Francesinha",
+  sum_points: 1,
+  milk: true,
+  eggs: true,
+  peanuts: false,
+  shellfish: false,
+  wheat: false,
+  soy: false,
+  price: rand(10..20),
+  restaurant_id: marco.id,
+  category_id: category6.id,
+)
+photo_url = 'https://media-cdn.tripadvisor.com/media/photo-s/09/6b/85/a8/dote-cervejaria-moderna.jpg'
+file = URI.open(photo_url)
+francesinha.photo.attach(io: file, filename: "food", content_type: "image/jpg")
+francesinha.save
+
+restaurant_category19 = RestaurantCategory.create(
+  restaurant_id: cervejaria_moderna.id,
+  category_id: category6.id,
+  points: 0
+)
 
 
+dom_tacho = Restaurant.create(
+  name: "Dom Tacho",
+  address: "R. David de Sousa, Lisbon, Portugal",
+  latitude: "38.745634550000005",
+  longitude: "-9.135989071524346"
+)
+photo_url = 'https://s3-media0.fl.yelpcdn.com/bphoto/W2giKdkL4ITSjZ83vaoexg/348s.jpg'
+file = URI.open(photo_url)
+dom_tacho.photo.attach(io: file, filename: "food", content_type: "image/jpg")
+dom_tacho.save
+
+francesinha = Dish.create(
+  name: "Francesinha",
+  sum_points: 1,
+  milk: true,
+  eggs: true,
+  peanuts: false,
+  shellfish: false,
+  wheat: false,
+  soy: false,
+  price: rand(10..20),
+  restaurant_id: dom_tacho.id,
+  category_id: category6.id,
+)
+photo_url = 'https://static.mygon.com/ImageAdapterV2/campaign/20443/campaign1.jpg?width=760&height=506'
+file = URI.open(photo_url)
+francesinha.photo.attach(io: file, filename: "food", content_type: "image/jpg")
+francesinha.save
+
+restaurant_category20 = RestaurantCategory.create(
+  restaurant_id: dom_tacho.id,
+  category_id: category6.id,
+  points: 0
+)
 
 
+visconde = Restaurant.create(
+  name: "O Visconde",
+  address: "R. Visconde Seabra 2, Lisbon, Portugal",
+  latitude: "38.7601717",
+  longitude: "-9.157865759465485"
+)
+photo_url = 'https://10619-2.s.cdn12.com/rests/original/505_186722291.jpg'
+file = URI.open(photo_url)
+visconde.photo.attach(io: file, filename: "food", content_type: "image/jpg")
+visconde.save
 
+francesinha = Dish.create(
+  name: "Francesinha",
+  sum_points: 1,
+  milk: true,
+  eggs: true,
+  peanuts: false,
+  shellfish: false,
+  wheat: false,
+  soy: false,
+  price: rand(10..20),
+  restaurant_id: visconde.id,
+  category_id: category6.id,
+)
+photo_url = 'https://ncultura.pt/wp-content/uploads/2022/03/Francesinha-a-moda-do-Porto-para-fazer-em-casa-01.jpg'
+file = URI.open(photo_url)
+francesinha.photo.attach(io: file, filename: "food", content_type: "image/jpg")
+francesinha.save
 
+restaurant_category21 = RestaurantCategory.create(
+  restaurant_id: visconde.id,
+  category_id: category6.id,
+  points: 0
+)
 
 
 
@@ -636,11 +736,6 @@ restaurant_category5 = RestaurantCategory.create(
 )
 
 
-
-
-
-
-
 puro = Restaurant.create(
   name: "Puro Lisboa",
   address: "R. Luciano Cordeiro 74A, 1150-217 Lisboa",
@@ -702,9 +797,6 @@ restaurant_category6 = RestaurantCategory.create(
 )
 
 
-
-
-
 puts "Creating arroz de marisco..."
 a_marisqueira_do_lis = Restaurant.create(
   name: "A Marisqueira do Lis",
@@ -740,9 +832,6 @@ restaurant_category7 = RestaurantCategory.create(
   category_id: category7.id,
   points: 0
 )
-
-
-
 
 ramiro = Restaurant.create(
   name: "Ramiro",
@@ -780,10 +869,6 @@ restaurant_category8 = RestaurantCategory.create(
 )
 
 
-
-
-
-
 oceanos5 = Restaurant.create(
   name: "5 Oceanos",
   address: "Doca de Santo Amaro",
@@ -818,15 +903,6 @@ restaurant_category9 = RestaurantCategory.create(
   category_id: category7.id,
   points: 0
 )
-
-
-
-
-
-
-
-
-
 
 puts "Creating frango..."
 frangasqueira = Restaurant.create(
@@ -864,11 +940,6 @@ restaurant_category10 = RestaurantCategory.create(
   points: 0
 )
 
-
-
-
-
-
 vira_frangos = Restaurant.create(
   name: "VIRA Frangos Pinheiro Chagas",
   address: "R. Pedro Nunes 41, 1050-172 Lisboa",
@@ -903,10 +974,6 @@ restaurant_category11 = RestaurantCategory.create(
   category_id: category8.id,
   points: 0
 )
-
-
-
-
 
 valenciana = Restaurant.create(
   name: "À Valenciana",
@@ -944,11 +1011,6 @@ restaurant_category12 = RestaurantCategory.create(
 )
 
 
-
-
-
-
-
 puts "Creating sushi..."
 confraria = Restaurant.create(
   name: "Confraria",
@@ -983,6 +1045,84 @@ restaurant_category13 = RestaurantCategory.create(
   category_id: category9.id,
   points: 0
 )
+
+
+uniquesushi = Restaurant.create(
+  name: "Unique Sushi Lab",
+  address: "Travessa do Enviado de Inglaterra 9, 1200-161 Lisboa",
+  latitude: "38.7191198",
+  longitude: "-9.1413288"
+)
+photo_url = 'https://foodandtravelportugal.pt/wp-content/uploads/2018/03/unique-sushi_0044.jpg'
+file = URI.open(photo_url)
+uniquesushi.photo.attach(io: file, filename: "food", content_type: "image/jpg")
+uniquesushi.save
+sushi = Dish.create(
+  name: "Sushi",
+  sum_points: 1,
+  milk: false,
+  eggs: true,
+  peanuts: true,
+  shellfish: true,
+  wheat: false,
+  soy: true,
+  price: rand(10..20),
+  restaurant_id: uniquesushi.id,
+  category_id: uniquesushi.id,
+)
+photo_url = 'https://media-cdn.tripadvisor.com/media/photo-s/1c/e8/d3/8d/selecao-do-chef.jpg'
+file = URI.open(photo_url)
+sushi.photo.attach(io: file, filename: "food", content_type: "image/jpg")
+sushi.save
+
+restaurant_category22 = RestaurantCategory.create(
+  restaurant_id: uniquesushi.id,
+  category_id: category9.id,
+  points: 0
+)
+
+
+nuisushi = Restaurant.create(
+  name: "Nui Sushi & Thai bar",
+  address: "Rua Maria Andrade 64A, 1200-161 Lisboa",
+  latitude: "38.723171449999995",
+  longitude: "-9.13524275"
+)
+photo_url = 'https://res.cloudinary.com/tf-lab/image/upload/w_600,h_337,c_fill,q_auto,f_auto/restaurant/ee378b4f-fd10-4792-8c7d-bce5c6e6d948/9cd8981c-43b1-4137-b654-242565949772.jpg'
+file = URI.open(photo_url)
+nuisushi.photo.attach(io: file, filename: "food", content_type: "image/jpg")
+nuisushi.save
+sushi = Dish.create(
+  name: "Sushi",
+  sum_points: 1,
+  milk: false,
+  eggs: true,
+  peanuts: true,
+  shellfish: true,
+  wheat: false,
+  soy: true,
+  price: rand(10..20),
+  restaurant_id: nuisushi.id,
+  category_id: nuisushi.id,
+)
+photo_url = 'https://res.cloudinary.com/tf-lab/image/upload/f_auto,q_auto,g_auto:subject,w_488,h_488,c_fill/customer/ee378b4f-fd10-4792-8c7d-bce5c6e6d948/74ba33ff-3dc6-4d7c-917c-ffe951da025a.jpg'
+file = URI.open(photo_url)
+sushi.photo.attach(io: file, filename: "food", content_type: "image/jpg")
+sushi.save
+
+restaurant_category23 = RestaurantCategory.create(
+  restaurant_id: nuisushi.id,
+  category_id: category9.id,
+  points: 0
+)
+
+
+
+
+
+
+
+
 
 
 
