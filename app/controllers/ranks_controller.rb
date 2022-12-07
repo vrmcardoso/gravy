@@ -55,7 +55,7 @@ class RanksController < ApplicationController
     if @rank.save
       @dish.update(sum_points: ranking_converter(@dish.sum_points, rank_params["ranking"].to_i))
       restaurant_points_update(@dish.restaurant, @dish.category)
-      redirect_to @dish
+      redirect_to dish_path(@dish)
 
     else
       render "dishes/show", status: :unprocessable_entity
