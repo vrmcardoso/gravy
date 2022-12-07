@@ -72,10 +72,13 @@
 }
 
 .profile-photo {
-  width: 50%;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   border: 2px solid #FFBB2E;
   margin: auto;
+  object-fit:cover;
+  object-position:50% 50%;
 }
 
 .user-card i {
