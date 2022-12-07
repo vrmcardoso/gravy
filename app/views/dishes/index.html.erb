@@ -60,13 +60,13 @@
     <% end %>
     <%= link_to top_path(query: "Seafood", type: "Dish") do %>
     <div class="category-card grow-rotate-2">
-      <img src="" alt="icon of spaghetti">
+      <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1670427205/development/seafood_jlx2ek.png" alt="icon of spaghetti">
       <p>Seafood</p>
     </div>
     <% end %>
      <%= link_to top_path(query: "Francesinha", type: "Dish") do %>
     <div class="category-card grow-rotate-2">
-      <img src="" alt="icon of spaghetti">
+      <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1670427162/development/francesinha_w7iivf.png" alt="icon of spaghetti">
       <p>Francesinha</p>
     </div>
     <% end %>
@@ -89,7 +89,7 @@
             <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
             <h2 class="card-name"><%= dish.name %></h2>
             <h2 class="card-rank">Rank: <%= rank + 1 %></h2>
-            <p class="card-restaurant"><%= dish.restaurant.name %></p>
+            <p class="card-restaurant">by <%= dish.restaurant.name %></p>
             <% if dish.category.food_type %>
               <p class="card-type"><%= dish.category.food_type %></p>
             <% end %>
@@ -108,7 +108,7 @@
             <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
             <h2 class="card-name"><%= dish.name %></h2>
             <h2 class="card-rank">Rank: <%= rank + 1 %></h2>
-            <p class="card-restaurant"><%= dish.restaurant.name %></p>
+            <p class="card-restaurant">by <%= dish.restaurant.name %></p>
             <% if dish.category.food_type %>
               <p class="card-type"><%= dish.category.food_type %></p>
             <% end %>
@@ -128,7 +128,7 @@
             <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
             <h2 class="card-name"><%= dish.name %></h2>
             <h2 class="card-rank">Rank: <%= rank + 1 %></h2>
-            <p class="card-restaurant"><%= dish.restaurant.name %></p>
+            <p class="card-restaurant">by <%= dish.restaurant.name %></p>
             <% if dish.category.food_type %>
               <p class="card-type"><%= dish.category.food_type %></p>
             <% end %>

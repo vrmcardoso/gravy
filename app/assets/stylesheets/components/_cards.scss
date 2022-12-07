@@ -142,7 +142,7 @@
 .card-rank-list {
   display: flex;
   flex-direction: column;
-  
+
   position: absolute;
   top: 50px;
   left: 20px;
@@ -191,7 +191,7 @@
   position: absolute;
   font-size: 16px;
   font-weight: 100;
-  top: 105px;
+  top: 115px;
   right: 20px;
   margin-top: 3px;
   display: flex;
@@ -384,7 +384,23 @@
   background-size: cover;
   background-position: center;
   height: 180px;
-  width: 250px;
+  width: 280px;
+  justify-content: right;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.card-category-rest-top {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  width: 90%;
   justify-content: right;
   align-items: center;
   color: white;
