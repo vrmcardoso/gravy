@@ -70,7 +70,7 @@ class RanksController < ApplicationController
     @rank.update(ranking: new_rank)
     @dish.update(sum_points: ranking_converter(@dish.sum_points, new_rank, old_rank))
     restaurant_points_update(@dish.restaurant, @dish.category)
-    redirect_to @dish
+    redirect_to dish_path(@dish)
   end
 
 
