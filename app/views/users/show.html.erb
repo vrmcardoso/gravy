@@ -1,5 +1,4 @@
 <div class="profile-container">
-<%= link_to "Back", :back %>
   <div class="profile-sidebar">
     <div class="user-card">
       <% if current_user.photo.attached? %>
@@ -21,12 +20,17 @@
         <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669904205/development/Sushi_badge_ftjdv6.png" alt="sushi badge" data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Sushi Lover" data-bs-content="You are a Sushi Lover! You visited more than 5 Sushi Restaurants">
     </div>
 
+      <div style="margin-top: 16px; border-radius: 5px;">
+        <button type="button" class="btn btn-warning">
+          <%= link_to "Back", :back %>
+        </button>
+      </div>
     <div class="tops mb-5">
       <h4>Your Lists</h4>
       <div class="top-container">
         <% @total_user_categories.each do |category| %>
           <%= link_to user_path(current_user, query: "#{category.id}") do %>
-            <div class="card-tops-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path category.photo.key %>')">
+            <div class="card-tops-category pointer" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path category.photo.key %>')">
               <h2 class="card-top-name">Your rank of: <%= category.name %></h2>
             </div>
           <% end %>
@@ -44,7 +48,7 @@
       <div class="card-container">
         <% @best_ranked_dishes.each do |dish| %>
           <%= link_to dish_path(dish) do %>
-            <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path dish.category.photo.key %>')">
+            <div class="card-category m-3 pointer" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path dish.category.photo.key %>')">
               <h2 class="card-name"><%= dish.name %></h2>
               <h4 class="card-rank"> by <%= dish.restaurant.name %></h4>
               <div class="cuisines-container">
@@ -69,7 +73,7 @@
         <div class="card-container-2 mt-3 mb-3" data-id="<%= dish.rank(current_user).id %>">
             <%= link_to dish_path(dish) do %>
               <% count += 1 %>
-              <div class="both-boxes">
+              <div class="both-boxes pointer">
                 <div class="card-category-4" style="background-image: linear-gradient(to right, rgba(1,1,1,0), rgba(1,1,1,1)), url('<%= cl_image_path dish.photo.key %>');"></div>
                   <% if count == 1 %>
                     <div class="rank-box-2" id="<%= count %>">

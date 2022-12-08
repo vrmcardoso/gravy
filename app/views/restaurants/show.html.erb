@@ -1,5 +1,4 @@
 <div class="profile-container">
-<%= link_to "Back", :back %>
   <div class="profile-main-container">
     <div class="banner-container">
       <div class="dish-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.6)), url('<%= cl_image_path @restaurant.photo.key %>');">
@@ -17,6 +16,11 @@
         <div class="dish-copy">
           <div class="description">
             <h4><%= @restaurant.description %></h4>
+              <div class="d-flex" style="border-radius: 5px;">
+                <button type="button" class="btn btn-warning">
+                  <%= link_to "Back", :back %>
+                </button>
+              </div>
           </div>
         </div>
       </div>
@@ -26,7 +30,7 @@
   <div class="profile-sidebar-2">
       <h3 style="text-align:start;" class="ms-3">Most popular dish:</h3>
       <%= link_to dish_path(@top_dish) do %>
-        <div class="card-category-rest-top m-3" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path @top_dish.photo.key %>')">
+        <div class="card-category-rest-top m-3 pointer" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path @top_dish.photo.key %>')">
                       <h4 class="card-cuisine"><%= @top_dish.category.cuisine %></h4>
                       <h2 class="card-name"><%= @top_dish.name %></h2>
                       <h2 class="card-rank">#<%= @main_dish_rank %> in <%= @top_dish.category.name %></h2>
@@ -52,7 +56,7 @@
         <div class="card-container-rest">
             <% @dish_ranks.each do |dish|%>
               <%= link_to dish_path(dish[:dish]) do %>
-                  <div class="card-category-rest m-3" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path dish[:dish].photo.key %>')">
+                  <div class="card-category-rest m-3 pointer" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path dish[:dish].photo.key %>')">
                       <h4 class="card-cuisine"><%= dish[:dish].category.cuisine %></h4>
                       <h2 class="card-name"><%= dish[:dish].name %></h2>
                       <h2 class="card-rank">#<%= dish[:rank] %> in <%= dish[:dish].category.name %></h2>
