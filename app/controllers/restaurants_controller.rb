@@ -132,13 +132,13 @@ class RestaurantsController < ApplicationController
   end
 
   def restaurant_points_update(restaurant, category)
-    @target_restaurant_category = restaurant.category(category)
-    sum = 0
-    restaurant.dishes.each do |dish|
-      if dish.category == category
-        sum += dish.sum_points
+    restaurant_categories = RestaurantCategory.all
+    restaurant_categories.each do |rest_cat|
+      rest_cat.restaurant.dishes.each do |dish|
+        if dish.category_id == rest_cat.category_id
+          rest_cat.update(points: dish.sum_points)
+        end
       end
     end
-    @target_restaurant_category.update(points: sum)
   end
 end

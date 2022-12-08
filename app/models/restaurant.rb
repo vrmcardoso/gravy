@@ -28,4 +28,9 @@ class Restaurant < ApplicationRecord
     RestaurantCategory.find_by(restaurant: self, category: category)
   end
 
+  def points(category)
+    restaurant_category = RestaurantCategory.find_by(restaurant: self, category: category)
+    return restaurant_category.points
+  end
+
 end
