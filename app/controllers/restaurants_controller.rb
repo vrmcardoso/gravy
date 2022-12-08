@@ -12,6 +12,7 @@ class RestaurantsController < ApplicationController
       @categories_ranks << {name: Category.find(rest_cat.category_id).name, points: rest_cat.points}
     end
     rank_restaurant(@restaurant)
+
     @cuisines = []
     @categories = []
     @restaurant_categories.each do |category|
@@ -137,7 +138,7 @@ class RestaurantsController < ApplicationController
       if dish.category == category
         sum += dish.sum_points
       end
-      @target_restaurant_category.update(points: sum)
     end
+    @target_restaurant_category.update(points: sum)
   end
 end
