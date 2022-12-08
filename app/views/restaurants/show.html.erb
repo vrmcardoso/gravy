@@ -4,10 +4,11 @@
       <div class="dish-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.6)), url('<%= cl_image_path @restaurant.photo.key %>');">
           <h1><%= @restaurant.name %></h1>
           <div class="dish-banner-cats">
-            <% @position.each do |rank| %>
-              <h4 class="card-cat">#<%= rank[:position] %> in <%= Category.find(rank[:category]).name %></h4>
+            <% @positions.each do |rank| %>
+              <h4 class="card-cat">#<%= rank[:position] + 1 %> in <%= Category.find(rank[:category_id]).name %></h4>
             <% end %>
           </div>
+
       </div>
     </div>
     <center>
@@ -32,9 +33,10 @@
         <div class="card-category-rest-top m-3 pointer" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path @top_dish.photo.key %>')">
                       <h4 class="card-cuisine"><%= @top_dish.category.cuisine %></h4>
                       <h2 class="card-name"><%= @top_dish.name %></h2>
-                      <h2 class="card-rank">#<%= @dish_rank %> in <%= @top_dish.category.name %></h2>
+                      <h2 class="card-rank">#<%= @main_dish_rank %> in <%= @top_dish.category.name %></h2>
                       <p class="card-restaurant">by <%= @top_dish.restaurant.name %></p>
         </div>
+
       <% end %>
       <div class="location">
         <h5 style="text-align:start;" class="ms-3">Address:</h5>
@@ -49,7 +51,6 @@
 
 
 </div>
-
 
 <div class="profile-container">
         <div class="card-container-rest">
