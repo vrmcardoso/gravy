@@ -25,7 +25,7 @@
   <div class="profile-sidebar-2">
       <h3 style="text-align:start;" class="ms-3">Most popular dish:</h3>
       <%= link_to dish_path(@top_dish) do %>
-        <div class="card-category-rest-top m-3" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path @top_dish.photo.key %>')">
+        <div class="card-category-rest-top m-3 pointer" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path @top_dish.photo.key %>')">
                       <h4 class="card-cuisine"><%= @top_dish.category.cuisine %></h4>
                       <h2 class="card-name"><%= @top_dish.name %></h2>
                       <h2 class="card-rank">#<%= @dish_rank %> in <%= @top_dish.category.name %></h2>
@@ -47,13 +47,11 @@
 </div>
 
 
-
-
 <div class="profile-container">
         <div class="card-container-rest">
             <% @dish_ranks.each do |dish|%>
               <%= link_to dish_path(dish[:dish]) do %>
-                  <div class="card-category-rest m-3" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path dish[:dish].photo.key %>')">
+                  <div class="card-category-rest m-3 pointer" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path dish[:dish].photo.key %>')">
                       <h4 class="card-cuisine"><%= dish[:dish].category.cuisine %></h4>
                       <h2 class="card-name"><%= dish[:dish].name %></h2>
                       <h2 class="card-rank">#<%= dish[:rank] %> in <%= dish[:dish].category.name %></h2>
