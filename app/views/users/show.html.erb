@@ -25,12 +25,12 @@
       <div class="top-container">
         <% @total_user_categories.each do |category| %>
           <%= link_to user_path(current_user, query: "#{category.id}") do %>
-            <div class="card-tops-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path category.photo.key %>')">
+            <div class="card-tops-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path category.photo.key %>')">
               <h2 class="card-top-name">Your rank of: <%= category.name %></h2>
             </div>
           <% end %>
         <% end %>
-        <div class="card-tops-category" style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5))">
+        <div class="card-tops-category" style="background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6))">
           <i class="fa-solid fa-plus"></i>
         </div>
       </div>
@@ -43,7 +43,7 @@
       <div class="card-container">
         <% @best_ranked_dishes.each do |dish| %>
           <%= link_to dish_path(dish) do %>
-            <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path dish.category.photo.key %>')">
+            <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path dish.category.photo.key %>')">
               <h2 class="card-name"><%= dish.name %></h2>
               <h4 class="card-rank"> by <%= dish.restaurant.name %></h4>
               <div class="cuisines-container">

@@ -1,7 +1,7 @@
 <div class="profile-container">
   <div class="profile-main-container">
     <div class="banner-container">
-      <div class="dish-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @dish.photo.key %>');">
+      <div class="dish-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.6)), url('<%= cl_image_path @dish.photo.key %>');">
           <h1><%= @dish.name %></h1>
           <div class="dish-banner-cats">
               <h4 class="card-cat">#<%= @dish_rank %> in <%= @dish_category.name %></h4>
@@ -15,12 +15,12 @@
           <div class="description">
             <h4><%= @dish.recipe %></h4>
           </div>
-          <div class="rank-button">
+          <div class="btn-group">
             <%= simple_form_for [@dish,@rank] do |f| %>
-              <%= f.input :ranking, input_html: { class: "rank-dropdown" }, collection: 1..@dropdown_size %>
-              <%= f.button :submit, input_html: { class: "rank-submit"} %>
+              <%= f.input :ranking, collection: 1..@dropdown_size, include_blank: false, input_html: { class: "rank-dropdown"} %>
+              <%= f.button :submit, class: "rank-submit" %>
             <% end %>
-          </div>
+            </div>
         </div>
         <div class="categories-container mb-5">
           <h4 class="mb-3">Allergens:</h4>
@@ -70,7 +70,7 @@
   <div class="profile-sidebar-2">
       <h3 style="text-align:start;" class="ms-3">Find it at:</h3>
       <%= link_to restaurant_path(@restaurant) do %>
-        <div class="restaurant-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path @restaurant.photo.key %>')">
+        <div class="restaurant-card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path @restaurant.photo.key %>')">
           <div class="card-cuisine-list">
             <% @cuisines.each do |cuisine| %>
               <p class="card-type-list"><%= cuisine %> </p>
