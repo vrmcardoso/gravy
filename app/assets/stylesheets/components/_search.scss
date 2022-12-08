@@ -2,6 +2,12 @@
   width: 30%;
 }
 
+.nav-search-bar {
+  width: 25%;
+  border: solid 1px #FFBB2E;
+  border-radius: 20px;
+}
+
 .search-form-control {
   position: relative;
 
@@ -22,6 +28,16 @@
 }
 
 .button-search {
+  border-radius: 10px;
+  height: 40px;
+  width: 40px;
+  background-color: #FFBB2E;
+  color: white;
+  border: 0;
+  margin-left: 15px;
+}
+
+.nav-button-search {
   border-radius: 10px;
   height: 40px;
   width: 40px;
