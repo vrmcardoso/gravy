@@ -29,49 +29,49 @@
   <h2 class="index-title">Most Popular Categories</h1>
   <div class="category-cards-container">
     <%= link_to top_path(query: "Italian", type: "Dish") do %>
-    <div class="category-card grow-rotate">
+    <div class="category-card grow-rotate pointer">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810099/development/italian_food_hec9ov.png" alt="icon of spaghetti">
       <p>Italian</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Portuguese", type: "Dish") do %>
-    <div class="category-card grow-rotate">
+    <div class="category-card grow-rotate pointer">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810453/development/pastel-de-nata_uz2tnz.png" alt="icon of spaghetti">
       <p>Portuguese</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Asian", type: "Dish") do %>
-    <div class="category-card grow-rotate-2">
+    <div class="category-card grow-rotate-2 pointer">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810475/development/asian_food_zn3hoi.png" alt="icon of spaghetti">
       <p>Asian</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Pasta", type: "Dish") do %>
-    <div class="category-card grow-rotate">
+    <div class="category-card grow-rotate pointer">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810417/development/spaghetti_ethggz.png" alt="icon of spaghetti">
       <p>Pasta</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Pizza", type: "Dish") do %>
-    <div class="category-card grow-rotate-2">
+    <div class="category-card grow-rotate-2 pointer">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810438/development/pizza_sxdpza.png" alt="icon of spaghetti">
       <p>Pizza</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Seafood", type: "Dish") do %>
-    <div class="category-card grow-rotate-2">
+    <div class="category-card grow-rotate-2 pointer">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1670427205/development/seafood_jlx2ek.png" alt="icon of spaghetti">
       <p>Seafood</p>
     </div>
     <% end %>
      <%= link_to top_path(query: "Francesinha", type: "Dish") do %>
-    <div class="category-card grow-rotate-2">
+    <div class="category-card grow-rotate-2 pointer">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1670427162/development/francesinha_w7iivf.png" alt="icon of spaghetti">
       <p>Francesinha</p>
     </div>
     <% end %>
     <%= link_to top_path(query: "Sushi", type: "Dish") do %>
-    <div class="category-card grow-rotate-2">
+    <div class="category-card grow-rotate-2 pointer">
       <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669810446/development/sushi_neytlg.png" alt="icon of spaghetti">
       <p>Sushi</p>
     </div>
@@ -85,7 +85,7 @@
     <div class="card-container">
       <% @sorted_pizzas.each_with_index do |dish, rank| %>
         <%=link_to "dishes/#{dish.id}" do%>
-          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path dish.photo.key %>')">
+          <div class="card-category m-3 pointer" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path dish.photo.key %>')">
             <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
             <h2 class="card-name"><%= dish.name %></h2>
             <h2 class="card-rank">Rank: <%= rank + 1 %></h2>
@@ -104,7 +104,7 @@
       <% @sorted_sushi.each_with_index do |dish, rank| %>
         <%=link_to "dishes/#{dish.id}" do%>
           <% if dish.category.cuisine == "Asian" %>
-          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path dish.photo.key %>')">
+          <div class="card-category m-3 pointer" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path dish.photo.key %>')">
             <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
             <h2 class="card-name"><%= dish.name %></h2>
             <h2 class="card-rank">Rank: <%= rank + 1 %></h2>
@@ -124,7 +124,7 @@
       <% @sorted_francesinhas.each_with_index do |dish, rank| %>
         <%=link_to "dishes/#{dish.id}" do%>
           <% if dish.category.name == "Francesinha" %>
-          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path dish.photo.key %>')">
+          <div class="card-category m-3 pointer" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path dish.photo.key %>')">
             <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
             <h2 class="card-name"><%= dish.name %></h2>
             <h2 class="card-rank">Rank: <%= rank + 1 %></h2>
