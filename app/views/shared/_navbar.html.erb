@@ -5,12 +5,12 @@
         <%= image_tag("https://res.cloudinary.com/dmndhddgf/image/upload/v1669725709/Gravy_logo_wdyl8g.png", :class => "pointer") %>
       <% end %>
       <% if !current_page?(root_path) %>
-        <div class="nav-search-bar" data-controller="typed-js">
+        <div class="nav-search-bar" >
               <%= form_with url: top_path, method: :get, class: "d-flex my-2 form_style" do  |f| %>
                 <%= text_field_tag :query,
                     params[:query],
                     class: "form-control",
-                    data: { typed_js_target: "input"},
+                    placeholder: "Search",
                     style: "background-color: white; margin-left: 5%; margin-right: -7%; border: none; width: 167px; border-radius: 10px; height: 42px"
                     %>
                 <%= f.select(:type, ["Dish", "Restaurant"], {}, { class: "form_style_select mr-3 dropdown" }) %>
@@ -27,7 +27,7 @@
         <ul class="navbar-nav me-auto">
           <% if user_signed_in? %>
             <li class="nav-item active me-3">
-              <%= link_to "Your Tops!", user_path(current_user, query: ""), class: "nav-link home-your-fav" %>
+              <%= link_to "Your Tops", user_path(current_user, query: ""), class: "nav-link home-your-fav" %>
             </li>
             <li class="nav-item dropdown">
               <% if current_user.photo.attached? %>
