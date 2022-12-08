@@ -1,5 +1,5 @@
 <div class="banner-container">
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dmndhddgf/image/upload/v1669735258/development/pablo-merchan-montes-Orz90t6o0e4-unsplash_fclsur.jpg);">
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.6)), url(https://res.cloudinary.com/dmndhddgf/image/upload/v1669735258/development/pablo-merchan-montes-Orz90t6o0e4-unsplash_fclsur.jpg);">
     <div class="container">
       <div class="animation-text">
         Find the best <div> Dish or Restaurant </div> in your town
@@ -85,7 +85,7 @@
     <div class="card-container">
       <% @sorted_pizzas.each_with_index do |dish, rank| %>
         <%=link_to "dishes/#{dish.id}" do%>
-          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path dish.photo.key %>')">
+          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path dish.photo.key %>')">
             <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
             <h2 class="card-name"><%= dish.name %></h2>
             <h2 class="card-rank">Rank: <%= rank + 1 %></h2>
@@ -104,7 +104,7 @@
       <% @sorted_sushi.each_with_index do |dish, rank| %>
         <%=link_to "dishes/#{dish.id}" do%>
           <% if dish.category.cuisine == "Asian" %>
-          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path dish.photo.key %>')">
+          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path dish.photo.key %>')">
             <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
             <h2 class="card-name"><%= dish.name %></h2>
             <h2 class="card-rank">Rank: <%= rank + 1 %></h2>
@@ -124,7 +124,7 @@
       <% @sorted_francesinhas.each_with_index do |dish, rank| %>
         <%=link_to "dishes/#{dish.id}" do%>
           <% if dish.category.name == "Francesinha" %>
-          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('<%= cl_image_path dish.photo.key %>')">
+          <div class="card-category m-3" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('<%= cl_image_path dish.photo.key %>')">
             <h4 class="card-cuisine"><%= dish.category.cuisine %></h4>
             <h2 class="card-name"><%= dish.name %></h2>
             <h2 class="card-rank">Rank: <%= rank + 1 %></h2>
