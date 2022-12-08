@@ -1,5 +1,4 @@
 <div class="profile-container">
-<%= link_to "Back", :back %>
   <div class="profile-sidebar">
     <div class="user-card">
       <% if current_user.photo.attached? %>
@@ -21,6 +20,11 @@
         <img src="https://res.cloudinary.com/dmndhddgf/image/upload/v1669904205/development/Sushi_badge_ftjdv6.png" alt="sushi badge" data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Sushi Lover" data-bs-content="You are a Sushi Lover! You visited more than 5 Sushi Restaurants">
     </div>
 
+      <div style="margin-top: 16px;">
+        <button type="button" class="btn btn-warning">
+          <%= link_to "Back", :back %>
+        </button>
+      </div>
     <div class="tops mb-5">
       <h4>Your Lists</h4>
       <div class="top-container">

@@ -1,7 +1,7 @@
 <div class="profile-container">
-<%= link_to "Back", :back %>
   <div class="profile-main-container">
     <div class="banner-container">
+      
       <div class="dish-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.6)), url('<%= cl_image_path @dish.photo.key %>');">
           <h1><%= @dish.name %></h1>
           <div class="dish-banner-cats">
@@ -13,8 +13,13 @@
     <center>
       <div class="dish-info">
         <div class="dish-copy">
-          <div class="description">
+          <div class="description" style="margin-top: -7px;">
             <h4><%= @dish.recipe %></h4>
+            <div class="d-flex">
+              <button type="button" class="btn btn-warning">
+                <%= link_to "Back", :back %>
+              </button>
+            </div>
           </div>
           <div class="btn-group">
             <%= simple_form_for [@dish,@rank] do |f| %>
