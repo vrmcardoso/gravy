@@ -154,6 +154,7 @@ class RanksController < ApplicationController
         sum += dish.sum_points
       end
       @target_restaurant_category.update(points: sum)
+      sum = 0
     end
   end
 end
