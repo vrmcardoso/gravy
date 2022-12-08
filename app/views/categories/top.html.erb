@@ -71,7 +71,7 @@
       <% if @restaurants_name.include? params[:query] %>
         <center> <h2 class="my-3" > Best Dishes of <%= params[:query] %> </h2> </center>
       <% else %>
-        <center> <h2 class="my-3" > Best Dishes for <%= params[:query] %> </h2> </center>
+        <center> <h2 class="my-3" > Best  <%= params[:query] %> </h2> </center>
       <% end %>
     <% else %>
       <% if @restaurants_name.include? params[:query] %>

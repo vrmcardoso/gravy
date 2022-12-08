@@ -58,6 +58,7 @@
     <div class="fav-lists-container mt-5" data-controller="drag" data-drag-url="/ranks/:id/move">
       <% if @target_category %>
         <h2 class="mb-4">Your rank for: <%= @target_category.name %></h2>
+        <h4>You can sort by dragging!</h4>
         <% else %>
         <h2>Choose a category</h2>
       <% end %>

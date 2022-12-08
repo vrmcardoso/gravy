@@ -300,7 +300,7 @@ dish_margarita = Dish.create(
   restaurant_id: james_oliver.id,
   category_id: category4.id,
 )
-photo_url = 'https://res.cloudinary.com/dmndhddgf/image/upload/v1669803039/development/food1_w75bhq.jpg'
+photo_url = 'https://media.istockphoto.com/id/1133727757/pt/foto/picking-slice-of-pepperoni-pizza.jpg?s=612x612&w=0&k=20&c=hwiw-reg5HMLLx3AG0MZ9Y27gewglYfZZGl7aljjPTI='
 file = URI.open(photo_url)
 dish_margarita.photo.attach(io: file, filename: "food", content_type: "image/jpg")
 dish_margarita.save
