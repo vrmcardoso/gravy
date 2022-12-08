@@ -4,6 +4,22 @@
       <%= link_to root_path, class: "navbar-brand" do %>
         <%= image_tag("https://res.cloudinary.com/dmndhddgf/image/upload/v1669725709/Gravy_logo_wdyl8g.png", :class => "pointer") %>
       <% end %>
+      <% if !current_page?(root_path) %>
+        <div class="nav-search-bar" data-controller="typed-js">
+              <%= form_with url: top_path, method: :get, class: "d-flex my-2 form_style" do  |f| %>
+                <%= text_field_tag :query,
+                    params[:query],
+                    class: "form-control",
+                    data: { typed_js_target: "input"},
+                    style: "background-color: white; margin-left: 5%; margin-right: -7%; border: none; width: 167px; border-radius: 10px; height: 42px"
+                    %>
+                <%= f.select(:type, ["Dish", "Restaurant"], {}, { class: "form_style_select mr-3 dropdown" }) %>
+              <button class= "nav-button-search" >
+                <i class="fa-solid fa-magnifying-glass mt-2"></i>
+              </button>
+              <% end %>
+        </div>
+      <% end %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
