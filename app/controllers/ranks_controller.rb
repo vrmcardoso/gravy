@@ -54,7 +54,7 @@ class RanksController < ApplicationController
     rank_rearrange(@dish, new_rank)
     if @rank.save
       @dish.update(sum_points: ranking_converter(@dish.sum_points, rank_params["ranking"].to_i))
-      restaurant_points_update(@dish.restaurant, @dish.category)
+      restaurant_points_update(@dish.category)
       redirect_to dish_path(@dish)
 
     else
@@ -70,7 +70,7 @@ class RanksController < ApplicationController
     rank_rearrange(@dish, new_rank, old_rank)
     @rank.update(ranking: new_rank)
     @dish.update(sum_points: ranking_converter(@dish.sum_points, new_rank, old_rank))
-    restaurant_points_update(@dish.restaurant, @dish.category)
+    restaurant_points_update(@dish.category)
     redirect_to dish_path(@dish)
   end
 
@@ -146,16 +146,14 @@ class RanksController < ApplicationController
     end
   end
 
-  def restaurant_points_update(restaurant, category)
-    @target_restaurant_category = restaurant.category(category)
-    sum = 0
-    restaurant.dishes.each do |dish|
-      if dish.category == category
-        sum += dish.sum_points
-        @target_restaurant_category.update(points: sum)
+  def restaurant_points_update(category)
+    restaurant_categories = RestaurantCategory.all
+    restaurant_categories.each do |rest_cat|
+      rest_cat.restaurant.dishes.each do |dish|
+        if dish.category_id == rest_cat.category_id
+          rest_cat.update(points: dish.sum_points)
+        end
       end
-      sum = 0
     end
-
   end
 end
