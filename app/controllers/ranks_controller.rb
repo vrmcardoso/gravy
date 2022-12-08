@@ -152,9 +152,10 @@ class RanksController < ApplicationController
     restaurant.dishes.each do |dish|
       if dish.category == category
         sum += dish.sum_points
+        @target_restaurant_category.update(points: sum)
       end
-      @target_restaurant_category.update(points: sum)
       sum = 0
     end
+
   end
 end
