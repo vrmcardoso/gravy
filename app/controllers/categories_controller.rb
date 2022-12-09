@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
 
     @results = []
     if params[:query].present?
-      result = params[:query].capitalize
+      result = params[:query].downcase
       @type = params[:type]
       dishes = Dish.all
       cuisine
@@ -17,40 +17,41 @@ class CategoriesController < ApplicationController
       name
       restaurant
       if @type == "Dish"
-        if @restaurants_name.include? params[:query]
-          restaurant_id = @restaurants.find { |restaurant| restaurant.name == params[:query] }.id
+        if @restaurants_name.include? result
+          restaurant_id = @restaurants.find { |restaurant| restaurant.name.downcase == result }.id
           rest_dishes = dishes.select { |dish| dish.restaurant_id == restaurant_id }
           @results = rest_dishes.sort_by { |dish| dish.sum_points}.reverse
-        elsif @names.include? params[:query]
-          name_dishes = dishes.select { |dish| dish.category.name == params[:query] }
+        elsif @names.include? result
+          name_dishes = dishes.select { |dish| dish.category.name.downcase == result }
           @results = name_dishes.sort_by { |dish| dish.sum_points}.reverse
         elsif @food_types.include? result
-          food_type_dishes = dishes.select { |dish| dish.category.food_type == result }
+
+          food_type_dishes = dishes.select { |dish| dish.category.food_type.downcase == result unless dish.category.food_type.nil? }
           @results = food_type_dishes.sort_by { |dish| dish.sum_points}.reverse
         elsif @cuisines.include? result
-          @cuisine_dishes = dishes.select { |dish| dish.category.cuisine == result }
+          @cuisine_dishes = dishes.select { |dish| dish.category.cuisine.downcase == result }
           @results = @cuisine_dishes.sort_by { |dish| dish.sum_points}.reverse
         else
           redirect_back_or_to root_path, notice: "No results for your input"
         end
       else # type == "Restaurant"
-        if @restaurants_name.include? params[:query]
-          restaurant_id = @restaurants.find { |restaurant| restaurant.name == params[:query] }.id
+        if @restaurants_name.include? result
+          restaurant_id = @restaurants.find { |restaurant| restaurant.name.downcase == result }.id
           rest_dishes = dishes.select { |dish| dish.restaurant_id == restaurant_id }
           rest_dishes_sort = rest_dishes.sort_by { |dish| dish.sum_points}.reverse
-          category_of_first_dish = rest_dishes_sort[0].category.cuisine
-          rel_categories = @categories.select { |category| category.cuisine == category_of_first_dish }
+          category_of_first_dish = rest_dishes_sort[0].category.cuisine.downcase
+          rel_categories = @categories.select { |category| category.cuisine.downcase == category_of_first_dish }
           rel_categories_id = []
           rel_categories.each do |rel_cat|
             rel_categories_id << rel_cat.id
           end
 
           rest_cat = []
-           rel_categories_id.each do |rel_cat_id|
-             rest_cat << @restaurants_categories.filter { |res_cat| res_cat.category_id == rel_cat_id }
+          rel_categories_id.each do |rel_cat_id|
+            rest_cat << @restaurants_categories.filter { |res_cat| res_cat.category_id == rel_cat_id }
           end
 
-          @final_result = @restaurants.find { |restaurant| restaurant.name == params[:query] }.id
+          @final_result = @restaurants.find { |restaurant| restaurant.name.downcase == result }.id
           rest_ids = []
           rest_ids << @final_result
           rest_cat.each do |res_cat_one|
@@ -67,8 +68,8 @@ class CategoriesController < ApplicationController
           end
           @results = final_restaut.flatten
 
-        elsif @names.include? params[:query]
-          @target_id = @categories.find { |category| category.name == params[:query] }.id
+        elsif @names.include? result
+          @target_id = @categories.find { |category| category.name.downcase == result }.id
           all_target_category_restaurants = @restaurants_categories.select { |res_cat| res_cat.category_id == @target_id }
           target_restaurants = []
           all_target_category_restaurants.each do |res_cat|
@@ -76,8 +77,8 @@ class CategoriesController < ApplicationController
           end
           results = target_restaurants.sort_by { |result| result[:points] }.reverse
           @results = results.map { |result| Restaurant.find(result[:restaurant]) }
-        elsif @food_types.include? "#{result}"
-          @target_id = @categories.find { |category| category.food_type == result }.id
+        elsif @food_types.include? result
+          @target_id = @categories.find { |category| category.food_type.downcase == result if !category.food_type.nil?  }.id
           all_target_category_restaurants = @restaurants_categories.select { |res_cat| res_cat.category_id == @target_id }
           target_restaurants = []
           all_target_category_restaurants.each do |res_cat|
@@ -85,8 +86,8 @@ class CategoriesController < ApplicationController
           end
           results = target_restaurants.sort_by { |result| result[:points] }.reverse
           @results = results.map { |result| Restaurant.find(result[:restaurant]) }
-        elsif @cuisines.include? "#{result}"
-          @target_id = @categories.find { |category| category.cuisine == result }.id
+        elsif @cuisines.include? result
+          @target_id = @categories.find { |category| category.cuisine.downcase == result }.id
           all_target_category_restaurants = @restaurants_categories.select { |res_cat| res_cat.category_id == @target_id }
           target_restaurants = []
           all_target_category_restaurants.each do |res_cat|
@@ -102,14 +103,13 @@ class CategoriesController < ApplicationController
 
   end
 
-
   private
 
   def cuisine
     @cuisines = []
     @categories = Category.all
     @categories.each do |category|
-      @cuisines << category.cuisine
+      @cuisines << category.cuisine.downcase
     end
     @cuisines = @cuisines.uniq
     return @cuisines
@@ -119,9 +119,12 @@ class CategoriesController < ApplicationController
     @food_types = []
     @categories = Category.all
     @categories.each do |category|
-      @food_types << category.food_type
+      if category.food_type.present?
+        @food_types << category.food_type.downcase
+      end
     end
     @food_types = @food_types.uniq
+
     return @food_types
   end
 
@@ -129,7 +132,7 @@ class CategoriesController < ApplicationController
     @names = []
     @categories = Category.all
     @categories.each do |category|
-      @names << category.name
+      @names << category.name.downcase
     end
     @names = @names.uniq
     return @names
@@ -140,7 +143,8 @@ class CategoriesController < ApplicationController
     @restaurants_name = []
     @restaurants = Restaurant.all
     @restaurants.each do |restaurant|
-      @restaurants_name << restaurant.name
+      @restaurants_name << restaurant.name.downcase
     end
+    return @restaurants_name
   end
 end
