@@ -1,5 +1,10 @@
 <div class="profile-container">
   <div class="profile-main-container">
+      <div class="d-flex" style="border-radius: 5px; margin-left: 46px; margin-bottom: 7px;">
+        <button type="button" class="btn btn-warning">
+          <%= link_to "Back", :back %>
+        </button>
+      </div>
     <div class="banner-container">
       <div class="dish-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.6)), url('<%= cl_image_path @restaurant.photo.key %>');">
           <h1><%= @restaurant.name %></h1>
@@ -16,11 +21,6 @@
         <div class="dish-copy">
           <div class="description">
             <h4><%= @restaurant.description %></h4>
-              <div class="d-flex" style="border-radius: 5px;">
-                <button type="button" class="btn btn-warning">
-                  <%= link_to "Back", :back %>
-                </button>
-              </div>
           </div>
         </div>
       </div>
