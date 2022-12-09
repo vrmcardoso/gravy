@@ -6,7 +6,7 @@
         </button>
       </div>
     <div class="banner-container">
-      
+
       <div class="dish-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.6)), url('<%= cl_image_path @dish.photo.key %>');">
           <h1><%= @dish.name %></h1>
           <div class="dish-banner-cats">
@@ -23,7 +23,7 @@
           </div>
           <div class="btn-group">
             <%= simple_form_for [@dish,@rank] do |f| %>
-              <%= f.input :ranking, collection: 1..@dropdown_size, include_blank: false, input_html: { class: "rank-dropdown pointer"} %>
+              <%= f.input :ranking, collection: 1..@dropdown_size, :include_blank => "select", input_html: { class: "rank-dropdown pointer"} %>
               <%= f.button :submit, class: "rank-submit" %>
             <% end %>
             </div>
