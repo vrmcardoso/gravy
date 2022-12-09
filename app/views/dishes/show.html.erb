@@ -1,5 +1,10 @@
 <div class="profile-container">
   <div class="profile-main-container">
+      <div class="d-flex" style="border-radius: 5px; margin-left: 46px; margin-bottom: 7px;">
+        <button type="button" class="btn btn-warning">
+          <%= link_to "Back", :back %>
+        </button>
+      </div>
     <div class="banner-container">
       
       <div class="dish-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.6)), url('<%= cl_image_path @dish.photo.key %>');">
@@ -15,11 +20,6 @@
         <div class="dish-copy">
           <div class="description" style="margin-top: -7px;">
             <h4><%= @dish.recipe %></h4>
-            <div class="d-flex" style="border-radius: 5px;">
-              <button type="button" class="btn btn-warning">
-                <%= link_to "Back", :back %>
-              </button>
-            </div>
           </div>
           <div class="btn-group">
             <%= simple_form_for [@dish,@rank] do |f| %>
