@@ -37,7 +37,7 @@ class DishesController < ApplicationController
     @cuisines = []
     @categories = Category.all
     @categories.each do |category|
-      @cuisines << category.cuisine
+      @cuisines << category.cuisine.downcase
     end
     return @cuisines
   end
