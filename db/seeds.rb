@@ -6,11 +6,11 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-require 'faker'
-require 'open-uri'
+# require 'faker'
+# require 'open-uri'
 
-puts "Cleaning database..."
-Rank.destroy_all
+# puts "Cleaning database..."
+# Rank.destroy_all
 # Restaurant.destroy_all
 # Category.destroy_all
 # User.destroy_all
@@ -116,19 +116,19 @@ Rank.destroy_all
 #       dish.save
 #     end
 # end
-puts "Creating ranks..."
-user1 = User.first
-user3 = User.last
-dish_first = Dish.first
-dish_last = Dish.last
-100.times do
-  rank = Rank.create(
-    ranking: rand(0..10),
-    user_id: rand(user1.id..user3.id),
-    dish_id: rand(dish_first.id..dish_last.id)
-  )
-  rank.save
-end
+# puts "Creating ranks..."
+# user1 = User.first
+# user3 = User.last
+# dish_first = Dish.first
+# dish_last = Dish.last
+# 100.times do
+#   rank = Rank.create(
+#     ranking: rand(0..10),
+#     user_id: rand(user1.id..user3.id),
+#     dish_id: rand(dish_first.id..dish_last.id)
+#   )
+#   rank.save
+# end
 
 # restaurant_first = Restaurant.first
 # restaurant_last = Restaurant.last
@@ -140,7 +140,7 @@ end
 #   )
 #   restaurant_category.save
 # end
-puts "Seed complete!"
+# puts "Seed complete!"
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
@@ -1463,9 +1463,6 @@ restaurant_category18 = RestaurantCategory.create(
   category_id: category10.id,
   points: 0
 )
-
-
-
 
 dishes = Dish.all
 restaurants = Restaurant.all
